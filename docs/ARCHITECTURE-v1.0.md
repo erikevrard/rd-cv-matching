@@ -1,8 +1,8 @@
 # System Architecture - CV Matching Tool
 
 **Project**: Randstad Digital Belgium - CV Matching Tool  
-**Version**: 1.1  
-**Date**: 11 September 2025  
+**Version**: 1.0  
+**Date**: 08 September 2025  
 **Related Documents**: [Technical Specification](./TECH-SPEC.md), [Data Model](./DATA-MODEL.md), [Storage Design](./STORAGE.md)
 
 ---

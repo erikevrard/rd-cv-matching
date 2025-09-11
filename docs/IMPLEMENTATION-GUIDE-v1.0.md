@@ -1,8 +1,8 @@
 # Implementation Guide - CV Matching Tool
 
 **Project**: Randstad Digital Belgium - CV Matching Tool  
-**Version**: 1.1  
-**Date**: 11 September 2025  
+**Version**: 1.0  
+**Date**: 08 September 2025  
 **Related Documents**: [Technical Specification](./TECH-SPEC.md), [System Architecture](./ARCHITECTURE.md), [Data Model](./DATA-MODEL.md), [Storage Design](./STORAGE.md)
 
 ---
@@ -459,14 +459,6 @@ indent_size = 2
   - [ ] CV templates (Randstad branding)
   - [ ] Multi-language templates
   - [ ] File naming conventions
-
-- [ ] **DIGIT-TM Export System**
-  - [ ] Master keyword list loader (digit-keywords.json)
-  - [ ] Skill canonicalisation engine
-  - [ ] Experience cross-reference mapper
-  - [ ] Competence level calculator (1-5 scale)
-  - [ ] Project reference ID generator
-  - [ ] DIGIT-TM PDF/Word template renderer
 
 - [ ] **Approval Workflow**
   - [ ] Draft/approved status tracking
