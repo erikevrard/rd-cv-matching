@@ -5,7 +5,7 @@ window.CVManager.config = {
     // Application settings
     app: {
         name: 'CV Management System',
-        version: '1.0.0',
+        version: '1.1.0', // 🔄 Updated for security release
         maxFileSize: 5 * 1024 * 1024, // 5MB
         allowedFileTypes: ['pdf', 'doc', 'docx', 'txt'],
         maxCVs: 1000,
@@ -19,32 +19,18 @@ window.CVManager.config = {
         uploads: 'data/uploads/'
     },
 
-    // Default user configuration
-    defaultUser: {
-        name: 'Erik Evrard',
-        email: 'erik@evrard.net',
-        password: 'abc123',
-        role: 'admin',
-        createdAt: new Date().toISOString()
-    },
+    // 🔄 REMOVED: defaultUser - now handled securely by auth.js
 
     // CV processing settings
     processing: {
-        enableLLM: false, // Set to true when LLM integration is ready
-        sampleDelay: 2000, // Simulate processing time
+        enableLLM: false,
+        sampleDelay: 2000,
         extractionFields: [
-            'name',
-            'email',
-            'phone',
-            'company',
-            'profile',
-            'seniority',
-            'skills',
-            'experience'
+            'name', 'email', 'phone', 'company', 'profile', 'seniority', 'skills', 'experience'
         ]
     },
 
-    // Sample data for testing
+    // Sample data for testing (non-sensitive)
     sampleCVData: [
         {
             name: 'John Smith',
@@ -81,21 +67,23 @@ window.CVManager.config = {
     // UI settings
     ui: {
         itemsPerPage: 10,
-        searchDelay: 300, // milliseconds
+        searchDelay: 300,
         animationDuration: 200,
         toastDuration: 3000
     },
 
-    // Validation rules
+    // 🔄 Enhanced validation rules
     validation: {
         email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         password: {
-            minLength: 6,
-            requireSpecialChar: false
+            minLength: 8,
+            requireSpecialChar: true,
+            requireNumber: true,
+            requireUppercase: true
         },
         name: {
             minLength: 2,
             maxLength: 50
         }
     }
-}; 
+};

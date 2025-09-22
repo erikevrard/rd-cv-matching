@@ -1,0 +1,32 @@
+# Security files - NEVER COMMIT THESE
+.env
+.env.local
+.env.development
+.env.production
+users.config.js
+data/users.json
+config/secrets.js
+
+# Personal credential files
+passwords.txt
+credentials.*
+secrets/
+
+# Node modules (if you add them later)
+node_modules/
+
+# Build artifacts  
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
