@@ -1,32 +1,28 @@
-# Security files - NEVER COMMIT THESE
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
 .env
 .env.local
-.env.development
-.env.production
-users.config.js
-data/users.json
-config/secrets.js
 
-# Personal credential files
-passwords.txt
-credentials.*
-secrets/
+# Data directories - ignore user data but keep structure
+backend/data/users/*.json
+backend/data/uploads/**/*
+backend/data/cvs/*.json
+backend/data/settings/*.json
 
-# Node modules (if you add them later)
-node_modules/
+# Keep structure markers
+!backend/data/**/.gitkeep
 
-# Build artifacts  
-dist/
-build/
-
-# IDE files
-.vscode/
-.idea/
+# Logs
+*.log
+npm-debug.log*
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# Logs
-*.log
-logs/
+# IDE
+.vscode/
+.idea/
