@@ -10,6 +10,11 @@ const fs = require('fs').promises;
 const authRoutes = require('./routes/auth');
 const settingsRoutes = require('./routes/settings');
 const cvsRoutes = require('./routes/cvs');
+const tenderSearchRoutes = require("./routes/tender-searches");
+const llmRoutes = require('./routes/llms');
+const usersRoutes = require('./routes/users');
+const taxonomyRoutes = require("./routes/taxonomy");
+const promptRoutes = require("./routes/prompts");
 
 // Import services
 const fileUtils = require('./utils/file-utils');
@@ -39,7 +44,8 @@ class CVManagerServer {
             'data/uploads',
             'data/uploads/pdf',
             'data/uploads/docx',
-            'data/uploads/txt'
+            'data/uploads/txt',
+            'data/llms'
         ];
 
         for (const dir of directories) {
@@ -103,6 +109,11 @@ class CVManagerServer {
         this.app.use('/api/auth', authRoutes);
         this.app.use('/api/settings', settingsRoutes);
         this.app.use('/api/cvs', cvsRoutes);
+        this.app.use("/api/tender-searches", tenderSearchRoutes);
+        this.app.use('/api/llms', llmRoutes);
+        this.app.use('/api/users', usersRoutes);
+        this.app.use("/api/taxonomy", taxonomyRoutes);
+        this.app.use("/api/prompts", promptRoutes);
 
         // Health check
         this.app.get('/api/health', (req, res) => {

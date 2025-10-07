@@ -17,52 +17,22 @@ class AIService {
         }
     }
 
+    // New processCVText – Begin
     async processCVText(extractedText, userId) {
         try {
-            const settings = await this.getUserSettings(userId);
-            
-            if (!settings || !settings.aiProvider || !settings.aiProvider.enabled) {
-                return {
-                    success: false,
-                    error: 'AI processing not enabled'
-                };
-            }
+            // Simulate AI processing delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
 
-            const { provider, model, apiUrl, apiKey } = settings.aiProvider;
-            const parsingPrompt = settings.parsingPrompt || this.getDefaultPrompt();
+            // Generate mock extracted data with European names
+            const mockData = this.generateMockExtraction();
 
-            if (!apiKey) {
-                return {
-                    success: false,
-                    error: 'AI API key not configured'
-                };
-            }
-
-            // Prepare the prompt with CV text
-            const fullPrompt = parsingPrompt.replace('{CV_TEXT}', extractedText);
-
-            let result;
-            if (provider === 'claude') {
-                result = await this.processWithClaude(apiUrl, apiKey, model, fullPrompt);
-            } else if (provider === 'openai') {
-                result = await this.processWithOpenAI(apiUrl, apiKey, model, fullPrompt);
-            } else {
-                return {
-                    success: false,
-                    error: `Unsupported AI provider: ${provider}`
-                };
-            }
-
-            if (result.success) {
-                // Parse and validate the AI response
-                const parsedData = this.parseAIResponse(result.response);
-                return {
-                    success: true,
-                    data: parsedData
-                };
-            } else {
-                return result;
-            }
+            return {
+                success: true,
+                data: {
+                    ...mockData,
+                    extractedAt: new Date().toISOString()
+                }
+            };
 
         } catch (error) {
             console.error('AI processing error:', error);
@@ -72,6 +42,91 @@ class AIService {
             };
         }
     }
+    // New processCVText – End
+
+    // ------begin of generateMockExtraction------
+    generateMockExtraction() {
+        const firstNames = [
+            'Pieter', 'Sophie', 'Luc', 'Marie', 'Jan', 'Emma',
+            'João', 'Ana', 'Miguel', 'Catarina', 'Pedro', 'Inês',
+            'Ion', 'Elena', 'Andrei', 'Maria', 'Mihai', 'Alexandra',
+            'Klaus', 'Anna', 'Stefan', 'Julia', 'Thomas', 'Laura',
+            'Pierre', 'Camille', 'Lucas', 'Léa', 'Antoine', 'Chloé'
+        ];
+
+        const lastNames = [
+            'Janssens', 'Dubois', 'Peeters', 'Lambert', 'Willems', 'Claes',
+            'Silva', 'Santos', 'Ferreira', 'Oliveira', 'Costa', 'Rodrigues',
+            'Popescu', 'Ionescu', 'Popa', 'Dumitrescu', 'Stoica', 'Gheorghiu',
+            'Müller', 'Schmidt', 'Weber', 'Wagner', 'Becker', 'Hoffmann',
+            'Martin', 'Bernard', 'Dubois', 'Thomas', 'Robert', 'Petit'
+        ];
+
+        const companies = [
+            'Randstad Digital Belgium', 'TechConsult Brussels', 'DataFlow NV',
+            'Innovate Solutions SA', 'EuroTech Partners', 'Digital Minds BVBA',
+            'Porto Software House', 'Lisboa Tech Hub', 'Softinsa',
+            'Bucharest IT Solutions', 'Romanian Software Group', 'TechRO',
+            'Berlin Digital GmbH', 'München Tech AG', 'Hamburg Consulting',
+            'Paris Innovation Lab', 'Lyon Tech Solutions', 'Marseille Digital'
+        ];
+
+        const profiles = [
+            'Full Stack Developer', 'Frontend Developer', 'Backend Developer',
+            'DevOps Engineer', 'Data Engineer', 'Cloud Architect',
+            'UI/UX Designer', 'Product Manager', 'Business Analyst',
+            'Scrum Master', 'Technical Lead', 'Solutions Architect',
+            'Data Scientist', 'QA Engineer', 'Security Specialist',
+            'Mobile Developer', 'System Administrator', 'Database Administrator'
+        ];
+
+        const seniorities = ['Junior', 'Medior', 'Senior', 'Lead', 'Principal'];
+
+        const cities = [
+            'Brussels', 'Antwerp', 'Ghent', 'Bruges', 'Leuven',
+            'Lisbon', 'Porto', 'Braga', 'Coimbra', 'Faro',
+            'Bucharest', 'Cluj-Napoca', 'Timișoara', 'Iași', 'Brașov',
+            'Berlin', 'Munich', 'Hamburg', 'Frankfurt', 'Cologne',
+            'Paris', 'Lyon', 'Marseille', 'Toulouse', 'Nice'
+        ];
+
+        const streets = [
+            'Rue de la Loi', 'Avenue Louise', 'Chaussée de Charleroi',
+            'Rua Augusta', 'Avenida da Liberdade', 'Praça do Comércio',
+            'Strada Victoriei', 'Bulevardul Unirii', 'Calea Dorobanților',
+            'Hauptstraße', 'Bahnhofstraße', 'Königsallee',
+            'Rue de Rivoli', 'Boulevard Haussmann', 'Avenue des Champs-Élysées'
+        ];
+
+        const confidenceLevels = ['high', 'medium', 'low'];
+
+        const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+        const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+        const streetNumber = Math.floor(Math.random() * 200) + 1;
+        const postalCode = 1000 + Math.floor(Math.random() * 9000);
+        const city = cities[Math.floor(Math.random() * cities.length)];
+        const street = streets[Math.floor(Math.random() * streets.length)];
+
+        return {
+            firstName: firstName,
+            lastName: lastName,
+            email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@example.com`,
+            phone: `+32 ${Math.floor(Math.random() * 900) + 100} ${Math.floor(Math.random() * 90) + 10} ${Math.floor(Math.random() * 90) + 10} ${Math.floor(Math.random() * 90) + 10}`,
+            address: `${street} ${streetNumber}, ${postalCode} ${city}`,
+            uniqueIdentifier: `${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${String.fromCharCode(65 + Math.floor(Math.random() * 26))}${Math.floor(Math.random() * 900000) + 100000}`,
+            company: companies[Math.floor(Math.random() * companies.length)],
+            profile: profiles[Math.floor(Math.random() * profiles.length)],
+            seniority: seniorities[Math.floor(Math.random() * seniorities.length)],
+            confidence: {
+                name: confidenceLevels[Math.floor(Math.random() * confidenceLevels.length)],
+                contact: confidenceLevels[Math.floor(Math.random() * confidenceLevels.length)],
+                overall: confidenceLevels[Math.floor(Math.random() * confidenceLevels.length)]
+            },
+            extractionNotes: Math.random() > 0.7 ? 'Simulated extraction - some fields may require verification' : null
+        };
+    }
+
+    // ------end of generateMockExtraction------
 
     async processWithClaude(apiUrl, apiKey, model, prompt) {
         try {
@@ -163,7 +218,7 @@ class AIService {
         try {
             // Clean up the response text - remove markdown code blocks if present
             let cleanText = responseText.trim();
-            
+
             // Remove ```json and ``` markers if present
             cleanText = cleanText.replace(/```json\s*\n?/g, '');
             cleanText = cleanText.replace(/```\s*$/g, '');
@@ -193,7 +248,7 @@ class AIService {
 
         } catch (error) {
             console.error('Failed to parse AI response:', error);
-            
+
             // Return a fallback structure with notes about the parsing failure
             return {
                 firstName: null,
@@ -245,7 +300,7 @@ CV TEXT:
     async testConnection(provider, apiUrl, apiKey, model) {
         try {
             const testPrompt = 'Test connection. Reply with only "OK".';
-            
+
             let result;
             if (provider === 'claude') {
                 result = await this.processWithClaude(apiUrl, apiKey, model, testPrompt);

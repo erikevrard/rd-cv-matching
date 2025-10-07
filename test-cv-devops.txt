@@ -1,0 +1,17 @@
+CV - DevOps Engineer
+
+Ion Popescu
+ion.popescu@example.com
++40 721 234 567
+Strada Victoriei 12, Bucharest, Romania
+
+Role: DevOps Engineer - Mid-level
+Years of Experience: 4
+
+Technical Skills:
+Docker, Kubernetes, Jenkins
+AWS, Azure, Terraform
+Python, Bash scripting
+Monitoring: Prometheus, Grafana
+
+Employer: Romanian Software Group

@@ -1,0 +1,19 @@
+CV - Frontend Developer
+
+Name: Maria Silva
+Email: maria.silva@example.com
+Phone: +351 912 345 678
+Address: Rua Augusta 45, 1100-053 Lisboa, Portugal
+
+Profile: Senior Frontend Developer
+Experience: 7 years
+
+Skills:
+- React, Vue.js, Angular
+- TypeScript, JavaScript
+- HTML5, CSS3, SASS
+- Webpack, Vite
+- Git, CI/CD
+
+Current Company: Porto Software House
+Previous: Lisboa Tech Hub, Softinsa
