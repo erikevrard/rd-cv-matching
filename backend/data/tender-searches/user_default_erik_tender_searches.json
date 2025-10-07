@@ -1,0 +1,170 @@
+[
+  {
+    "mnemonic": "SEN_BACK8",
+    "userId": "user_default_erik",
+    "tenderId": null,
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "Backend Developer",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "API",
+      "DB"
+    ],
+    "active": false,
+    "createdAt": "2025-10-06T15:30:09.581Z",
+    "updatedAt": "2025-10-06T15:30:09.581Z"
+  },
+  {
+    "mnemonic": "SEN_BACK7",
+    "userId": "user_default_erik",
+    "tenderId": null,
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "Backend Developer",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "API",
+      "DB"
+    ],
+    "active": false,
+    "createdAt": "2025-10-06T15:30:08.072Z",
+    "updatedAt": "2025-10-06T15:30:08.072Z"
+  },
+  {
+    "mnemonic": "SEN_BACK6",
+    "userId": "user_default_erik",
+    "tenderId": null,
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "Backend Developer",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "API",
+      "DB"
+    ],
+    "active": false,
+    "createdAt": "2025-10-06T15:30:07.161Z",
+    "updatedAt": "2025-10-06T15:30:07.161Z"
+  },
+  {
+    "mnemonic": "SEN_BACK5",
+    "userId": "user_default_erik",
+    "tenderId": null,
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "Backend Developer",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "API",
+      "DB"
+    ],
+    "active": false,
+    "createdAt": "2025-10-06T15:30:06.303Z",
+    "updatedAt": "2025-10-06T15:30:06.303Z"
+  },
+  {
+    "mnemonic": "SEN_BACK4",
+    "userId": "user_default_erik",
+    "tenderId": null,
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "Backend Developer",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "API",
+      "DB"
+    ],
+    "active": false,
+    "createdAt": "2025-10-06T15:30:05.655Z",
+    "updatedAt": "2025-10-06T15:30:05.655Z"
+  },
+  {
+    "mnemonic": "SEN_BACK3",
+    "userId": "user_default_erik",
+    "tenderId": null,
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "Backend Developer",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "API",
+      "DB"
+    ],
+    "active": false,
+    "createdAt": "2025-10-06T15:30:04.988Z",
+    "updatedAt": "2025-10-06T15:30:04.988Z"
+  },
+  {
+    "mnemonic": "SEN_BACK2",
+    "userId": "user_default_erik",
+    "tenderId": null,
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "Backend Developer",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "API",
+      "DB"
+    ],
+    "active": false,
+    "createdAt": "2025-10-06T15:30:04.073Z",
+    "updatedAt": "2025-10-06T15:30:04.073Z"
+  },
+  {
+    "mnemonic": "SEN_BACK",
+    "userId": "user_default_erik",
+    "tenderId": null,
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "Backend Developer",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "API",
+      "DB"
+    ],
+    "active": false,
+    "createdAt": "2025-10-06T15:30:03.062Z",
+    "updatedAt": "2025-10-06T15:30:03.062Z"
+  }
+]

@@ -1,0 +1,5 @@
+Test CV
+Name: John Doe
+Email: john@example.com
+Phone: +1-555-0123
+Skills: JavaScript, Python

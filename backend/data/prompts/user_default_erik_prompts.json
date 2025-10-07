@@ -1,0 +1,25 @@
+[
+  {
+    "mnemonic": "EXTRACT_CONTACT_V2",
+    "title": "Extract Contact Details",
+    "text": "Extract: full_name, email, phone, city, country.",
+    "tags": [
+      "extraction",
+      "contact",
+      "v2"
+    ],
+    "createdAt": "2025-10-06T22:57:39.784Z",
+    "updatedAt": "2025-10-06T23:00:57.084Z"
+  },
+  {
+    "mnemonic": "SYS_SUMMARY",
+    "title": "System Summary Prompt",
+    "text": "Summarize the CV focusing on backend experience, DB, and cloud.",
+    "tags": [
+      "summary",
+      "backend"
+    ],
+    "createdAt": "2025-10-06T22:57:05.260Z",
+    "updatedAt": "2025-10-06T22:57:05.260Z"
+  }
+]

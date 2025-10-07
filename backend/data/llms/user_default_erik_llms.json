@@ -1,0 +1,34 @@
+[
+  {
+    "mnemonic": "CLAU_202",
+    "userId": "user_default_erik",
+    "name": "Anthropic",
+    "model": "claude-3-5-sonnet",
+    "version": "2025-05",
+    "apiUrl": "https://api.anthropic.com",
+    "apiKey": "sk-demo-anthropic-456",
+    "headers": {},
+    "temperature": 0.2,
+    "maxTokens": 1024,
+    "timeoutMs": 30000,
+    "active": false,
+    "createdAt": "2025-10-06T16:56:54.782Z",
+    "updatedAt": "2025-10-06T16:57:38.695Z"
+  },
+  {
+    "mnemonic": "GPT4_202",
+    "userId": "user_default_erik",
+    "name": "OpenAI",
+    "model": "gpt-4o-mini",
+    "version": "2025-06-01",
+    "apiUrl": "https://api.openai.com",
+    "apiKey": "sk-demo-openai-123",
+    "headers": {},
+    "temperature": 0.2,
+    "maxTokens": 1024,
+    "timeoutMs": 30000,
+    "active": true,
+    "createdAt": "2025-10-06T16:56:54.751Z",
+    "updatedAt": "2025-10-06T16:57:38.695Z"
+  }
+]

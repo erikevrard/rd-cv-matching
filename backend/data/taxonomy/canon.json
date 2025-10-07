@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "updatedAt": "2025-10-06T18:05:00.000Z",
+  "entries": [
+    {
+      "key": "php",
+      "label": "PHP",
+      "category": "language",
+      "synonyms": ["php7", "php 8", "php language"],
+      "implies": [],
+      "tags": ["backend", "web"],
+      "vendor": null,
+      "deprecated": false,
+      "notes": ""
+    },
+    {
+      "key": "laravel",
+      "label": "Laravel",
+      "category": "framework",
+      "synonyms": ["laravel framework", "laravel php"],
+      "implies": ["composer", "php"],
+      "tags": ["backend", "web", "mvc"],
+      "vendor": "Laravel",
+      "deprecated": false,
+      "notes": ""
+    },
+    {
+      "key": "composer",
+      "label": "Composer",
+      "category": "tool",
+      "synonyms": ["php composer"],
+      "implies": ["php"],
+      "tags": ["dependency-management"],
+      "vendor": null,
+      "deprecated": false,
+      "notes": "PHP dependency manager"
+    },
+    {
+      "key": "react",
+      "label": "React",
+      "category": "framework",
+      "synonyms": ["react.js", "reactjs"],
+      "implies": ["javascript", "npm", "nodejs"],
+      "tags": ["frontend", "spa"],
+      "vendor": "Meta",
+      "deprecated": false,
+      "notes": ""
+    },
+    {
+      "key": "npm",
+      "label": "npm",
+      "category": "tool",
+      "synonyms": ["node package manager"],
+      "implies": ["nodejs"],
+      "tags": ["dependency-management"],
+      "vendor": "OpenJS",
+      "deprecated": false,
+      "notes": ""
+    },
+    {
+      "key": "nodejs",
+      "label": "Node.js",
+      "category": "platform",
+      "synonyms": ["node", "node js"],
+      "implies": ["javascript"],
+      "tags": ["runtime", "backend"],
+      "vendor": "OpenJS",
+      "deprecated": false,
+      "notes": ""
+    },
+    {
+      "key": "pmp",
+      "label": "PMP",
+      "category": "certification",
+      "synonyms": ["project management professional"],
+      "implies": ["project-management"],
+      "tags": ["pm"],
+      "vendor": "PMI",
+      "deprecated": false,
+      "notes": ""
+    }
+  ]
+}

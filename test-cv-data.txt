@@ -1,0 +1,19 @@
+Curriculum Vitae
+
+Klaus Müller
+Email: klaus.mueller@techmail.de
+Mobile: +49 170 123 4567
+Berlin, Germany
+
+Position: Data Scientist (Senior Level)
+Experience: 8 years in data science and machine learning
+
+Core Competencies:
+- Python (NumPy, Pandas, Scikit-learn)
+- Machine Learning, Deep Learning
+- TensorFlow, PyTorch
+- SQL, NoSQL databases
+- Data visualization (Tableau, PowerBI)
+
+Current Employer: Berlin Digital GmbH
+ID Number: DE123456789
