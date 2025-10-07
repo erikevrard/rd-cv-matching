@@ -1,3 +1,4 @@
+// CV Pool Manager - v2.2.0 with Backend Authentication
 // API Configuration
 const API_BASE_URL = 'http://localhost:3001';
 
@@ -19,6 +20,57 @@ class CVPoolManager {
         this.updateUI();
     }
 
+    // ============================================================================
+    // AUTHENTICATION HELPER
+    // ============================================================================
+
+    async authenticatedFetch(url, options = {}) {
+        const auth = window.CVManager.auth;
+        
+        if (!auth || !auth.isAuthenticated()) {
+            throw new Error('Not authenticated');
+        }
+
+        const token = auth.getToken();
+        
+        const defaultOptions = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        };
+
+        // Merge options, with user options taking precedence
+        const mergedOptions = {
+            ...defaultOptions,
+            ...options,
+            headers: {
+                ...defaultOptions.headers,
+                ...options.headers
+            }
+        };
+
+        try {
+            const response = await fetch(url, mergedOptions);
+
+            // Handle 401 Unauthorized
+            if (response.status === 401) {
+                this.showToast('Session expired. Please log in again.', 'error');
+                window.CVManager.auth?.logout();
+                throw new Error('Authentication failed');
+            }
+
+            return response;
+        } catch (error) {
+            console.error('API request error:', error);
+            throw error;
+        }
+    }
+
+    // ============================================================================
+    // EVENT LISTENERS
+    // ============================================================================
+
     setupEventListeners() {
         // File upload
         const fileInput = document.getElementById('cv-file-input');
@@ -39,11 +91,16 @@ class CVPoolManager {
         }
 
         // Settings button
+        const settingsBtn = document.getElementById('cv-settings-btn');
+        if (settingsBtn) {
+            settingsBtn.addEventListener('click', () => this.showSettings());
+        }
+
+        // Also handle the settings menu button
         const settingsMenuBtn = document.getElementById('settings-menu-btn');
         if (settingsMenuBtn) {
             settingsMenuBtn.addEventListener('click', () => this.showSettings());
         }
-
 
         // Auto-refresh toggle
         const autoRefreshToggle = document.getElementById('auto-refresh-toggle');
@@ -51,6 +108,10 @@ class CVPoolManager {
             autoRefreshToggle.addEventListener('change', (e) => this.toggleAutoRefresh(e.target.checked));
         }
     }
+
+    // ============================================================================
+    // DATA LOADING
+    // ============================================================================
 
     async loadCVs() {
         try {
@@ -63,19 +124,23 @@ class CVPoolManager {
             const url = `${API_BASE_URL}/api/cvs/${currentUser.id}`;
             console.log('Fetching CVs from:', url);
 
-            const response = await fetch(url);
+            const response = await this.authenticatedFetch(url);
             console.log('Response status:', response.status);
 
             const result = await response.json();
             console.log('API Result:', result);
 
             if (result.success) {
-                this.cvs = result.data.cvs;
-                this.summary = result.data.summary;
+                this.cvs = result.data.cvs || [];
+                
+                // Calculate summary if not provided
+                if (result.data.summary) {
+                    this.summary = result.data.summary;
+                } else {
+                    this.summary = this.calculateSummary(this.cvs);
+                }
 
                 console.log('CVs loaded:', this.cvs.length, 'CVs');
-                console.log('CV data:', this.cvs);
-
                 this.updateCVList();
                 this.updateSummary();
             } else {
@@ -87,12 +152,24 @@ class CVPoolManager {
         }
     }
 
+    calculateSummary(cvs) {
+        return {
+            total: cvs.length,
+            uploaded: cvs.filter(cv => cv.status === 'uploaded').length,
+            processing: cvs.filter(cv => cv.status === 'processing').length,
+            parsed: cvs.filter(cv => cv.status === 'processed').length,
+            failed: cvs.filter(cv => cv.status === 'error').length
+        };
+    }
+
     async loadSettings() {
         const userId = window.CVManager.auth?.getCurrentUser()?.id;
         if (!userId) return;
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/settings/${userId}`);
+            const response = await this.authenticatedFetch(
+                `${API_BASE_URL}/api/settings/${userId}`
+            );
             const result = await response.json();
 
             if (result.success) {
@@ -104,20 +181,23 @@ class CVPoolManager {
         }
     }
 
+    // ============================================================================
+    // FILE UPLOAD
+    // ============================================================================
+
     async handleFileUpload(event) {
         const files = event.target.files;
         if (!files || files.length === 0) return;
 
-        // Get current user
         const currentUser = window.CVManager.auth?.getCurrentUser();
         if (!currentUser) {
             this.showToast('Please log in first', 'error');
             return;
         }
 
+        const token = window.CVManager.auth?.getToken();
         const formData = new FormData();
 
-        // Add userId to formData
         formData.append('userId', currentUser.id);
 
         Array.from(files).forEach(file => {
@@ -126,23 +206,42 @@ class CVPoolManager {
 
         try {
             this.showToast('Uploading CVs...', 'info');
+            
+            // For multipart/form-data, don't set Content-Type header
+            // Browser will set it automatically with boundary
             const response = await fetch(`${API_BASE_URL}/api/cvs/upload`, {
                 method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                    // DON'T set Content-Type for multipart
+                },
                 body: formData
             });
+
+            // Handle 401
+            if (response.status === 401) {
+                this.showToast('Session expired. Please log in again.', 'error');
+                window.CVManager.auth?.logout();
+                return;
+            }
 
             const result = await response.json();
 
             if (result.success) {
-                this.showToast(`Uploaded ${result.data.uploaded} CVs successfully`, 'success');
+                const uploaded = result.data.uploadedCount || result.data.uploaded?.length || 0;
+                const rejected = result.data.rejectedCount || result.data.rejected?.length || 0;
+                
+                this.showToast(
+                    `Uploaded ${uploaded} CV(s)${rejected > 0 ? `, ${rejected} rejected` : ''}`, 
+                    'success'
+                );
+                
                 await this.loadCVs();
-
-                // Clear file input
                 event.target.value = '';
 
                 // Start auto-refresh for processing updates
                 this.toggleAutoRefresh(true);
-                setTimeout(() => this.toggleAutoRefresh(false), 30000); // Stop after 30 seconds
+                setTimeout(() => this.toggleAutoRefresh(false), 30000);
             } else {
                 this.showToast(`Upload failed: ${result.error}`, 'error');
             }
@@ -152,19 +251,34 @@ class CVPoolManager {
         }
     }
 
+    // ============================================================================
+    // CV PROCESSING
+    // ============================================================================
+
     async processAll() {
+        const currentUser = window.CVManager.auth?.getCurrentUser();
+        if (!currentUser) {
+            this.showToast('Please log in first', 'error');
+            return;
+        }
+
         try {
             this.showToast('Starting CV processing...', 'info');
-            const response = await fetch(`${API_BASE_URL}/api/cvs/process-all`, {
-                method: 'POST'
-            });
+            
+            const response = await this.authenticatedFetch(
+                `${API_BASE_URL}/api/cvs/process-all`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify({ userId: currentUser.id })
+                }
+            );
 
             const result = await response.json();
 
             if (result.success) {
                 this.showToast(result.data.message, 'success');
                 this.toggleAutoRefresh(true);
-                setTimeout(() => this.toggleAutoRefresh(false), 60000); // Stop after 1 minute
+                setTimeout(() => this.toggleAutoRefresh(false), 60000);
             } else {
                 this.showToast(`Processing failed: ${result.error}`, 'error');
             }
@@ -179,7 +293,9 @@ class CVPoolManager {
             const currentUser = window.CVManager.auth?.getCurrentUser();
             if (!currentUser) return;
 
-            const response = await fetch(`${API_BASE_URL}/api/cvs/detail/${cvId}?userId=${currentUser.id}`);
+            const response = await this.authenticatedFetch(
+                `${API_BASE_URL}/api/cvs/detail/${cvId}?userId=${currentUser.id}`
+            );
             const result = await response.json();
 
             if (result.success) {
@@ -191,6 +307,10 @@ class CVPoolManager {
             this.showToast('Failed to load CV details', 'error');
         }
     }
+
+    // ============================================================================
+    // UI UPDATES
+    // ============================================================================
 
     updateCVList() {
         const container = document.getElementById('cv-list-container');
@@ -222,11 +342,10 @@ class CVPoolManager {
                         <div class="cv-info">
                             <span class="cv-status-icon">${statusIcon}</span>
                             <div class="cv-details">
-                                <div class="cv-filename">${cv.filename}</div>
+                                <div class="cv-filename">${this.escapeHtml(cv.originalName || cv.filename)}</div>
                                 <div class="cv-meta">
                                     ${this.formatFileSize(cv.fileSize)} • 
                                     ${this.formatDate(cv.uploadedAt)}
-                                    ${cv.processingAttempts > 0 ? ` • ${cv.processingAttempts} attempts` : ''}
                                 </div>
                             </div>
                         </div>
@@ -235,7 +354,7 @@ class CVPoolManager {
                             ${confidence ? `<span class="cv-confidence-badge ${this.getConfidenceClass(confidence)}">${confidence}</span>` : ''}
                         </div>
                     </div>
-                    ${cv.errorMessage ? `<div class="cv-error">${cv.errorMessage}</div>` : ''}
+                    ${cv.errorMessage ? `<div class="cv-error">${this.escapeHtml(cv.errorMessage)}</div>` : ''}
                 </div>
             `;
         }).join('');
@@ -279,29 +398,56 @@ class CVPoolManager {
         const container = document.getElementById('cv-details-container');
         if (!container) return;
 
+        container.style.display = 'block';
+
         let extractionHTML = '';
-        if (cv.extractionData && cv.extractionData.data) {
-            const data = cv.extractionData.data;
+        if (cv.extractionData) {
+            const data = cv.extractionData;
             extractionHTML = `
                 <div class="extraction-section">
                     <h4>Extracted Information</h4>
                     <div class="extraction-data">
-                        <div class="extraction-item">
-                            <strong>Name:</strong> 
-                            ${data.firstName && data.lastName ? `${data.firstName} ${data.lastName}` : 'Not found'}
-                        </div>
-                        <div class="extraction-item">
-                            <strong>Email:</strong> ${data.email || 'Not found'}
-                        </div>
-                        <div class="extraction-item">
-                            <strong>Phone:</strong> ${data.phone || 'Not found'}
-                        </div>
-                        <div class="extraction-item">
-                            <strong>Address:</strong> ${data.address || 'Not found'}
-                        </div>
-                        <div class="extraction-item">
-                            <strong>Unique ID:</strong> ${data.uniqueIdentifier || 'Not found'}
-                        </div>
+                        ${data.firstName || data.lastName ? `
+                            <div class="extraction-item">
+                                <strong>Name:</strong> 
+                                ${this.escapeHtml(data.firstName || '')} ${this.escapeHtml(data.lastName || '')}
+                            </div>
+                        ` : ''}
+                        ${data.email ? `
+                            <div class="extraction-item">
+                                <strong>Email:</strong> ${this.escapeHtml(data.email)}
+                            </div>
+                        ` : ''}
+                        ${data.phone ? `
+                            <div class="extraction-item">
+                                <strong>Phone:</strong> ${this.escapeHtml(data.phone)}
+                            </div>
+                        ` : ''}
+                        ${data.address ? `
+                            <div class="extraction-item">
+                                <strong>Address:</strong> ${this.escapeHtml(data.address)}
+                            </div>
+                        ` : ''}
+                        ${data.uniqueIdentifier ? `
+                            <div class="extraction-item">
+                                <strong>Unique ID:</strong> ${this.escapeHtml(data.uniqueIdentifier)}
+                            </div>
+                        ` : ''}
+                        ${data.company ? `
+                            <div class="extraction-item">
+                                <strong>Company:</strong> ${this.escapeHtml(data.company)}
+                            </div>
+                        ` : ''}
+                        ${data.profile ? `
+                            <div class="extraction-item">
+                                <strong>Profile:</strong> ${this.escapeHtml(data.profile)}
+                            </div>
+                        ` : ''}
+                        ${data.seniority ? `
+                            <div class="extraction-item">
+                                <strong>Seniority:</strong> ${this.escapeHtml(data.seniority)}
+                            </div>
+                        ` : ''}
                     </div>
                     
                     ${data.confidence ? `
@@ -324,7 +470,7 @@ class CVPoolManager {
                     ${data.extractionNotes ? `
                         <div class="extraction-notes">
                             <h5>AI Notes</h5>
-                            <div class="notes-content">${data.extractionNotes}</div>
+                            <div class="notes-content">${this.escapeHtml(data.extractionNotes)}</div>
                         </div>
                     ` : ''}
                 </div>
@@ -333,8 +479,13 @@ class CVPoolManager {
 
         container.innerHTML = `
             <div class="cv-details-header">
-                <h3>${cv.filename}</h3>
-                <span class="cv-status-badge ${this.getStatusClass(cv.status)}">${cv.status}</span>
+                <h3>${this.escapeHtml(cv.originalName || cv.filename)}</h3>
+                <button class="btn-icon" onclick="cvPoolManager.closeCVDetails()" title="Close">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
             </div>
             
             <div class="cv-details-content">
@@ -342,10 +493,10 @@ class CVPoolManager {
                     <h4>File Information</h4>
                     <div class="file-info">
                         <div><strong>Size:</strong> ${this.formatFileSize(cv.fileSize)}</div>
-                        <div><strong>Type:</strong> ${cv.fileType?.toUpperCase()}</div>
+                        <div><strong>Type:</strong> ${(cv.fileType || '').toUpperCase()}</div>
                         <div><strong>Uploaded:</strong> ${this.formatDate(cv.uploadedAt)}</div>
                         ${cv.processedAt ? `<div><strong>Processed:</strong> ${this.formatDate(cv.processedAt)}</div>` : ''}
-                        ${cv.processingAttempts > 0 ? `<div><strong>Attempts:</strong> ${cv.processingAttempts}</div>` : ''}
+                        <div><strong>Status:</strong> <span class="cv-status-badge ${this.getStatusClass(cv.status)}">${cv.status}</span></div>
                     </div>
                 </div>
                 
@@ -354,21 +505,34 @@ class CVPoolManager {
                 ${cv.errorMessage ? `
                     <div class="error-section">
                         <h4>Error Details</h4>
-                        <div class="error-message">${cv.errorMessage}</div>
+                        <div class="cv-error">${this.escapeHtml(cv.errorMessage)}</div>
                     </div>
                 ` : ''}
             </div>
         `;
     }
 
+    closeCVDetails() {
+        const container = document.getElementById('cv-details-container');
+        if (container) {
+            container.style.display = 'none';
+        }
+        this.selectedCvId = null;
+        this.updateCVList();
+    }
+
+    // ============================================================================
+    // SETTINGS
+    // ============================================================================
+
     showSettings() {
-        const modal = document.getElementById('settings-modal');
+        let modal = document.getElementById('settings-modal');
         if (!modal) {
             this.createSettingsModal();
+            modal = document.getElementById('settings-modal');
         }
 
-        const settingsModal = document.getElementById('settings-modal');
-        settingsModal.style.display = 'block';
+        modal.style.display = 'flex';
         this.loadSettingsForm();
     }
 
@@ -444,6 +608,13 @@ class CVPoolManager {
         document.getElementById('ai-provider-select').addEventListener('change', (e) => this.updateModelOptions(e.target.value));
         document.getElementById('test-connection-btn').addEventListener('click', () => this.testConnection());
         document.getElementById('save-settings-btn').addEventListener('click', () => this.saveSettings());
+        
+        // Close on background click
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                this.closeSettings();
+            }
+        });
     }
 
     loadSettingsForm() {
@@ -463,6 +634,8 @@ class CVPoolManager {
     updateModelOptions(provider) {
         const modelSelect = document.getElementById('ai-model-select');
         const apiUrlInput = document.getElementById('ai-api-url');
+
+        if (!modelSelect || !apiUrlInput) return;
 
         modelSelect.innerHTML = '';
 
@@ -492,6 +665,8 @@ class CVPoolManager {
         const resultDiv = document.getElementById('connection-result');
         const testBtn = document.getElementById('test-connection-btn');
 
+        if (!resultDiv || !testBtn) return;
+
         const config = {
             provider: document.getElementById('ai-provider-select').value,
             model: document.getElementById('ai-model-select').value,
@@ -509,11 +684,13 @@ class CVPoolManager {
         resultDiv.innerHTML = '<div class="result-info">Testing connection...</div>';
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/settings/test`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(config)
-            });
+            const response = await this.authenticatedFetch(
+                `${API_BASE_URL}/api/settings/test`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify(config)
+                }
+            );
 
             const result = await response.json();
 
@@ -542,11 +719,13 @@ class CVPoolManager {
         };
 
         try {
-            const response = await fetch(`${API_BASE_URL}/api/settings/ai-provider`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(config)
-            });
+            const response = await this.authenticatedFetch(
+                `${API_BASE_URL}/api/settings/ai-provider`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify(config)
+                }
+            );
 
             const result = await response.json();
 
@@ -569,6 +748,10 @@ class CVPoolManager {
         }
     }
 
+    // ============================================================================
+    // AUTO-REFRESH
+    // ============================================================================
+
     toggleAutoRefresh(enabled) {
         this.autoRefresh = enabled;
 
@@ -587,6 +770,10 @@ class CVPoolManager {
         }
     }
 
+    // ============================================================================
+    // UI MANAGEMENT
+    // ============================================================================
+
     updateUI() {
         this.updateCVList();
         this.updateSummary();
@@ -594,21 +781,7 @@ class CVPoolManager {
     }
 
     updateSettingsUI() {
-        // Update any UI elements that depend on settings
-        // For example, update the auto-refresh toggle state
-        const autoRefreshToggle = document.getElementById('auto-refresh-toggle');
-        if (autoRefreshToggle && this.settings) {
-            // Set any default states based on settings if they exist
-            if (this.settings.autoRefresh !== undefined) {
-                autoRefreshToggle.checked = this.settings.autoRefresh;
-            }
-        }
-
-        // Update configuration warning based on current settings
         this.updateConfigWarning();
-
-        // If there are any other UI elements that depend on settings, update them here
-        console.log('Settings UI updated:', this.settings);
     }
 
     updateConfigWarning() {
@@ -633,13 +806,16 @@ class CVPoolManager {
         }
     }
 
-    // Utility methods
+    // ============================================================================
+    // UTILITY METHODS
+    // ============================================================================
+
     getStatusIcon(status) {
         switch (status) {
-            case 'uploaded': return '🕒';
+            case 'uploaded': return '🕐';
             case 'processing': return '⚡';
-            case 'parsed': return '✅';
-            case 'failed': return '❌';
+            case 'processed': return '✅';
+            case 'error': return '❌';
             default: return '📄';
         }
     }
@@ -653,19 +829,32 @@ class CVPoolManager {
     }
 
     formatFileSize(bytes) {
+        if (!bytes || bytes === 0) return '0 B';
         if (bytes < 1024) return bytes + ' B';
         if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
         return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
     }
 
     formatDate(isoString) {
-        return new Date(isoString).toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: 'short',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+        if (!isoString) return 'N/A';
+        try {
+            return new Date(isoString).toLocaleDateString('en-GB', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        } catch {
+            return 'Invalid date';
+        }
+    }
+
+    escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 
     showToast(message, type = 'info') {
@@ -693,58 +882,58 @@ class CVPoolManager {
     }
 }
 
+// ============================================================================
+// INITIALIZATION
+// ============================================================================
+
 // Initialize CV Pool Manager
 let cvPoolManager;
 
-// Add this at the very end of cv-pool.js to satisfy app.js dependencies
+// Wait for authentication before initializing
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if user is authenticated before initializing
+    const checkAuthAndInit = () => {
+        if (window.CVManager && window.CVManager.auth && window.CVManager.auth.isAuthenticated()) {
+            cvPoolManager = new CVPoolManager();
+            console.log('✅ CVPoolManager initialized');
+        } else {
+            // Wait a bit and try again
+            setTimeout(checkAuthAndInit, 100);
+        }
+    };
+    
+    // Start checking after a short delay to let auth initialize
+    setTimeout(checkAuthAndInit, 500);
+});
+
+// ============================================================================
+// COMPATIBILITY LAYER FOR OTHER MODULES
+// ============================================================================
+
 window.CVManager = window.CVManager || {};
 
-// Map the cv-pool manager to the expected structure
-window.CVManager.cvManager = cvPoolManager || {
-    cvs: [],
-    saveCVs: () => { },
-    updateDisplay: () => { }
-};
-
-// Provide minimal implementations for other expected modules
-window.CVManager.auth = {
-    getCurrentUser: () => ({ name: 'Erik Evrard', email: 'erik@example.com' })
-};
-
-window.CVManager.ui = {
-    switchTab: (tabName) => {
-        // Remove active class from all tabs
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.classList.remove('active');
-        });
-
-        // Hide all tab content
-        document.querySelectorAll('.tab-content').forEach(content => {
-            content.classList.remove('active');
-        });
-
-        // Activate the requested tab
-        const tab = document.querySelector(`[data-tab="${tabName}"]`);
-        const content = document.getElementById(tabName);
-
-        if (tab) tab.classList.add('active');
-        if (content) content.classList.add('active');
-    },
-    getActiveTab: () => {
-        const activeTab = document.querySelector('.nav-tab.active');
-        return activeTab ? activeTab.dataset.tab : 'cv-pool';
-    },
-    showNotification: (message, type = 'info', duration = 3000) => {
-        if (typeof cvPoolManager !== 'undefined' && cvPoolManager.showToast) {
-            cvPoolManager.showToast(message, type);
-        } else {
-            console.log(`${type.toUpperCase()}: ${message}`);
+// Provide minimal implementations for app.js compatibility
+if (!window.CVManager.cvManager) {
+    window.CVManager.cvManager = {
+        cvs: [],
+        saveCVs: () => {
+            console.warn('saveCVs called before CVPoolManager initialized');
+        },
+        updateDisplay: () => {
+            console.warn('updateDisplay called before CVPoolManager initialized');
         }
+    };
+}
+
+// Update the reference when cvPoolManager is initialized
+Object.defineProperty(window.CVManager, 'cvManager', {
+    get: function() {
+        return cvPoolManager || {
+            cvs: [],
+            saveCVs: () => {},
+            updateDisplay: () => {}
+        };
     }
-};
+});
 
-window.CVManager.config = {
-    sampleCVData: [] // Empty for now
-};
-
-console.log('✅ CVManager modules registered for app.js compatibility');
+console.log('✅ CV Pool module loaded (v2.2.0 with backend authentication)');

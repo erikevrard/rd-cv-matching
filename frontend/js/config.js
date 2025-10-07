@@ -5,7 +5,7 @@ window.CVManager.config = {
     // Application settings
     app: {
         name: 'CV Management System',
-        version: '2.0.0', // 🔄 Updated for security release
+        version: '2.2.0', // 🔄 Updated for new backend endpoints
         maxFileSize: 5 * 1024 * 1024, // 5MB
         allowedFileTypes: ['pdf', 'doc', 'docx', 'txt'],
         maxCVs: 1000,
