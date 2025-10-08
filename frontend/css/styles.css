@@ -1418,3 +1418,220 @@ input[type="checkbox"] {
         display: none;
     }
 }
+
+/* LLM Manager Styles - Add to styles.css */
+
+/* LLM Manager Modal */
+.llm-manager-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border);
+}
+
+.llm-manager-header .subtitle {
+    flex: 1;
+    margin: 0;
+}
+
+/* LLM Grid Layout */
+.llm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+/* LLM Card */
+.llm-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    transition: all 0.2s ease;
+}
+
+.llm-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.llm-card-active {
+    border-color: var(--primary-color);
+    background: linear-gradient(to bottom, var(--surface), color-mix(in srgb, var(--primary-color) 5%, var(--surface)));
+}
+
+[data-theme="dark"] .llm-card-active {
+    background: linear-gradient(to bottom, var(--surface), color-mix(in srgb, var(--primary-color) 10%, var(--surface)));
+}
+
+.llm-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border);
+}
+
+.llm-card-title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.llm-card-title strong {
+    font-size: var(--font-size-lg);
+    color: var(--text-primary);
+}
+
+.llm-card-actions {
+    display: flex;
+    gap: var(--spacing-xs);
+}
+
+.llm-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.llm-detail {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.llm-detail strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.llm-detail code {
+    font-size: var(--font-size-xs);
+}
+
+.url-code {
+    word-break: break-all;
+    display: block;
+    padding: var(--spacing-xs);
+    background: var(--background);
+    border-radius: var(--border-radius-sm);
+}
+
+.llm-card-footer {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* Active Badge */
+.active-badge {
+    background: #e6f6ec;
+    color: #15803d;
+    border: 1px solid #15803d33;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 12px;
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+[data-theme="dark"] .active-badge {
+    background: #14532d;
+    color: #bbf7d0;
+    border-color: #166534;
+}
+
+/* LLM Form Container */
+.llm-form-container {
+    margin-top: var(--spacing-lg);
+}
+
+.llm-form-container.hidden {
+    display: none;
+}
+
+.llm-list-container.hidden {
+    display: none;
+}
+
+.llm-form {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xl);
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border);
+}
+
+.form-header h3 {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    color: var(--text-primary);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-grid .form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-grid .form-group small {
+    display: block;
+    margin-top: var(--spacing-xs);
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+}
+
+#llm-form-result {
+    margin-top: var(--spacing-md);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .llm-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .llm-manager-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-md);
+    }
+
+    .llm-card-footer {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+}
+
+/* Button to open LLM Manager */
+#llm-manager-btn {
+    /* Inherits from existing button styles */
+}
