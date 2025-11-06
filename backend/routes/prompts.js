@@ -12,10 +12,22 @@ const promptService = require("../services/prompt-service");
 // POST /api/prompts  body: { userId, mnemonic, text, title?, tags? }
 router.post("/", async (req, res) => {
   try {
+    console.log('📥 Received prompt creation request:', {
+      userId: req.body?.userId,
+      mnemonic: req.body?.mnemonic,
+      textLength: req.body?.text?.length,
+      title: req.body?.title,
+      tagsCount: req.body?.tags?.length
+    });
+    
     const { userId, mnemonic, text, title, tags } = req.body || {};
     const created = await promptService.createPrompt(userId, { mnemonic, text, title, tags });
+    
+    console.log('✅ Prompt created successfully:', created.mnemonic);
     res.status(201).json({ success: true, data: created });
   } catch (e) {
+    console.error('❌ Prompt creation failed:', e.message);
+    console.error('Request body was:', req.body);
     res.status(400).json({ success: false, error: e.message });
   }
 });
@@ -45,7 +57,7 @@ router.get(["/html/:userId", "/:userId/html"], async (req, res) => {
     const html = `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"/>
-<title>LLM Prompts – ${esc(userId)}</title>
+<title>LLM Prompts — ${esc(userId)}</title>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <style>
   :root { color-scheme: light dark; }

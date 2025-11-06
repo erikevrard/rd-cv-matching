@@ -1,0 +1,57 @@
+{
+  "id": "8854bfaf-f9ca-4fb1-bbf6-de04eb375882",
+  "userId": "user_default_erik",
+  "originalName": "cv-A000004-data-business-analyst.pdf",
+  "filename": "956146ae-f405-440b-8f6a-31b69a94d81a.pdf",
+  "filePath": "data/uploads/pdf/956146ae-f405-440b-8f6a-31b69a94d81a.pdf",
+  "fileSize": 123583,
+  "fileType": "pdf",
+  "contentHash": "bf00a9baf641cb50f83bd138ecd1209bdbfa3af6965c3b8f8c5dc357b356aa8e",
+  "status": "error",
+  "processing": false,
+  "uploadedAt": "2025-10-12T01:37:10.577Z",
+  "processedAt": "2025-10-12T21:30:18.112Z",
+  "extractionData": null,
+  "confidence": null,
+  "errorMessage": "Parsing failed: Detailed parsing requires initial parsing first. Please run initial parsing before detailed parsing.",
+  "parsingState": "detailed",
+  "initialParsingData": {
+    "parsedAt": "2025-10-12T21:27:47.605Z",
+    "llmMnemonic": "PRESET",
+    "promptMnemonic": "INITIAL_PARSING",
+    "rawResponse": "{\n  \"is_cv\": \"Yes\",\n  \"confidence_level\": 100,\n  \"classification_reasoning\": \"This document clearly exhibits all characteristics of a comprehensive curriculum vitae, including detailed work history spanning multiple years, structured education and training section with degrees and certifications, language skills assessment using the Common European Framework, digital skills inventory, and communication and organizational skills sections. The document follows the Europass CV format with standardized sections and professional layout.\",\n  \"cv_language_code\": \"eng\",\n  \"candidate_full_name\": \"NOT_FOUND\",\n  \"candidate_id\": \"A000004\",\n  \"candidate_main_profile\": \"Data Business Analyst\",\n  \"current_employer\": \"Randstad Digital Belgium\",\n  \"candidate_nationality\": \"BE\",\n  \"country_of_residence\": \"BE\",\n  \"cv_format\": \"EUROPASS\"\n}",
+    "extractedData": {
+      "is_cv": "Yes",
+      "confidence_level": 100,
+      "classification_reasoning": "This document clearly exhibits all characteristics of a comprehensive curriculum vitae, including detailed work history spanning multiple years, structured education and training section with degrees and certifications, language skills assessment using the Common European Framework, digital skills inventory, and communication and organizational skills sections. The document follows the Europass CV format with standardized sections and professional layout.",
+      "cv_language_code": "eng",
+      "candidate_full_name": "NOT_FOUND",
+      "candidate_id": "A000004",
+      "candidate_main_profile": "Data Business Analyst",
+      "current_employer": "Randstad Digital Belgium",
+      "candidate_nationality": "BE",
+      "country_of_residence": "BE",
+      "cv_format": "EUROPASS"
+    },
+    "usage": null,
+    "presetFile": "cv-a000004-data-business-analyst.json"
+  },
+  "detailedParsingData": {
+    "parsedAt": "2025-10-12T21:30:18.112Z",
+    "llmMnemonic": "MOCK",
+    "promptMnemonic": "DETAILED_PARSING",
+    "rawResponse": "{\n  \"candidateId\": \"CAND-798240\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Brown\",\n  \"fullName\": \"John Brown\",\n  \"email\": \"john.brown@email.com\",\n  \"profile\": \"Data Scientist\",\n  \"seniority\": \"Senior\",\n  \"yearsOfExperience\": 12,\n  \"extractionNotes\": \"Mock data generated for testing\"\n}",
+    "extractedData": {
+      "candidateId": "CAND-798240",
+      "firstName": "John",
+      "lastName": "Brown",
+      "fullName": "John Brown",
+      "email": "john.brown@email.com",
+      "profile": "Data Scientist",
+      "seniority": "Senior",
+      "yearsOfExperience": 12,
+      "extractionNotes": "Mock data generated for testing"
+    },
+    "usage": null
+  }
+}

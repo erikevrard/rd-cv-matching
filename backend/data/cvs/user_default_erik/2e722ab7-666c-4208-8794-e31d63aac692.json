@@ -1,0 +1,1591 @@
+{
+  "id": "2e722ab7-666c-4208-8794-e31d63aac692",
+  "userId": "user_default_erik",
+  "originalName": "cv-A000002-frontend-web-developer-.pdf",
+  "filename": "2e0c1d88-3529-4674-90ef-785e05479607.pdf",
+  "filePath": "data/uploads/pdf/2e0c1d88-3529-4674-90ef-785e05479607.pdf",
+  "fileSize": 111302,
+  "fileType": "pdf",
+  "contentHash": "c06d47891294959552dc5fb05c8492792c752e9dfadb18a93da65fa42644755a",
+  "status": "error",
+  "processing": false,
+  "uploadedAt": "2025-10-12T01:37:10.569Z",
+  "processedAt": "2025-10-12T21:29:17.792Z",
+  "extractionData": null,
+  "confidence": null,
+  "errorMessage": "Parsing failed: Detailed parsing requires initial parsing first. Please run initial parsing before detailed parsing.",
+  "parsingState": "detailed",
+  "initialParsingData": {
+    "parsedAt": "2025-10-12T21:28:07.663Z",
+    "llmMnemonic": "PRESET",
+    "promptMnemonic": "INITIAL_PARSING",
+    "rawResponse": "{\n  \"is_cv\": \"Yes\",\n  \"confidence_level\": 100,\n  \"classification_reasoning\": \"This document clearly exhibits all characteristics of a curriculum vitae, including comprehensive work history spanning over 20 years, detailed education section, language skills matrix, digital skills inventory, and structured professional experience with company names, dates, and responsibilities. The document follows the Europass CV format with standardized sections and language proficiency framework.\",\n  \"cv_language_code\": \"eng\",\n  \"candidate_full_name\": \"NOT_FOUND\",\n  \"candidate_id\": \"A000002\",\n  \"candidate_main_profile\": \"Front-End Web Developer\",\n  \"current_employer\": \"Randstad Digital Portugal\",\n  \"candidate_nationality\": \"PT\",\n  \"country_of_residence\": \"PT\",\n  \"cv_format\": \"EUROPASS\"\n}",
+    "extractedData": {
+      "is_cv": "Yes",
+      "confidence_level": 100,
+      "classification_reasoning": "This document clearly exhibits all characteristics of a curriculum vitae, including comprehensive work history spanning over 20 years, detailed education section, language skills matrix, digital skills inventory, and structured professional experience with company names, dates, and responsibilities. The document follows the Europass CV format with standardized sections and language proficiency framework.",
+      "cv_language_code": "eng",
+      "candidate_full_name": "NOT_FOUND",
+      "candidate_id": "A000002",
+      "candidate_main_profile": "Front-End Web Developer",
+      "current_employer": "Randstad Digital Portugal",
+      "candidate_nationality": "PT",
+      "country_of_residence": "PT",
+      "cv_format": "EUROPASS"
+    },
+    "usage": null,
+    "presetFile": "cv-a000002-frontend-web-developer.json"
+  },
+  "detailedParsingData": {
+    "parsedAt": "2025-10-12T21:29:17.792Z",
+    "llmMnemonic": "PRESET",
+    "promptMnemonic": "DETAILED_PARSING",
+    "rawResponse": "{\n  \"first_name\": \"NOT_FOUND\",\n  \"last_name\": \"NOT_FOUND\",\n  \"last_update_date\": \"2022-12\",\n  \"email\": \"NOT_FOUND\",\n  \"date_of_birth\": \"1974-01-01\",\n  \"gender\": \"M\",\n  \"contract_type\": \"PERMANENT\",\n  \"management_company\": \"NOT_APPLICABLE\",\n  \"availability_date\": \"NOT_FOUND\",\n  \"highest_degree\": \"SECONDARY\",\n  \"years_post_secondary\": 2,\n  \"academic_credentials\": [\n    {\n      \"degree_name\": \"Information Technology\",\n      \"institution\": \"EPED – Escola Profissional de Educaçao para o Desenvolvimento\",\n      \"year_obtained\": \"1993\",\n      \"field_of_study\": \"Information Technology\"\n    }\n  ],\n  \"secondary_end_date\": \"1991\",\n  \"higher_education_start_date\": \"1991-09\",\n  \"higher_education_end_date\": \"1993-09\",\n  \"language_proficiency\": [\n    {\n      \"language_code\": \"por\",\n      \"speaking\": \"NATIVE\",\n      \"writing\": \"NATIVE\",\n      \"reading\": \"NATIVE\",\n      \"listening\": \"NATIVE\",\n      \"original_level\": \"C2\"\n    },\n    {\n      \"language_code\": \"fra\",\n      \"speaking\": \"C1\",\n      \"writing\": \"C1\",\n      \"reading\": \"C1\",\n      \"listening\": \"C1\",\n      \"original_level\": \"C1\"\n    }\n  ],\n  \"professional_experience\": [\n    {\n      \"start_date\": \"2022-12\",\n      \"end_date\": \"PRESENT\",\n      \"job_title\": \"Frontend Developer\",\n      \"company\": \"Enable\",\n      \"client\": \"NOT_APPLICABLE\",\n      \"keywords\": [\n        \"Frontend Development\",\n        \"Technical Leadership\",\n        \"Tech Lead\",\n        \"Low-Code Platform\",\n        \"Software Architecture\",\n        \"Code Quality\",\n        \"SDLC\",\n        \"Multi-Platform Integration\",\n        \"Scalability\",\n        \"Requirements Gathering\",\n        \"Architecture Design\",\n        \"Testing\",\n        \"Deployment\"\n      ],\n      \"project_size\": \"LARGE\",\n      \"project_description\": \"Leading the development of a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development across various business units. The role encompasses frontend development leadership, technical architecture oversight, and management of the full software development lifecycle with emphasis on scalability, integration, and performance.\",\n      \"roles_responsibilities\": \"Frontend Development & Technical Leadership: Leading frontend development efforts while also acting as Tech Lead, ensuring best practices in software architecture, code quality, and development workflows. Custom Low-Code Platform Creation: Building a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development across various business units. Multi-Platform Integration: Overseeing the development and integration of multiple associated platforms, ensuring interoperability, scalability, and alignment with business objectives. End-to-End Delivery: Managing the full software development lifecycle (SDLC), from requirements gathering and architecture design to implementation, testing, and deployment.\",\n      \"full_experience_text\": \"12/2022 - Ongoing; Portugal\\nFrontend Developer - Enable\\n● Frontend Development & Technical Leadership: Leading frontend development efforts while also acting as Tech Lead, ensuring best practices in software architecture, code quality, and development workflows.\\n● Custom Low-Code Platform Creation: Building a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development across various business units.\\n● Multi-Platform Integration: Overseeing the development and integration of multiple associated platforms, ensuring interoperability, scalability, and alignment with business objectives.\\n● End-to-End Delivery: Managing the full software development lifecycle (SDLC), from requirements gathering and architecture design to implementation, testing, and deployment.\",\n      \"enhanced_context\": {\n        \"business_impact\": \"Streamline internal processes and enable rapid application development across various business units\",\n        \"team_context\": {\n          \"team_size\": \"NOT_FOUND\",\n          \"team_structure\": \"NOT_FOUND\",\n          \"reporting_structure\": \"NOT_FOUND\"\n        },\n        \"leadership_scope\": \"Leading frontend development efforts while also acting as Tech Lead, ensuring best practices in software architecture, code quality, and development workflows\",\n        \"technical_leadership_activities\": [\n          \"Technical Leadership\",\n          \"Ensuring best practices in software architecture\",\n          \"Code quality oversight\",\n          \"Development workflows management\"\n        ],\n        \"innovation_contributions\": [\n          \"Building a fully customized low-code platform from the ground up\",\n          \"Custom Low-Code Platform Creation\"\n        ],\n        \"cross_functional_activities\": [\n          \"Overseeing the development and integration of multiple associated platforms\",\n          \"Multi-Platform Integration\"\n        ]\n      },\n      \"project_details_enriched\": [\n        {\n          \"project_name\": \"Custom Low-Code Platform\",\n          \"project_description\": \"Building a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development across various business units.\",\n          \"business_purpose\": \"Streamline internal processes and enable rapid application development across various business units\",\n          \"technical_challenges\": [\n            \"Scalability\",\n            \"Integration\",\n            \"Performance\",\n            \"Interoperability\"\n          ],\n          \"architecture_decisions\": [\n            \"Multi-Platform Integration\",\n            \"Low-code platform architecture\"\n          ],\n          \"technologies_with_context\": [],\n          \"scale_indicators\": {\n            \"users\": \"Various business units\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"NOT_FOUND\"\n          }\n        }\n      ],\n      \"responsibility_themes\": {\n        \"technical_depth\": [\n          \"Frontend development\",\n          \"Architecture design\",\n          \"Implementation\",\n          \"Testing\"\n        ],\n        \"people_management\": [\n          \"Tech Lead role\"\n        ],\n        \"process_ownership\": [\n          \"Managing the full SDLC\",\n          \"Development workflows\",\n          \"Code quality\",\n          \"Best practices enforcement\"\n        ],\n        \"strategic_contributions\": [\n          \"Software architecture\",\n          \"Multi-Platform Integration\",\n          \"Scalability and performance planning\",\n          \"Business objectives alignment\"\n        ]\n      }\n    },\n    {\n      \"start_date\": \"2022-01\",\n      \"end_date\": \"2022-12\",\n      \"job_title\": \"Lead Front-End Developer\",\n      \"company\": \"A/B Smartly\",\n      \"client\": \"NOT_APPLICABLE\",\n      \"keywords\": [\n        \"Tech Lead\",\n        \"Frontend Development\",\n        \"SPA\",\n        \"Code Review\",\n        \"PR Approval\",\n        \"Coaching\",\n        \"Mentoring\",\n        \"Component Development\",\n        \"Frequent Release Cycles\"\n      ],\n      \"project_size\": \"MEDIUM\",\n      \"project_description\": \"Technical leadership role for the A/B Smartly platform, a Single Page Application with frequent release cycles. Responsibilities included developing components and features, code quality oversight through reviews, and team mentorship.\",\n      \"roles_responsibilities\": \"Project's tech lead. Develop components and new features for the A/B Smartly platform/ SPA, over frequent release cycles. Code review and PR approval of team's work. Coaching and mentoring of new colleagues.\",\n      \"full_experience_text\": \"01/2022 – 12/2022; Portugal\\nPlead Front-End Developer – A/B Smartly\\n● Project's tech lead.\\n● Develop components and new features for the A/B Smartly platform/ SPA, over frequent release cycles.\\n● Code review and PR approval of team's work.\\n● Coaching and mentoring of new colleagues.\",\n      \"enhanced_context\": {\n        \"business_impact\": \"NOT_FOUND\",\n        \"team_context\": {\n          \"team_size\": \"Has team members to review and mentor\",\n          \"team_structure\": \"NOT_FOUND\",\n          \"reporting_structure\": \"Tech lead position\"\n        },\n        \"leadership_scope\": \"Project's tech lead\",\n        \"technical_leadership_activities\": [\n          \"Code review and PR approval of team's work\",\n          \"Tech lead\"\n        ],\n        \"innovation_contributions\": [\n          \"Develop components and new features\"\n        ],\n        \"cross_functional_activities\": []\n      },\n      \"project_details_enriched\": [\n        {\n          \"project_name\": \"A/B Smartly Platform\",\n          \"project_description\": \"Single Page Application platform for A/B testing with frequent release cycles.\",\n          \"business_purpose\": \"A/B testing platform\",\n          \"technical_challenges\": [\n            \"Frequent release cycles\"\n          ],\n          \"architecture_decisions\": [\n            \"SPA architecture\"\n          ],\n          \"technologies_with_context\": [],\n          \"scale_indicators\": {\n            \"users\": \"NOT_FOUND\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"NOT_FOUND\"\n          }\n        }\n      ],\n      \"responsibility_themes\": {\n        \"technical_depth\": [\n          \"Develop components and new features\",\n          \"SPA development\"\n        ],\n        \"people_management\": [\n          \"Coaching and mentoring of new colleagues\",\n          \"Code review and PR approval\"\n        ],\n        \"process_ownership\": [\n          \"Frequent release cycles management\"\n        ],\n        \"strategic_contributions\": [\n          \"Tech lead role\"\n        ]\n      }\n    },\n    {\n      \"start_date\": \"2014-04\",\n      \"end_date\": \"2021-12\",\n      \"job_title\": \"Front-End Developer\",\n      \"company\": \"Cofidis\",\n      \"client\": \"NOT_APPLICABLE\",\n      \"keywords\": [\n        \"Frontend Architecture\",\n        \"Team Leadership\",\n        \"Home-banking\",\n        \"Corporate Portal\",\n        \"Cross-team Advisor\",\n        \"UI/UX\",\n        \"RESTful APIs\",\n        \"Code Review\",\n        \"Mentoring\",\n        \"Workshop Sessions\",\n        \"React\",\n        \"Vue.js\",\n        \"TypeScript\",\n        \"ASP.Net\",\n        \"Microfrontends\",\n        \"Jest\",\n        \"ElasticSearch\",\n        \"Azure DevOps\",\n        \"Design System\"\n      ],\n      \"project_size\": \"LARGE\",\n      \"project_description\": \"Led frontend development for Cofidis' web ecosystem including company website, home-banking application, and internal portal. Responsible for frontend architecture, cross-team advisory on web and UI/UX, API design, and team mentorship. Developed multiple major projects including a microfrontend-based portal, design system framework, home-banking application, marketing website, and headless CMS.\",\n      \"roles_responsibilities\": \"Lead the teams responsible for the company's website and home-banking; Responsible for the internal portal front-end architecture; Cross-team advisor on web and UI/UX; Restful API's design, implementation and mocking for test environments; Code review and PR approval; Cross-team technical support; Coaching and mentoring; Promote workshop sessions on several web related technologies and subjects\",\n      \"full_experience_text\": \"04/2014 – 12/2021;\\nFront-End Developer - Cofidis\\n● Lead the teams responsible for the company's website and home-banking;\\n● Responsible for the internal portal front-end architecture;\\n● Cross-team advisor on web and UI/UX;\\n● Restful API's design, implementation and mocking for test environments;\\n● Code review and PR approval;\\n● Cross-team technical support;\\n● Coaching and mentoring;\\n● Promote workshop sessions on several web related technologies and subjects;\\nMain projects:\\n● Apolo Portal v2 - Main company's portal/ CMS, from where all the business internal applications are provided -Tech stack: ASP.Net MVC 5 and WebApi 2, Piral Portal (Microfrontends), Javascript/ Typescript, React, Jest, React Testing Library, Backbone.js, SASS, Node.js, SQL Server, KrakenD Api Gateway, RabbitMQ, ElasticSearch, Azure DevOps, GIT\\n● Cofidis Normalisation Framework - An always evolving design system with components, style guide, tools and patterns for simplifying and uniformize the cross-team development of applications for the company's portal - Tech stack: Javascript/ Typescript, Stencil.js, React, Jest, React Testing Library, Karma, SASS, Bootstrap, Node.js, Azure DevOps, GIT\\n● Cofinet - Cofidis Home-banking Web Application -Tech stack: ASP.Net MVC 5 and WebApi 2, EntityFramework, Typescript, React, Jest, React Testing Library, Karma, Selenium, SASS, Bootstrap, OutSystems, SQL Server, ElasticSearch, Azure DevOps, GIT\\n● Cofidis Website - Tech stack: ASP.Net MVC 5 and WebApi 2, EntityFramework, Typescript, Vue.js, Jest, Vue Testing Library, Karma, SASS, Bootstrap, OutSystems, SQL Server, ElasticSearch, Azure DevOps, GIT\\n● Marketing Headless CMS - The website and home-banking content management platform. Tech stack: Electron.js, React, Jest, React Testing Library, SASS, Bootstrap, Node.js, ASP.Net WebApi 2, MongoDB, Azure DevOps, GIT\",\n      \"enhanced_context\": {\n        \"business_impact\": \"Simplified and uniformized cross-team development through design system framework; enabled business applications through portal architecture\",\n        \"team_context\": {\n          \"team_size\": \"Multiple teams led\",\n          \"team_structure\": \"Cross-team structure\",\n          \"reporting_structure\": \"Lead position for website and home-banking teams\"\n        },\n        \"leadership_scope\": \"Lead the teams responsible for the company's website and home-banking; Responsible for the internal portal front-end architecture\",\n        \"technical_leadership_activities\": [\n          \"Responsible for the internal portal front-end architecture\",\n          \"Code review and PR approval\",\n          \"RESTful API's design\"\n        ],\n        \"innovation_contributions\": [\n          \"Cofidis Normalisation Framework design system\",\n          \"Microfrontends architecture implementation\",\n          \"Marketing Headless CMS\"\n        ],\n        \"cross_functional_activities\": [\n          \"Cross-team advisor on web and UI/UX\",\n          \"Cross-team technical support\",\n          \"Promote workshop sessions\"\n        ]\n      },\n      \"project_details_enriched\": [\n        {\n          \"project_name\": \"Apolo Portal v2\",\n          \"project_description\": \"Main company's portal/CMS, from where all the business internal applications are provided.\",\n          \"business_purpose\": \"Central portal for providing all business internal applications\",\n          \"technical_challenges\": [\n            \"Microfrontends architecture\",\n            \"Integration with multiple business applications\"\n          ],\n          \"architecture_decisions\": [\n            \"Piral Portal (Microfrontends)\",\n            \"KrakenD Api Gateway\",\n            \"Message queuing with RabbitMQ\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \"Piral Portal\",\n              \"purpose\": \"Microfrontends architecture\",\n              \"integration_with\": [\n                \"React\",\n                \"TypeScript\",\n                \"ASP.Net MVC 5\"\n              ]\n            },\n            {\n              \"technology\": \"React\",\n              \"purpose\": \"Frontend UI components\",\n              \"integration_with\": [\n                \"TypeScript\",\n                \"Jest\",\n                \"React Testing Library\",\n                \"SASS\"\n              ]\n            },\n            {\n              \"technology\": \"KrakenD Api Gateway\",\n              \"purpose\": \"API gateway management\",\n              \"integration_with\": [\n                \"ASP.Net WebApi 2\",\n                \"RabbitMQ\"\n              ]\n            },\n            {\n              \"technology\": \"ElasticSearch\",\n              \"purpose\": \"Search functionality\",\n              \"integration_with\": [\n                \"SQL Server\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"All business internal applications\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"NOT_FOUND\"\n          }\n        },\n        {\n          \"project_name\": \"Cofidis Normalisation Framework\",\n          \"project_description\": \"An always evolving design system with components, style guide, tools and patterns for simplifying and uniformize the cross-team development of applications for the company's portal.\",\n          \"business_purpose\": \"Simplifying and uniformize the cross-team development of applications\",\n          \"technical_challenges\": [\n            \"Cross-team standardization\",\n            \"Always evolving design system\"\n          ],\n          \"architecture_decisions\": [\n            \"Design system architecture\",\n            \"Component library\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \"Stencil.js\",\n              \"purpose\": \"Web components framework\",\n              \"integration_with\": [\n                \"React\",\n                \"TypeScript\"\n              ]\n            },\n            {\n              \"technology\": \"React\",\n              \"purpose\": \"Component development\",\n              \"integration_with\": [\n                \"TypeScript\",\n                \"Jest\",\n                \"SASS\",\n                \"Bootstrap\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"Cross-team developers\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"Company-wide\"\n          }\n        },\n        {\n          \"project_name\": \"Cofinet\",\n          \"project_description\": \"Cofidis Home-banking Web Application.\",\n          \"business_purpose\": \"Customer-facing home-banking services\",\n          \"technical_challenges\": [\n            \"Banking security\",\n            \"User experience\"\n          ],\n          \"architecture_decisions\": [\n            \"ASP.Net MVC architecture\",\n            \"OutSystems integration\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \"React\",\n              \"purpose\": \"Frontend interface\",\n              \"integration_with\": [\n                \"TypeScript\",\n                \"ASP.Net MVC 5\",\n                \"OutSystems\"\n              ]\n            },\n            {\n              \"technology\": \"Selenium\",\n              \"purpose\": \"Automated testing\",\n              \"integration_with\": [\n                \"Jest\",\n                \"React Testing Library\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"Banking customers\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"NOT_FOUND\"\n          }\n        },\n        {\n          \"project_name\": \"Cofidis Website\",\n          \"project_description\": \"Corporate marketing website for Cofidis.\",\n          \"business_purpose\": \"Corporate web presence and marketing\",\n          \"technical_challenges\": [],\n          \"architecture_decisions\": [\n            \"Vue.js for frontend\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \"Vue.js\",\n              \"purpose\": \"Frontend framework\",\n              \"integration_with\": [\n                \"TypeScript\",\n                \"ASP.Net MVC 5\",\n                \"OutSystems\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"Public visitors\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"NOT_FOUND\"\n          }\n        },\n        {\n          \"project_name\": \"Marketing Headless CMS\",\n          \"project_description\": \"The website and home-banking content management platform.\",\n          \"business_purpose\": \"Content management for website and home-banking\",\n          \"technical_challenges\": [\n            \"Headless architecture\"\n          ],\n          \"architecture_decisions\": [\n            \"Headless CMS\",\n            \"Electron.js desktop application\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \"Electron.js\",\n              \"purpose\": \"Desktop CMS application\",\n              \"integration_with\": [\n                \"React\",\n                \"Node.js\",\n                \"ASP.Net WebApi 2\"\n              ]\n            },\n            {\n              \"technology\": \"MongoDB\",\n              \"purpose\": \"Content database\",\n              \"integration_with\": [\n                \"Node.js\",\n                \"ASP.Net WebApi 2\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"Marketing content managers\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"NOT_FOUND\"\n          }\n        }\n      ],\n      \"responsibility_themes\": {\n        \"technical_depth\": [\n          \"Frontend architecture\",\n          \"RESTful API's design, implementation and mocking\",\n          \"Component development\"\n        ],\n        \"people_management\": [\n          \"Lead the teams\",\n          \"Coaching and mentoring\",\n          \"Code review and PR approval\"\n        ],\n        \"process_ownership\": [\n          \"Development workflows\",\n          \"Code quality standards\"\n        ],\n        \"strategic_contributions\": [\n          \"Internal portal front-end architecture\",\n          \"Cross-team advisor on web and UI/UX\",\n          \"Promote workshop sessions\"\n        ]\n      }\n    },\n    {\n      \"start_date\": \"2011-03\",\n      \"end_date\": \"2014-03\",\n      \"job_title\": \"Front-End Developer\",\n      \"company\": \"Mongoose Digital Agency\",\n      \"client\": \"NOT_APPLICABLE\",\n      \"keywords\": [\n        \"Web Applications\",\n        \"Mobile Apps\",\n        \"CMS\",\n        \"SharePoint\",\n        \"WordPress\",\n        \"Joomla\",\n        \"Moodle\",\n        \"UI Design\",\n        \"RESTful APIs\",\n        \"Code Review\",\n        \"Mentoring\",\n        \"React\",\n        \"Backbone.js\",\n        \"ASP.Net\",\n        \"Node.js\"\n      ],\n      \"project_size\": \"MEDIUM\",\n      \"project_description\": \"Frontend development for a digital agency working on diverse projects including web applications, mobile apps, and CMS implementations. Projects spanned intranets, corporate websites, e-commerce catalogues, mobile applications, and ticketing systems for various clients including educational institutions, legal firms, retail, and transportation sectors.\",\n      \"roles_responsibilities\": \"Develop web applications, websites and mobile apps; Template design for several CMS platforms (Sharepoint, Sensenet, Wordpress, Joomla, Moodle); User interface design; Restful API's design and implementation; Code review; Cross-team technical support; Coaching and mentoring\",\n      \"full_experience_text\": \"03/2011 -03/2014\\nFront-End Developer – Mongoose Digital Agency\\n● Develop web applications, websites and mobile apps;\\n● Template design for several CMS platforms (Sharepoint, Sensenet, Wordpress, Joomla, Moodle);\\n● User interface design;\\n● Restful API's design and implementation;\\n● Code review;\\n● Cross-team technical support;\\n● Coaching and mentoring;\\nMain projects:\\n● Intranet/ Extranet for Catholic University - Oporto - Tech stack: ASP.Net Webforms, Sharepoint 2013, Biztalk, HTML, CSS/LESS, Bootstrap, Javascript, React, SQL Server, GIT\\n● Corporate Website and Intranet for Legalink (6 months fulltime project) Tech stack: Sensenet CMS, ASP.Net Webforms, HTML, CSS/LESS, Bootstrap, Javascript, JQuery, Backbone.js, SQL Server, GIT\\n● Online catalogues (SPA's) for FNAC Portugal - Tech stack: Node.js, Express, HTML, CSS/LESS, Foundation, JQuery, Backbone.js, SQL Server, GIT\\n● iBrisa v1 mobile app (Windows Phone) and iBrisa v1 (iPad) for Brisa Portuguese Highways - Tech stack: .Net, Windows Phone SDK, JSON.Net, MonoTouch\\n● Ticketing application on Newvision Kiosks for BlueTicket - Ticketing Services SA - Tech stack: .NET, ASP.Net WebForms, HTML, CSS, Javascript, SQL Server\\n● Library and UI for interfacing Eurotech PCN-1001 (Automatic passenger counting hardware) used in Lisbon Oceanarium exhibitions for BlueTicket Ticketing Services SA - Tech stack: .NET, ASP.Net WebForms, HTML, CSS, Javascript, SQL Server\\nSkills: C#, Javascript, React, Backbone, Browserify, JQuery, LESS, SASS, Node.js, PHP, PHP Symfony, Java, ASP.Net MVC and WebForms, SQL Server, MySql, Sharepoint, Joomla, Wordpress, MongoDB, Apache Cassandra\",\n      \"enhanced_context\": {\n        \"business_impact\": \"NOT_FOUND\",\n        \"team_context\": {\n          \"team_size\": \"NOT_FOUND\",\n          \"team_structure\": \"Cross-team structure\",\n          \"reporting_structure\": \"NOT_FOUND\"\n        },\n        \"leadership_scope\": \"NOT_FOUND\",\n        \"technical_leadership_activities\": [\n          \"Code review\",\n          \"RESTful API's design and implementation\"\n        ],\n        \"innovation_contributions\": [\n          \"SPAs for online catalogues\",\n          \"Custom hardware interface library\"\n        ],\n        \"cross_functional_activities\": [\n          \"Cross-team technical support\",\n          \"Coaching and mentoring\"\n        ]\n      },\n      \"project_details_enriched\": [\n        {\n          \"project_name\": \"Catholic University Intranet/Extranet\",\n          \"project_description\": \"Intranet and Extranet solution for Catholic University in Oporto.\",\n          \"business_purpose\": \"Internal and external communication platform for university\",\n          \"technical_challenges\": [],\n          \"architecture_decisions\": [\n            \"SharePoint 2013\",\n            \"Biztalk integration\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \"SharePoint 2013\",\n              \"purpose\": \"Intranet/Extranet platform\",\n              \"integration_with\": [\n                \"ASP.Net Webforms\",\n                \"Biztalk\",\n                \"React\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"University staff and students\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"Oporto\"\n          }\n        },\n        {\n          \"project_name\": \"Legalink Corporate Website and Intranet\",\n          \"project_description\": \"6 months fulltime project for corporate website and intranet.\",\n          \"business_purpose\": \"Corporate web presence and internal collaboration\",\n          \"technical_challenges\": [],\n          \"architecture_decisions\": [\n            \"Sensenet CMS\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \"Sensenet CMS\",\n              \"purpose\": \"Content management\",\n              \"integration_with\": [\n                \"ASP.Net Webforms\",\n                \"Backbone.js\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"NOT_FOUND\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"NOT_FOUND\"\n          }\n        },\n        {\n          \"project_name\": \"FNAC Portugal Online Catalogues\",\n          \"project_description\": \"Single Page Applications for online product catalogues.\",\n          \"business_purpose\": \"E-commerce product browsing\",\n          \"technical_challenges\": [\n            \"SPA architecture\"\n          ],\n          \"architecture_decisions\": [\n            \"Node.js backend\",\n            \"SPA frontend\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \"Node.js\",\n              \"purpose\": \"Backend API\",\n              \"integration_with\": [\n                \"Express\",\n                \"SQL Server\"\n              ]\n            },\n            {\n              \"technology\": \"Backbone.js\",\n              \"purpose\": \"Frontend SPA framework\",\n              \"integration_with\": [\n                \"JQuery\",\n                \"Foundation\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"FNAC customers\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"Portugal\"\n          }\n        },\n        {\n          \"project_name\": \"iBrisa Mobile Apps\",\n          \"project_description\": \"Mobile applications for Windows Phone and iPad for Portuguese highway operator.\",\n          \"business_purpose\": \"Mobile services for highway users\",\n          \"technical_challenges\": [\n            \"Cross-platform mobile development\"\n          ],\n          \"architecture_decisions\": [\n            \"Native mobile apps\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \"Windows Phone SDK\",\n              \"purpose\": \"Windows Phone app development\",\n              \"integration_with\": [\n                \".Net\",\n                \"JSON.Net\"\n              ]\n            },\n            {\n              \"technology\": \"MonoTouch\",\n              \"purpose\": \"iPad app development\",\n              \"integration_with\": [\n                \".Net\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"Highway users\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"Portugal\"\n          }\n        },\n        {\n          \"project_name\": \"Eurotech PCN-1001 Interface Library\",\n          \"project_description\": \"Library and UI for interfacing with automatic passenger counting hardware used in Lisbon Oceanarium.\",\n          \"business_purpose\": \"Visitor counting and analytics for exhibitions\",\n          \"technical_challenges\": [\n            \"Hardware interfacing\"\n          ],\n          \"architecture_decisions\": [\n            \"Custom hardware interface library\"\n          ],\n          \"technologies_with_context\": [\n            {\n              \"technology\": \".NET\",\n              \"purpose\": \"Hardware interface development\",\n              \"integration_with\": [\n                \"ASP.Net WebForms\"\n              ]\n            }\n          ],\n          \"scale_indicators\": {\n            \"users\": \"Lisbon Oceanarium\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"Lisbon\"\n          }\n        }\n      ],\n      \"responsibility_themes\": {\n        \"technical_depth\": [\n          \"Web applications development\",\n          \"Mobile apps development\",\n          \"CMS template design\",\n          \"UI design\",\n          \"RESTful API's design and implementation\"\n        ],\n        \"people_management\": [\n          \"Coaching and mentoring\",\n          \"Code review\"\n        ],\n        \"process_ownership\": [],\n        \"strategic_contributions\": [\n          \"Cross-team technical support\"\n        ]\n      }\n    },\n    {\n      \"start_date\": \"2008-06\",\n      \"end_date\": \"2011-03\",\n      \"job_title\": \"Senior Web Developer / Front-End Developer\",\n      \"company\": \"Freelance\",\n      \"client\": \"NOT_FOUND\",\n      \"keywords\": [\n        \"Freelance\",\n        \"Web Applications\",\n        \"UI/UX Design\",\n        \"SDLC\",\n        \"Requirements Gathering\",\n        \"Architecture Planning\",\n        \"WordPress\",\n        \"Joomla\",\n        \"Sensenet\",\n        \"API Integration\",\n        \"Responsive Design\"\n      ],\n      \"project_size\": \"SMALL\",\n      \"project_description\": \"Freelance web development offering full-service custom web application and website development. Provided end-to-end solutions including requirements gathering, architecture planning, design, development, testing, and maintenance. Specialized in responsive UI/UX design and CMS platform customization.\",\n      \"roles_responsibilities\": \"Design and development of custom web applications and websites tailored to client requirements, from initial concept through deployment. Full ownership of the software development lifecycle, including requirements gathering, architecture planning, coding, testing, and maintenance. Creation of responsive and user-friendly UI/UX designs aligned with modern usability standards and client branding guidelines. Integration of third-party APIs and services to extend application functionality. Development and customization of CMS platforms such as WordPress, Joomla, and Sensenet.\",\n      \"full_experience_text\": \"06/2008 – 03/2011; Portugal\\nSenior Web Developer / Front-End Developer - Freelance\\n● Design and development of custom web applications and websites tailored to client requirements, from initial concept through deployment.\\n● Full ownership of the software development lifecycle, including requirements gathering, architecture planning, coding, testing, and maintenance.\\n● Creation of responsive and user-friendly UI/UX designs aligned with modern usability standards and client branding guidelines.\\n● Integration of third-party APIs and services to extend application functionality.\\n● Development and customization of CMS platforms such as WordPress, Joomla, and Sensenet.\",\n      \"enhanced_context\": {\n        \"business_impact\": \"NOT_FOUND\",\n        \"team_context\": {\n          \"team_size\": \"Independent contractor\",\n          \"team_structure\": \"NOT_FOUND\",\n          \"reporting_structure\": \"NOT_FOUND\"\n        },\n        \"leadership_scope\": \"Full ownership of the software development lifecycle\",\n        \"technical_leadership_activities\": [\n          \"Architecture planning\",\n          \"Full SDLC ownership\"\n        ],\n        \"innovation_contributions\": [\n          \"Responsive and user-friendly UI/UX designs\"\n        ],\n        \"cross_functional_activities\": []\n      },\n      \"project_details_enriched\": [],\n      \"responsibility_themes\": {\n        \"technical_depth\": [\n          \"Design and development of custom web applications\",\n          \"UI/UX designs\",\n          \"CMS customization\",\n          \"API integration\"\n        ],\n        \"people_management\": [],\n        \"process_ownership\": [\n          \"Full ownership of the software development lifecycle\",\n          \"Requirements gathering\",\n          \"Architecture planning\",\n          \"Testing\",\n          \"Maintenance\"\n        ],\n        \"strategic_contributions\": []\n      }\n    },\n    {\n      \"start_date\": \"2006-06\",\n      \"end_date\": \"2008-05\",\n      \"job_title\": \"Front-End Developer\",\n      \"company\": \"ESRI Portugal GIS Solutions\",\n      \"client\": \"NOT_APPLICABLE\",\n      \"keywords\": [\n        \"CRM Development\",\n        \"UI Design\",\n        \"Mentoring\",\n        \"Coaching\",\n        \"GIS\"\n      ],\n      \"project_size\": \"SMALL\",\n      \"project_description\": \"Frontend development role at a GIS solutions company focused on developing internal operational CRM system, UI design, and mentoring new team members.\",\n      \"roles_responsibilities\": \"Develop the internal operational CRM. UI design. Mentoring and coaching new colleagues.\",\n      \"full_experience_text\": \"06/2006 – 05/2008; Portugal\\nFront-End Developer – ESRI Portugal GIS Solutions\\n● Develop the internal operational CRM.\\n● UI design.\\n● Mentoring and coaching new colleagues.\",\n      \"enhanced_context\": {\n        \"business_impact\": \"NOT_FOUND\",\n        \"team_context\": {\n          \"team_size\": \"Has colleagues to mentor\",\n          \"team_structure\": \"NOT_FOUND\",\n          \"reporting_structure\": \"NOT_FOUND\"\n        },\n        \"leadership_scope\": \"NOT_FOUND\",\n        \"technical_leadership_activities\": [],\n        \"innovation_contributions\": [],\n        \"cross_functional_activities\": [\n          \"Mentoring and coaching new colleagues\"\n        ]\n      },\n      \"project_details_enriched\": [\n        {\n          \"project_name\": \"Internal Operational CRM\",\n          \"project_description\": \"Internal CRM system for operational management.\",\n          \"business_purpose\": \"Internal operations management\",\n          \"technical_challenges\": [],\n          \"architecture_decisions\": [],\n          \"technologies_with_context\": [],\n          \"scale_indicators\": {\n            \"users\": \"Internal operations team\",\n            \"data_volume\": \"NOT_FOUND\",\n            \"transaction_volume\": \"NOT_FOUND\",\n            \"geographic_scope\": \"NOT_FOUND\"\n          }\n        }\n      ],\n      \"responsibility_themes\": {\n        \"technical_depth\": [\n          \"CRM development\",\n          \"UI design\"\n        ],\n        \"people_management\": [\n          \"Mentoring and coaching new colleagues\"\n        ],\n        \"process_ownership\": [],\n        \"strategic_contributions\": []\n      }\n    }\n  ],\n  \"training_certifications\": [],\n  \"professional_summary\": {\n    \"overview\": \"With over 20 years of experience in front-end development, he has built a solid track record across high-impact projects in the banking, pharmaceutical, and technology sectors. He is currently focused on the development of a custom low-code platform from the ground up, contributing to the full software lifecycle with a strong emphasis on scalability, integration, and performance. Throughout his career, he has worked on a wide range of web applications, including corporate portals, home-banking systems, CMS platforms, and mobile solutions. He has hands-on experience with modern JavaScript frameworks such as React and Vue.js, as well as backend technologies like Node.js and .NET. He has also worked with SQL Server, Elasticsearch, and testing tools such as Jest and Testing Library. Additionally, he has experience with PHP (Symfony), WordPress, and SharePoint, demonstrating flexibility across different ecosystems. He actively contributes to code quality through code reviews, provides mentoring to junior developers, and supports cross-functional teams with his broad technical knowledge. His approach consistently reflects a strong commitment to best practices in front-end architecture, UI/UX, and software delivery.\",\n    \"years_of_experience\": 19,\n    \"career_level\": \"LEAD\",\n    \"key_sectors\": [\n      \"Banking\",\n      \"Pharmaceutical\",\n      \"Technology\",\n      \"Education\",\n      \"Retail\",\n      \"Transportation\"\n    ],\n    \"professional_identity\": \"Frontend development specialist with technical leadership focus and commitment to best practices in architecture, UI/UX, and software delivery\",\n    \"core_expertise_narrative\": \"Specializes in modern JavaScript frameworks (React, Vue.js) with deep experience in frontend architecture and technical leadership. Demonstrates full-stack capabilities with backend technologies (Node.js, .NET, PHP) and strong emphasis on code quality, mentoring, and cross-functional collaboration. Consistently focused on scalability, integration, and performance optimization.\"\n  },\n  \"soft_skills\": {\n    \"communication_skills\": [\n      {\n        \"skill_name\": \"Mentorship & Coaching\",\n        \"description\": \"Consistently providing guidance and education to junior developers and new colleagues\",\n        \"evidence\": [\n          \"Mentoring to junior developers\",\n          \"Coaching and mentoring of new colleagues\",\n          \"Coaching and mentoring\",\n          \"Mentoring and coaching new colleagues\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      },\n      {\n        \"skill_name\": \"Cross-Functional Collaboration\",\n        \"description\": \"Working effectively with diverse teams across different disciplines\",\n        \"evidence\": [\n          \"Supports cross-functional teams with his broad technical knowledge\",\n          \"Cross-team advisor on web and UI/UX\",\n          \"Cross-team technical support\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      },\n      {\n        \"skill_name\": \"Technical Presentation\",\n        \"description\": \"Explaining complex technical information through workshops and sessions\",\n        \"evidence\": [\n          \"Promote workshop sessions on several web related technologies and subjects\"\n        ],\n        \"frequency\": \"OCCASIONAL\"\n      }\n    ],\n    \"organizational_skills\": [\n      {\n        \"skill_name\": \"Project Management\",\n        \"description\": \"Managing full software development lifecycle from requirements to deployment\",\n        \"evidence\": [\n          \"Managing the full software development lifecycle (SDLC), from requirements gathering and architecture design to implementation, testing, and deployment\",\n          \"Full ownership of the software development lifecycle, including requirements gathering, architecture planning, coding, testing, and maintenance\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      },\n      {\n        \"skill_name\": \"Strategic Planning\",\n        \"description\": \"Focus on long-term goals including scalability, integration, and performance\",\n        \"evidence\": [\n          \"Full software lifecycle with a strong emphasis on scalability, integration, and performance\",\n          \"Overseen Multi-Platform Integration\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      },\n      {\n        \"skill_name\": \"Process Improvement\",\n        \"description\": \"Commitment to improving efficiency and standardizing development processes\",\n        \"evidence\": [\n          \"Building a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development\",\n          \"Cofidis Normalisation Framework - simplifying and uniformize the cross-team development\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      }\n    ],\n    \"leadership_skills\": [\n      {\n        \"skill_name\": \"Technical Leadership\",\n        \"description\": \"Leading development efforts and ensuring best practices in architecture and code quality\",\n        \"evidence\": [\n          \"Leading frontend development efforts while also acting as Tech Lead\",\n          \"Ensuring best practices in software architecture, code quality, and development workflows\",\n          \"Project's tech lead\",\n          \"Lead the teams responsible for the company's website and home-banking\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      },\n      {\n        \"skill_name\": \"Architecture Ownership\",\n        \"description\": \"Taking responsibility for frontend architecture and design decisions\",\n        \"evidence\": [\n          \"Responsible for the internal portal front-end architecture\",\n          \"Architecture design\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      },\n      {\n        \"skill_name\": \"Code Quality Oversight\",\n        \"description\": \"Ensuring high standards through code reviews and approvals\",\n        \"evidence\": [\n          \"Code review and PR approval\",\n          \"Actively contributes to code quality through code reviews\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      }\n    ],\n    \"interpersonal_skills\": [\n      {\n        \"skill_name\": \"Advisory Role\",\n        \"description\": \"Providing expert guidance to teams on technical matters\",\n        \"evidence\": [\n          \"Cross-team advisor on web and UI/UX\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      },\n      {\n        \"skill_name\": \"Technical Support\",\n        \"description\": \"Supporting teams with broad technical knowledge\",\n        \"evidence\": [\n          \"Cross-team technical support\",\n          \"Supports cross-functional teams with his broad technical knowledge\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      }\n    ]\n  },\n  \"career_analysis\": {\n    \"career_trajectory\": \"Steady progression from frontend developer to technical leadership positions. Started as frontend developer at ESRI Portugal, transitioned to freelance work building full SDLC ownership, then agency work at Mongoose Digital, followed by 7+ years at Cofidis leading teams and architecture, progressing to tech lead positions at A/B Smartly and Enable where currently building custom low-code platform.\",\n    \"specialization_areas\": [\n      \"Frontend Architecture\",\n      \"React Development\",\n      \"Technical Leadership\",\n      \"Low-code Platforms\",\n      \"Banking Systems\",\n      \"Design Systems\"\n    ],\n    \"recurring_responsibilities\": [\n      {\n        \"responsibility\": \"Code review and approval\",\n        \"frequency_across_roles\": 4,\n        \"evolution\": \"Started with basic code review at Mongoose Digital, evolved to team-wide PR approval at Cofidis and A/B Smartly, now encompasses architecture and quality standards as Tech Lead\"\n      },\n      {\n        \"responsibility\": \"Mentoring and coaching\",\n        \"frequency_across_roles\": 5,\n        \"evolution\": \"Consistent throughout career from early role at ESRI through current position, indicating sustained commitment to team development\"\n      },\n      {\n        \"responsibility\": \"Frontend architecture\",\n        \"frequency_across_roles\": 3,\n        \"evolution\": \"Grew from UI design to responsible for internal portal architecture at Cofidis, now leading full platform architecture at Enable\"\n      },\n      {\n        \"responsibility\": \"RESTful API design\",\n        \"frequency_across_roles\": 3,\n        \"evolution\": \"Progressed from implementation at Mongoose to design and mocking at Cofidis, demonstrating growth in backend integration expertise\"\n      },\n      {\n        \"responsibility\": \"Cross-team collaboration\",\n        \"frequency_across_roles\": 3,\n        \"evolution\": \"Expanded from technical support to formal advisory role on web and UI/UX, now overseeing multi-platform integration\"\n      }\n    ],\n    \"technical_evolution\": \"Started with basic frontend technologies and CMS platforms, progressively adopted modern JavaScript frameworks (Backbone.js → React → Vue.js), embraced TypeScript, expanded into full-stack with Node.js and .NET backend work, adopted microfrontends architecture, implemented comprehensive testing strategies (Jest, Testing Library, Selenium), and currently focusing on low-code platform development with emphasis on scalability and integration.\",\n    \"leadership_progression\": \"Began with peer mentoring at ESRI Portugal, gained full project ownership as freelancer, took on formal mentoring and code review responsibilities at Mongoose Digital, progressed to leading teams and owning frontend architecture at Cofidis with cross-team advisory role, became project tech lead at A/B Smartly, and currently serves as Tech Lead at Enable with end-to-end SDLC management responsibilities.\",\n    \"domain_expertise\": [\n      \"Financial Services/Banking\",\n      \"E-commerce\",\n      \"Education\",\n      \"Transportation\",\n      \"Ticketing Systems\",\n      \"Content Management\"\n    ]\n  },\n  \"technical_skills_enriched\": {\n    \"by_category\": {\n      \"frontend_frameworks\": [\n        {\n          \"technology\": \"React\",\n          \"proficiency_indicators\": [\n            \"Used across multiple projects\",\n            \"Design system development\",\n            \"Component libraries\",\n            \"Testing implementation\",\n            \"Long-term usage (10+ years)\"\n          ],\n          \"years_of_use\": \"10+ years\",\n          \"contexts_used\": [\n            \"Enable low-code platform\",\n            \"A/B Smartly platform\",\n            \"Cofidis portal and applications\",\n            \"Mongoose Digital projects\"\n          ],\n          \"depth_indicators\": [\n            \"Microfrontends architecture (Piral Portal)\",\n            \"Design system framework\",\n            \"Jest and React Testing Library\",\n            \"Component development patterns\",\n            \"Stencil.js web components\"\n          ]\n        },\n        {\n          \"technology\": \"Vue.js\",\n          \"proficiency_indicators\": [\n            \"Production usage\",\n            \"Testing implementation\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"Cofidis Website\"\n          ],\n          \"depth_indicators\": [\n            \"Vue Testing Library\",\n            \"TypeScript integration\"\n          ]\n        },\n        {\n          \"technology\": \"Backbone.js\",\n          \"proficiency_indicators\": [\n            \"Multiple projects\",\n            \"SPA development\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"Cofidis portal\",\n            \"Mongoose Digital projects\",\n            \"FNAC catalogues\"\n          ],\n          \"depth_indicators\": []\n        },\n        {\n          \"technology\": \"TypeScript\",\n          \"proficiency_indicators\": [\n            \"Used across all modern projects\",\n            \"Type-safe development\"\n          ],\n          \"years_of_use\": \"7+ years\",\n          \"contexts_used\": [\n            \"All Cofidis projects\",\n            \"Design system framework\"\n          ],\n          \"depth_indicators\": [\n            \"Integration with React and Vue.js\",\n            \"Type-safe API design\"\n          ]\n        },\n        {\n          \"technology\": \"JavaScript\",\n          \"proficiency_indicators\": [\n            \"20+ years experience\",\n            \"Deep expertise\"\n          ],\n          \"years_of_use\": \"20+ years\",\n          \"contexts_used\": [\n            \"All projects throughout career\"\n          ],\n          \"depth_indicators\": [\n            \"Modern ES6+\",\n            \"Framework expertise\",\n            \"SPA development\"\n          ]\n        }\n      ],\n      \"backend_technologies\": [\n        {\n          \"technology\": \"Node.js\",\n          \"proficiency_indicators\": [\n            \"API development\",\n            \"Multiple projects\"\n          ],\n          \"years_of_use\": \"10+ years\",\n          \"contexts_used\": [\n            \"Cofidis projects\",\n            \"FNAC catalogues\",\n            \"Marketing Headless CMS\"\n          ],\n          \"depth_indicators\": [\n            \"Express framework\",\n            \"RESTful API design\",\n            \"Integration with frontend frameworks\"\n          ]\n        },\n        {\n          \"technology\": \"ASP.Net\",\n          \"proficiency_indicators\": [\n            \"Multiple projects\",\n            \"Both MVC and WebForms\"\n          ],\n          \"years_of_use\": \"10+ years\",\n          \"contexts_used\": [\n            \"Cofidis portal and applications\",\n            \"Mongoose Digital projects\"\n          ],\n          \"depth_indicators\": [\n            \"WebApi 2\",\n            \"MVC 5\",\n            \"EntityFramework\",\n            \"API Gateway integration\"\n          ]\n        },\n        {\n          \"technology\": \"PHP\",\n          \"proficiency_indicators\": [\n            \"Listed in skills\",\n            \"Symfony experience\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"General web development\"\n          ],\n          \"depth_indicators\": [\n            \"Symfony framework\"\n          ]\n        }\n      ],\n      \"databases\": [\n        {\n          \"technology\": \"SQL Server\",\n          \"proficiency_indicators\": [\n            \"Used across most projects\"\n          ],\n          \"years_of_use\": \"15+ years\",\n          \"contexts_used\": [\n            \"Cofidis applications\",\n            \"Mongoose Digital projects\",\n            \"Various CMS platforms\"\n          ],\n          \"depth_indicators\": [\n            \"Integration with .NET\",\n            \"Database design\"\n          ]\n        },\n        {\n          \"technology\": \"ElasticSearch\",\n          \"proficiency_indicators\": [\n            \"Enterprise usage\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"Cofidis portal\",\n            \"Cofinet home-banking\",\n            \"Cofidis Website\"\n          ],\n          \"depth_indicators\": [\n            \"Search implementation\",\n            \"Data indexing\"\n          ]\n        },\n        {\n          \"technology\": \"MongoDB\",\n          \"proficiency_indicators\": [\n            \"Headless CMS usage\"\n          ],\n          \"years_of_use\": \"3+ years\",\n          \"contexts_used\": [\n            \"Marketing Headless CMS\"\n          ],\n          \"depth_indicators\": []\n        },\n        {\n          \"technology\": \"MySQL\",\n          \"proficiency_indicators\": [\n            \"Listed in skills\"\n          ],\n          \"years_of_use\": \"10+ years\",\n          \"contexts_used\": [\n            \"Various web projects\"\n          ],\n          \"depth_indicators\": []\n        }\n      ],\n      \"cloud_platforms\": [\n        {\n          \"technology\": \"Azure DevOps\",\n          \"proficiency_indicators\": [\n            \"Used across Cofidis projects\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"All Cofidis projects\"\n          ],\n          \"depth_indicators\": [\n            \"CI/CD pipelines\",\n            \"Version control\"\n          ]\n        }\n      ],\n      \"testing_tools\": [\n        {\n          \"technology\": \"Jest\",\n          \"proficiency_indicators\": [\n            \"Used across multiple React and Vue projects\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"Cofidis projects\",\n            \"Design system framework\"\n          ],\n          \"depth_indicators\": [\n            \"React Testing Library\",\n            \"Vue Testing Library\",\n            \"Unit testing\",\n            \"Component testing\"\n          ]\n        },\n        {\n          \"technology\": \"Selenium\",\n          \"proficiency_indicators\": [\n            \"End-to-end testing\"\n          ],\n          \"years_of_use\": \"3+ years\",\n          \"contexts_used\": [\n            \"Cofinet home-banking\"\n          ],\n          \"depth_indicators\": [\n            \"Automated testing\"\n          ]\n        },\n        {\n          \"technology\": \"Karma\",\n          \"proficiency_indicators\": [\n            \"Test runner\"\n          ],\n          \"years_of_use\": \"3+ years\",\n          \"contexts_used\": [\n            \"Cofidis projects\"\n          ],\n          \"depth_indicators\": []\n        }\n      ],\n      \"devops_cicd\": [\n        {\n          \"technology\": \"Git\",\n          \"proficiency_indicators\": [\n            \"Used across all modern projects\"\n          ],\n          \"years_of_use\": \"15+ years\",\n          \"contexts_used\": [\n            \"All projects from 2011 onwards\"\n          ],\n          \"depth_indicators\": [\n            \"Version control\",\n            \"PR workflows\"\n          ]\n        },\n        {\n          \"technology\": \"Azure DevOps\",\n          \"proficiency_indicators\": [\n            \"CI/CD implementation\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"Cofidis projects\"\n          ],\n          \"depth_indicators\": [\n            \"Pipeline management\",\n            \"Automated deployments\"\n          ]\n        }\n      ],\n      \"design_tools\": [\n        {\n          \"technology\": \"SASS/SCSS\",\n          \"proficiency_indicators\": [\n            \"Used across most frontend projects\"\n          ],\n          \"years_of_use\": \"10+ years\",\n          \"contexts_used\": [\n            \"Cofidis projects\",\n            \"Design system framework\"\n          ],\n          \"depth_indicators\": [\n            \"Component styling\",\n            \"Design systems\"\n          ]\n        },\n        {\n          \"technology\": \"Bootstrap\",\n          \"proficiency_indicators\": [\n            \"UI framework usage\"\n          ],\n          \"years_of_use\": \"10+ years\",\n          \"contexts_used\": [\n            \"Multiple projects\",\n            \"Design system framework\"\n          ],\n          \"depth_indicators\": [\n            \"Responsive design\",\n            \"Component library integration\"\n          ]\n        },\n        {\n          \"technology\": \"LESS\",\n          \"proficiency_indicators\": [\n            \"CSS preprocessing\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"Mongoose Digital projects\"\n          ],\n          \"depth_indicators\": []\n        }\n      ],\n      \"methodologies\": [\n        {\n          \"technology\": \"Microfrontends\",\n          \"proficiency_indicators\": [\n            \"Piral Portal implementation\"\n          ],\n          \"years_of_use\": \"3+ years\",\n          \"contexts_used\": [\n            \"Apolo Portal v2\"\n          ],\n          \"depth_indicators\": [\n            \"Piral Portal architecture\",\n            \"Module federation\",\n            \"Independent deployment\"\n          ]\n        },\n        {\n          \"technology\": \"Design Systems\",\n          \"proficiency_indicators\": [\n            \"Created evolving design system\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"Cofidis Normalisation Framework\"\n          ],\n          \"depth_indicators\": [\n            \"Component libraries\",\n            \"Style guides\",\n            \"Cross-team standardization\"\n          ]\n        },\n        {\n          \"technology\": \"SDLC Management\",\n          \"proficiency_indicators\": [\n            \"End-to-end ownership\"\n          ],\n          \"years_of_use\": \"15+ years\",\n          \"contexts_used\": [\n            \"Enable\",\n            \"Freelance work\"\n          ],\n          \"depth_indicators\": [\n            \"Requirements gathering\",\n            \"Architecture design\",\n            \"Testing\",\n            \"Deployment\"\n          ]\n        },\n        {\n          \"technology\": \"Agile\",\n          \"proficiency_indicators\": [\n            \"Frequent release cycles\"\n          ],\n          \"years_of_use\": \"5+ years\",\n          \"contexts_used\": [\n            \"A/B Smartly\"\n          ],\n          \"depth_indicators\": []\n        }\n      ]\n    },\n    \"technology_stack_patterns\": [\n      {\n        \"stack_name\": \"Modern React Enterprise Stack\",\n        \"technologies\": [\n          \"React\",\n          \"TypeScript\",\n          \"Jest\",\n          \"React Testing Library\",\n          \"SASS\",\n          \"Node.js\",\n          \"Azure DevOps\",\n          \"Git\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      },\n      {\n        \"stack_name\": \"ASP.Net Full Stack\",\n        \"technologies\": [\n          \"ASP.Net MVC\",\n          \"WebApi 2\",\n          \"React/Vue.js\",\n          \"TypeScript\",\n          \"SQL Server\",\n          \"ElasticSearch\"\n        ],\n        \"frequency\": \"CONSISTENT\"\n      },\n      {\n        \"stack_name\": \"Microfrontends Stack\",\n        \"technologies\": [\n          \"Piral Portal\",\n          \"React\",\n          \"TypeScript\",\n          \"KrakenD Api Gateway\",\n          \"RabbitMQ\",\n          \"ElasticSearch\"\n        ],\n        \"frequency\": \"OCCASIONAL\"\n      }\n    ],\n    \"technical_breadth_vs_depth\": {\n      \"breadth_score\": \"BROAD\",\n      \"depth_areas\": [\n        \"React ecosystem\",\n        \"Frontend architecture\",\n        \"Design systems\",\n        \"TypeScript development\",\n        \"Microfrontends\",\n        \"Full SDLC management\"\n      ],\n      \"full_stack_capability\": \"FULL_STACK\"\n    }\n  },\n  \"professional_development\": {\n    \"continuous_learning_evidence\": [\n      \"Progression through JavaScript frameworks (jQuery → Backbone.js → React → Vue.js)\",\n      \"Adoption of TypeScript across projects\",\n      \"Evolution from MVC to microfrontends architecture\",\n      \"Expanded from frontend-only to full-stack capabilities\",\n      \"Adoption of modern testing frameworks (Jest, Testing Library)\",\n      \"Low-code platform development\"\n    ],\n    \"technology_adoption_pattern\": \"PRAGMATIC\",\n    \"workshop_and_teaching\": [\n      \"Promote workshop sessions on several web related technologies and subjects\"\n    ],\n    \"community_involvement\": [],\n    \"thought_leadership_indicators\": [\n      \"Cross-team advisor on web and UI/UX\",\n      \"Responsible for the internal portal front-end architecture\",\n      \"Leading frontend development efforts while also acting as Tech Lead\",\n      \"Design system framework creation\"\n    ]\n  },\n  \"work_style_analysis\": {\n    \"collaboration_style\": \"Strong collaborative approach with emphasis on cross-team support, advisory roles, and knowledge sharing through workshops and mentoring. Consistently supports cross-functional teams with broad technical knowledge.\",\n    \"technical_approach\": \"Strong commitment to best practices in front-end architecture, UI/UX, and software delivery. Emphasis on code quality through reviews, scalability, integration, and performance optimization.\",\n    \"problem_solving_approach\": \"Focus on systematic, end-to-end solutions with emphasis on architecture design, full SDLC management, and creating reusable frameworks (design systems, low-code platforms) to solve recurring problems.\",\n    \"quality_focus_areas\": [\n      \"Code review\",\n      \"Best practices\",\n      \"Testing (Jest, Selenium)\",\n      \"Architecture design\",\n      \"Performance optimization\",\n      \"Design systems\"\n    ],\n    \"preferred_role_types\": [\n      \"Technical leadership\",\n      \"Frontend architecture\",\n      \"Team mentoring\",\n      \"Cross-team advisory\",\n      \"Full SDLC ownership\"\n    ]\n  },\n  \"document_metadata\": {\n    \"cv_format\": \"Europass\",\n    \"document_quality\": \"HIGH\",\n    \"key_sections_present\": [\n      \"Professional Summary\",\n      \"Work Experience\",\n      \"Education\",\n      \"Language Skills\",\n      \"Digital Skills\",\n      \"Communication and Organisational Skills\"\n    ],\n    \"visual_elements\": [\n      \"Europass logo\",\n      \"Structured layout\",\n      \"Section headers\"\n    ],\n    \"professional_polish_level\": \"HIGH\"\n  },\n  \"narrative_elements\": {\n    \"opening_statement\": \"With over 20 years of experience in front-end development, he has built a solid track record across high-impact projects in the banking, pharmaceutical, and technology sectors. He is currently focused on the development of a custom low-code platform from the ground up, contributing to the full software lifecycle with a strong emphasis on scalability, integration, and performance. Throughout his career, he has worked on a wide range of web applications, including corporate portals, home-banking systems, CMS platforms, and mobile solutions. He has hands-on experience with modern JavaScript frameworks such as React and Vue.js, as well as backend technologies like Node.js and .NET. He has also worked with SQL Server, Elasticsearch, and testing tools such as Jest and Testing Library. Additionally, he has experience with PHP (Symfony), WordPress, and SharePoint, demonstrating flexibility across different ecosystems. He actively contributes to code quality through code reviews, provides mentoring to junior developers, and supports cross-functional teams with his broad technical knowledge. His approach consistently reflects a strong commitment to best practices in front-end architecture, UI/UX, and software delivery.\",\n    \"career_highlights\": [\n      \"Over 20 years of experience in front-end development\",\n      \"Built solid track record across high-impact projects in banking, pharmaceutical, and technology sectors\",\n      \"Currently developing custom low-code platform from the ground up\",\n      \"Led teams for 7+ years at Cofidis responsible for website and home-banking\",\n      \"Created Cofidis Normalisation Framework design system\",\n      \"Implemented microfrontends architecture (Piral Portal)\",\n      \"Tech Lead positions at A/B Smartly and Enable\",\n      \"Consistent mentoring throughout career\"\n    ],\n    \"value_propositions\": [\n      \"20+ years frontend development expertise\",\n      \"Technical leadership and architecture ownership\",\n      \"Full-stack capabilities with modern frameworks\",\n      \"Strong commitment to best practices and code quality\",\n      \"Cross-functional collaboration and advisory expertise\",\n      \"Design system and architecture experience\",\n      \"Mentoring and team development focus\",\n      \"Full SDLC management capability\"\n    ],\n    \"descriptive_phrases\": [\n      \"solid track record\",\n      \"hands-on experience\",\n      \"strong emphasis on scalability, integration, and performance\",\n      \"actively contributes to code quality\",\n      \"broad technical knowledge\",\n      \"strong commitment to best practices\",\n      \"flexibility across different ecosystems\"\n    ],\n    \"emphasis_patterns\": [\n      \"Best practices in frontend architecture, UI/UX, and software delivery\",\n      \"Code quality through reviews\",\n      \"Mentoring to junior developers\",\n      \"Cross-functional team support\",\n      \"Scalability, integration, and performance\",\n      \"Technical leadership\",\n      \"Full SDLC ownership\",\n      \"Modern JavaScript frameworks expertise\"\n    ]\n  }\n}",
+    "extractedData": {
+      "first_name": "NOT_FOUND",
+      "last_name": "NOT_FOUND",
+      "last_update_date": "2022-12",
+      "email": "NOT_FOUND",
+      "date_of_birth": "1974-01-01",
+      "gender": "M",
+      "contract_type": "PERMANENT",
+      "management_company": "NOT_APPLICABLE",
+      "availability_date": "NOT_FOUND",
+      "highest_degree": "SECONDARY",
+      "years_post_secondary": 2,
+      "academic_credentials": [
+        {
+          "degree_name": "Information Technology",
+          "institution": "EPED – Escola Profissional de Educaçao para o Desenvolvimento",
+          "year_obtained": "1993",
+          "field_of_study": "Information Technology"
+        }
+      ],
+      "secondary_end_date": "1991",
+      "higher_education_start_date": "1991-09",
+      "higher_education_end_date": "1993-09",
+      "language_proficiency": [
+        {
+          "language_code": "por",
+          "speaking": "NATIVE",
+          "writing": "NATIVE",
+          "reading": "NATIVE",
+          "listening": "NATIVE",
+          "original_level": "C2"
+        },
+        {
+          "language_code": "fra",
+          "speaking": "C1",
+          "writing": "C1",
+          "reading": "C1",
+          "listening": "C1",
+          "original_level": "C1"
+        }
+      ],
+      "professional_experience": [
+        {
+          "start_date": "2022-12",
+          "end_date": "PRESENT",
+          "job_title": "Frontend Developer",
+          "company": "Enable",
+          "client": "NOT_APPLICABLE",
+          "keywords": [
+            "Frontend Development",
+            "Technical Leadership",
+            "Tech Lead",
+            "Low-Code Platform",
+            "Software Architecture",
+            "Code Quality",
+            "SDLC",
+            "Multi-Platform Integration",
+            "Scalability",
+            "Requirements Gathering",
+            "Architecture Design",
+            "Testing",
+            "Deployment"
+          ],
+          "project_size": "LARGE",
+          "project_description": "Leading the development of a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development across various business units. The role encompasses frontend development leadership, technical architecture oversight, and management of the full software development lifecycle with emphasis on scalability, integration, and performance.",
+          "roles_responsibilities": "Frontend Development & Technical Leadership: Leading frontend development efforts while also acting as Tech Lead, ensuring best practices in software architecture, code quality, and development workflows. Custom Low-Code Platform Creation: Building a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development across various business units. Multi-Platform Integration: Overseeing the development and integration of multiple associated platforms, ensuring interoperability, scalability, and alignment with business objectives. End-to-End Delivery: Managing the full software development lifecycle (SDLC), from requirements gathering and architecture design to implementation, testing, and deployment.",
+          "full_experience_text": "12/2022 - Ongoing; Portugal\nFrontend Developer - Enable\n● Frontend Development & Technical Leadership: Leading frontend development efforts while also acting as Tech Lead, ensuring best practices in software architecture, code quality, and development workflows.\n● Custom Low-Code Platform Creation: Building a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development across various business units.\n● Multi-Platform Integration: Overseeing the development and integration of multiple associated platforms, ensuring interoperability, scalability, and alignment with business objectives.\n● End-to-End Delivery: Managing the full software development lifecycle (SDLC), from requirements gathering and architecture design to implementation, testing, and deployment.",
+          "enhanced_context": {
+            "business_impact": "Streamline internal processes and enable rapid application development across various business units",
+            "team_context": {
+              "team_size": "NOT_FOUND",
+              "team_structure": "NOT_FOUND",
+              "reporting_structure": "NOT_FOUND"
+            },
+            "leadership_scope": "Leading frontend development efforts while also acting as Tech Lead, ensuring best practices in software architecture, code quality, and development workflows",
+            "technical_leadership_activities": [
+              "Technical Leadership",
+              "Ensuring best practices in software architecture",
+              "Code quality oversight",
+              "Development workflows management"
+            ],
+            "innovation_contributions": [
+              "Building a fully customized low-code platform from the ground up",
+              "Custom Low-Code Platform Creation"
+            ],
+            "cross_functional_activities": [
+              "Overseeing the development and integration of multiple associated platforms",
+              "Multi-Platform Integration"
+            ]
+          },
+          "project_details_enriched": [
+            {
+              "project_name": "Custom Low-Code Platform",
+              "project_description": "Building a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development across various business units.",
+              "business_purpose": "Streamline internal processes and enable rapid application development across various business units",
+              "technical_challenges": [
+                "Scalability",
+                "Integration",
+                "Performance",
+                "Interoperability"
+              ],
+              "architecture_decisions": [
+                "Multi-Platform Integration",
+                "Low-code platform architecture"
+              ],
+              "technologies_with_context": [],
+              "scale_indicators": {
+                "users": "Various business units",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "NOT_FOUND"
+              }
+            }
+          ],
+          "responsibility_themes": {
+            "technical_depth": [
+              "Frontend development",
+              "Architecture design",
+              "Implementation",
+              "Testing"
+            ],
+            "people_management": [
+              "Tech Lead role"
+            ],
+            "process_ownership": [
+              "Managing the full SDLC",
+              "Development workflows",
+              "Code quality",
+              "Best practices enforcement"
+            ],
+            "strategic_contributions": [
+              "Software architecture",
+              "Multi-Platform Integration",
+              "Scalability and performance planning",
+              "Business objectives alignment"
+            ]
+          }
+        },
+        {
+          "start_date": "2022-01",
+          "end_date": "2022-12",
+          "job_title": "Lead Front-End Developer",
+          "company": "A/B Smartly",
+          "client": "NOT_APPLICABLE",
+          "keywords": [
+            "Tech Lead",
+            "Frontend Development",
+            "SPA",
+            "Code Review",
+            "PR Approval",
+            "Coaching",
+            "Mentoring",
+            "Component Development",
+            "Frequent Release Cycles"
+          ],
+          "project_size": "MEDIUM",
+          "project_description": "Technical leadership role for the A/B Smartly platform, a Single Page Application with frequent release cycles. Responsibilities included developing components and features, code quality oversight through reviews, and team mentorship.",
+          "roles_responsibilities": "Project's tech lead. Develop components and new features for the A/B Smartly platform/ SPA, over frequent release cycles. Code review and PR approval of team's work. Coaching and mentoring of new colleagues.",
+          "full_experience_text": "01/2022 – 12/2022; Portugal\nPlead Front-End Developer – A/B Smartly\n● Project's tech lead.\n● Develop components and new features for the A/B Smartly platform/ SPA, over frequent release cycles.\n● Code review and PR approval of team's work.\n● Coaching and mentoring of new colleagues.",
+          "enhanced_context": {
+            "business_impact": "NOT_FOUND",
+            "team_context": {
+              "team_size": "Has team members to review and mentor",
+              "team_structure": "NOT_FOUND",
+              "reporting_structure": "Tech lead position"
+            },
+            "leadership_scope": "Project's tech lead",
+            "technical_leadership_activities": [
+              "Code review and PR approval of team's work",
+              "Tech lead"
+            ],
+            "innovation_contributions": [
+              "Develop components and new features"
+            ],
+            "cross_functional_activities": []
+          },
+          "project_details_enriched": [
+            {
+              "project_name": "A/B Smartly Platform",
+              "project_description": "Single Page Application platform for A/B testing with frequent release cycles.",
+              "business_purpose": "A/B testing platform",
+              "technical_challenges": [
+                "Frequent release cycles"
+              ],
+              "architecture_decisions": [
+                "SPA architecture"
+              ],
+              "technologies_with_context": [],
+              "scale_indicators": {
+                "users": "NOT_FOUND",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "NOT_FOUND"
+              }
+            }
+          ],
+          "responsibility_themes": {
+            "technical_depth": [
+              "Develop components and new features",
+              "SPA development"
+            ],
+            "people_management": [
+              "Coaching and mentoring of new colleagues",
+              "Code review and PR approval"
+            ],
+            "process_ownership": [
+              "Frequent release cycles management"
+            ],
+            "strategic_contributions": [
+              "Tech lead role"
+            ]
+          }
+        },
+        {
+          "start_date": "2014-04",
+          "end_date": "2021-12",
+          "job_title": "Front-End Developer",
+          "company": "Cofidis",
+          "client": "NOT_APPLICABLE",
+          "keywords": [
+            "Frontend Architecture",
+            "Team Leadership",
+            "Home-banking",
+            "Corporate Portal",
+            "Cross-team Advisor",
+            "UI/UX",
+            "RESTful APIs",
+            "Code Review",
+            "Mentoring",
+            "Workshop Sessions",
+            "React",
+            "Vue.js",
+            "TypeScript",
+            "ASP.Net",
+            "Microfrontends",
+            "Jest",
+            "ElasticSearch",
+            "Azure DevOps",
+            "Design System"
+          ],
+          "project_size": "LARGE",
+          "project_description": "Led frontend development for Cofidis' web ecosystem including company website, home-banking application, and internal portal. Responsible for frontend architecture, cross-team advisory on web and UI/UX, API design, and team mentorship. Developed multiple major projects including a microfrontend-based portal, design system framework, home-banking application, marketing website, and headless CMS.",
+          "roles_responsibilities": "Lead the teams responsible for the company's website and home-banking; Responsible for the internal portal front-end architecture; Cross-team advisor on web and UI/UX; Restful API's design, implementation and mocking for test environments; Code review and PR approval; Cross-team technical support; Coaching and mentoring; Promote workshop sessions on several web related technologies and subjects",
+          "full_experience_text": "04/2014 – 12/2021;\nFront-End Developer - Cofidis\n● Lead the teams responsible for the company's website and home-banking;\n● Responsible for the internal portal front-end architecture;\n● Cross-team advisor on web and UI/UX;\n● Restful API's design, implementation and mocking for test environments;\n● Code review and PR approval;\n● Cross-team technical support;\n● Coaching and mentoring;\n● Promote workshop sessions on several web related technologies and subjects;\nMain projects:\n● Apolo Portal v2 - Main company's portal/ CMS, from where all the business internal applications are provided -Tech stack: ASP.Net MVC 5 and WebApi 2, Piral Portal (Microfrontends), Javascript/ Typescript, React, Jest, React Testing Library, Backbone.js, SASS, Node.js, SQL Server, KrakenD Api Gateway, RabbitMQ, ElasticSearch, Azure DevOps, GIT\n● Cofidis Normalisation Framework - An always evolving design system with components, style guide, tools and patterns for simplifying and uniformize the cross-team development of applications for the company's portal - Tech stack: Javascript/ Typescript, Stencil.js, React, Jest, React Testing Library, Karma, SASS, Bootstrap, Node.js, Azure DevOps, GIT\n● Cofinet - Cofidis Home-banking Web Application -Tech stack: ASP.Net MVC 5 and WebApi 2, EntityFramework, Typescript, React, Jest, React Testing Library, Karma, Selenium, SASS, Bootstrap, OutSystems, SQL Server, ElasticSearch, Azure DevOps, GIT\n● Cofidis Website - Tech stack: ASP.Net MVC 5 and WebApi 2, EntityFramework, Typescript, Vue.js, Jest, Vue Testing Library, Karma, SASS, Bootstrap, OutSystems, SQL Server, ElasticSearch, Azure DevOps, GIT\n● Marketing Headless CMS - The website and home-banking content management platform. Tech stack: Electron.js, React, Jest, React Testing Library, SASS, Bootstrap, Node.js, ASP.Net WebApi 2, MongoDB, Azure DevOps, GIT",
+          "enhanced_context": {
+            "business_impact": "Simplified and uniformized cross-team development through design system framework; enabled business applications through portal architecture",
+            "team_context": {
+              "team_size": "Multiple teams led",
+              "team_structure": "Cross-team structure",
+              "reporting_structure": "Lead position for website and home-banking teams"
+            },
+            "leadership_scope": "Lead the teams responsible for the company's website and home-banking; Responsible for the internal portal front-end architecture",
+            "technical_leadership_activities": [
+              "Responsible for the internal portal front-end architecture",
+              "Code review and PR approval",
+              "RESTful API's design"
+            ],
+            "innovation_contributions": [
+              "Cofidis Normalisation Framework design system",
+              "Microfrontends architecture implementation",
+              "Marketing Headless CMS"
+            ],
+            "cross_functional_activities": [
+              "Cross-team advisor on web and UI/UX",
+              "Cross-team technical support",
+              "Promote workshop sessions"
+            ]
+          },
+          "project_details_enriched": [
+            {
+              "project_name": "Apolo Portal v2",
+              "project_description": "Main company's portal/CMS, from where all the business internal applications are provided.",
+              "business_purpose": "Central portal for providing all business internal applications",
+              "technical_challenges": [
+                "Microfrontends architecture",
+                "Integration with multiple business applications"
+              ],
+              "architecture_decisions": [
+                "Piral Portal (Microfrontends)",
+                "KrakenD Api Gateway",
+                "Message queuing with RabbitMQ"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": "Piral Portal",
+                  "purpose": "Microfrontends architecture",
+                  "integration_with": [
+                    "React",
+                    "TypeScript",
+                    "ASP.Net MVC 5"
+                  ]
+                },
+                {
+                  "technology": "React",
+                  "purpose": "Frontend UI components",
+                  "integration_with": [
+                    "TypeScript",
+                    "Jest",
+                    "React Testing Library",
+                    "SASS"
+                  ]
+                },
+                {
+                  "technology": "KrakenD Api Gateway",
+                  "purpose": "API gateway management",
+                  "integration_with": [
+                    "ASP.Net WebApi 2",
+                    "RabbitMQ"
+                  ]
+                },
+                {
+                  "technology": "ElasticSearch",
+                  "purpose": "Search functionality",
+                  "integration_with": [
+                    "SQL Server"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "All business internal applications",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "NOT_FOUND"
+              }
+            },
+            {
+              "project_name": "Cofidis Normalisation Framework",
+              "project_description": "An always evolving design system with components, style guide, tools and patterns for simplifying and uniformize the cross-team development of applications for the company's portal.",
+              "business_purpose": "Simplifying and uniformize the cross-team development of applications",
+              "technical_challenges": [
+                "Cross-team standardization",
+                "Always evolving design system"
+              ],
+              "architecture_decisions": [
+                "Design system architecture",
+                "Component library"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": "Stencil.js",
+                  "purpose": "Web components framework",
+                  "integration_with": [
+                    "React",
+                    "TypeScript"
+                  ]
+                },
+                {
+                  "technology": "React",
+                  "purpose": "Component development",
+                  "integration_with": [
+                    "TypeScript",
+                    "Jest",
+                    "SASS",
+                    "Bootstrap"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "Cross-team developers",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "Company-wide"
+              }
+            },
+            {
+              "project_name": "Cofinet",
+              "project_description": "Cofidis Home-banking Web Application.",
+              "business_purpose": "Customer-facing home-banking services",
+              "technical_challenges": [
+                "Banking security",
+                "User experience"
+              ],
+              "architecture_decisions": [
+                "ASP.Net MVC architecture",
+                "OutSystems integration"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": "React",
+                  "purpose": "Frontend interface",
+                  "integration_with": [
+                    "TypeScript",
+                    "ASP.Net MVC 5",
+                    "OutSystems"
+                  ]
+                },
+                {
+                  "technology": "Selenium",
+                  "purpose": "Automated testing",
+                  "integration_with": [
+                    "Jest",
+                    "React Testing Library"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "Banking customers",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "NOT_FOUND"
+              }
+            },
+            {
+              "project_name": "Cofidis Website",
+              "project_description": "Corporate marketing website for Cofidis.",
+              "business_purpose": "Corporate web presence and marketing",
+              "technical_challenges": [],
+              "architecture_decisions": [
+                "Vue.js for frontend"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": "Vue.js",
+                  "purpose": "Frontend framework",
+                  "integration_with": [
+                    "TypeScript",
+                    "ASP.Net MVC 5",
+                    "OutSystems"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "Public visitors",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "NOT_FOUND"
+              }
+            },
+            {
+              "project_name": "Marketing Headless CMS",
+              "project_description": "The website and home-banking content management platform.",
+              "business_purpose": "Content management for website and home-banking",
+              "technical_challenges": [
+                "Headless architecture"
+              ],
+              "architecture_decisions": [
+                "Headless CMS",
+                "Electron.js desktop application"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": "Electron.js",
+                  "purpose": "Desktop CMS application",
+                  "integration_with": [
+                    "React",
+                    "Node.js",
+                    "ASP.Net WebApi 2"
+                  ]
+                },
+                {
+                  "technology": "MongoDB",
+                  "purpose": "Content database",
+                  "integration_with": [
+                    "Node.js",
+                    "ASP.Net WebApi 2"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "Marketing content managers",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "NOT_FOUND"
+              }
+            }
+          ],
+          "responsibility_themes": {
+            "technical_depth": [
+              "Frontend architecture",
+              "RESTful API's design, implementation and mocking",
+              "Component development"
+            ],
+            "people_management": [
+              "Lead the teams",
+              "Coaching and mentoring",
+              "Code review and PR approval"
+            ],
+            "process_ownership": [
+              "Development workflows",
+              "Code quality standards"
+            ],
+            "strategic_contributions": [
+              "Internal portal front-end architecture",
+              "Cross-team advisor on web and UI/UX",
+              "Promote workshop sessions"
+            ]
+          }
+        },
+        {
+          "start_date": "2011-03",
+          "end_date": "2014-03",
+          "job_title": "Front-End Developer",
+          "company": "Mongoose Digital Agency",
+          "client": "NOT_APPLICABLE",
+          "keywords": [
+            "Web Applications",
+            "Mobile Apps",
+            "CMS",
+            "SharePoint",
+            "WordPress",
+            "Joomla",
+            "Moodle",
+            "UI Design",
+            "RESTful APIs",
+            "Code Review",
+            "Mentoring",
+            "React",
+            "Backbone.js",
+            "ASP.Net",
+            "Node.js"
+          ],
+          "project_size": "MEDIUM",
+          "project_description": "Frontend development for a digital agency working on diverse projects including web applications, mobile apps, and CMS implementations. Projects spanned intranets, corporate websites, e-commerce catalogues, mobile applications, and ticketing systems for various clients including educational institutions, legal firms, retail, and transportation sectors.",
+          "roles_responsibilities": "Develop web applications, websites and mobile apps; Template design for several CMS platforms (Sharepoint, Sensenet, Wordpress, Joomla, Moodle); User interface design; Restful API's design and implementation; Code review; Cross-team technical support; Coaching and mentoring",
+          "full_experience_text": "03/2011 -03/2014\nFront-End Developer – Mongoose Digital Agency\n● Develop web applications, websites and mobile apps;\n● Template design for several CMS platforms (Sharepoint, Sensenet, Wordpress, Joomla, Moodle);\n● User interface design;\n● Restful API's design and implementation;\n● Code review;\n● Cross-team technical support;\n● Coaching and mentoring;\nMain projects:\n● Intranet/ Extranet for Catholic University - Oporto - Tech stack: ASP.Net Webforms, Sharepoint 2013, Biztalk, HTML, CSS/LESS, Bootstrap, Javascript, React, SQL Server, GIT\n● Corporate Website and Intranet for Legalink (6 months fulltime project) Tech stack: Sensenet CMS, ASP.Net Webforms, HTML, CSS/LESS, Bootstrap, Javascript, JQuery, Backbone.js, SQL Server, GIT\n● Online catalogues (SPA's) for FNAC Portugal - Tech stack: Node.js, Express, HTML, CSS/LESS, Foundation, JQuery, Backbone.js, SQL Server, GIT\n● iBrisa v1 mobile app (Windows Phone) and iBrisa v1 (iPad) for Brisa Portuguese Highways - Tech stack: .Net, Windows Phone SDK, JSON.Net, MonoTouch\n● Ticketing application on Newvision Kiosks for BlueTicket - Ticketing Services SA - Tech stack: .NET, ASP.Net WebForms, HTML, CSS, Javascript, SQL Server\n● Library and UI for interfacing Eurotech PCN-1001 (Automatic passenger counting hardware) used in Lisbon Oceanarium exhibitions for BlueTicket Ticketing Services SA - Tech stack: .NET, ASP.Net WebForms, HTML, CSS, Javascript, SQL Server\nSkills: C#, Javascript, React, Backbone, Browserify, JQuery, LESS, SASS, Node.js, PHP, PHP Symfony, Java, ASP.Net MVC and WebForms, SQL Server, MySql, Sharepoint, Joomla, Wordpress, MongoDB, Apache Cassandra",
+          "enhanced_context": {
+            "business_impact": "NOT_FOUND",
+            "team_context": {
+              "team_size": "NOT_FOUND",
+              "team_structure": "Cross-team structure",
+              "reporting_structure": "NOT_FOUND"
+            },
+            "leadership_scope": "NOT_FOUND",
+            "technical_leadership_activities": [
+              "Code review",
+              "RESTful API's design and implementation"
+            ],
+            "innovation_contributions": [
+              "SPAs for online catalogues",
+              "Custom hardware interface library"
+            ],
+            "cross_functional_activities": [
+              "Cross-team technical support",
+              "Coaching and mentoring"
+            ]
+          },
+          "project_details_enriched": [
+            {
+              "project_name": "Catholic University Intranet/Extranet",
+              "project_description": "Intranet and Extranet solution for Catholic University in Oporto.",
+              "business_purpose": "Internal and external communication platform for university",
+              "technical_challenges": [],
+              "architecture_decisions": [
+                "SharePoint 2013",
+                "Biztalk integration"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": "SharePoint 2013",
+                  "purpose": "Intranet/Extranet platform",
+                  "integration_with": [
+                    "ASP.Net Webforms",
+                    "Biztalk",
+                    "React"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "University staff and students",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "Oporto"
+              }
+            },
+            {
+              "project_name": "Legalink Corporate Website and Intranet",
+              "project_description": "6 months fulltime project for corporate website and intranet.",
+              "business_purpose": "Corporate web presence and internal collaboration",
+              "technical_challenges": [],
+              "architecture_decisions": [
+                "Sensenet CMS"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": "Sensenet CMS",
+                  "purpose": "Content management",
+                  "integration_with": [
+                    "ASP.Net Webforms",
+                    "Backbone.js"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "NOT_FOUND",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "NOT_FOUND"
+              }
+            },
+            {
+              "project_name": "FNAC Portugal Online Catalogues",
+              "project_description": "Single Page Applications for online product catalogues.",
+              "business_purpose": "E-commerce product browsing",
+              "technical_challenges": [
+                "SPA architecture"
+              ],
+              "architecture_decisions": [
+                "Node.js backend",
+                "SPA frontend"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": "Node.js",
+                  "purpose": "Backend API",
+                  "integration_with": [
+                    "Express",
+                    "SQL Server"
+                  ]
+                },
+                {
+                  "technology": "Backbone.js",
+                  "purpose": "Frontend SPA framework",
+                  "integration_with": [
+                    "JQuery",
+                    "Foundation"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "FNAC customers",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "Portugal"
+              }
+            },
+            {
+              "project_name": "iBrisa Mobile Apps",
+              "project_description": "Mobile applications for Windows Phone and iPad for Portuguese highway operator.",
+              "business_purpose": "Mobile services for highway users",
+              "technical_challenges": [
+                "Cross-platform mobile development"
+              ],
+              "architecture_decisions": [
+                "Native mobile apps"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": "Windows Phone SDK",
+                  "purpose": "Windows Phone app development",
+                  "integration_with": [
+                    ".Net",
+                    "JSON.Net"
+                  ]
+                },
+                {
+                  "technology": "MonoTouch",
+                  "purpose": "iPad app development",
+                  "integration_with": [
+                    ".Net"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "Highway users",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "Portugal"
+              }
+            },
+            {
+              "project_name": "Eurotech PCN-1001 Interface Library",
+              "project_description": "Library and UI for interfacing with automatic passenger counting hardware used in Lisbon Oceanarium.",
+              "business_purpose": "Visitor counting and analytics for exhibitions",
+              "technical_challenges": [
+                "Hardware interfacing"
+              ],
+              "architecture_decisions": [
+                "Custom hardware interface library"
+              ],
+              "technologies_with_context": [
+                {
+                  "technology": ".NET",
+                  "purpose": "Hardware interface development",
+                  "integration_with": [
+                    "ASP.Net WebForms"
+                  ]
+                }
+              ],
+              "scale_indicators": {
+                "users": "Lisbon Oceanarium",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "Lisbon"
+              }
+            }
+          ],
+          "responsibility_themes": {
+            "technical_depth": [
+              "Web applications development",
+              "Mobile apps development",
+              "CMS template design",
+              "UI design",
+              "RESTful API's design and implementation"
+            ],
+            "people_management": [
+              "Coaching and mentoring",
+              "Code review"
+            ],
+            "process_ownership": [],
+            "strategic_contributions": [
+              "Cross-team technical support"
+            ]
+          }
+        },
+        {
+          "start_date": "2008-06",
+          "end_date": "2011-03",
+          "job_title": "Senior Web Developer / Front-End Developer",
+          "company": "Freelance",
+          "client": "NOT_FOUND",
+          "keywords": [
+            "Freelance",
+            "Web Applications",
+            "UI/UX Design",
+            "SDLC",
+            "Requirements Gathering",
+            "Architecture Planning",
+            "WordPress",
+            "Joomla",
+            "Sensenet",
+            "API Integration",
+            "Responsive Design"
+          ],
+          "project_size": "SMALL",
+          "project_description": "Freelance web development offering full-service custom web application and website development. Provided end-to-end solutions including requirements gathering, architecture planning, design, development, testing, and maintenance. Specialized in responsive UI/UX design and CMS platform customization.",
+          "roles_responsibilities": "Design and development of custom web applications and websites tailored to client requirements, from initial concept through deployment. Full ownership of the software development lifecycle, including requirements gathering, architecture planning, coding, testing, and maintenance. Creation of responsive and user-friendly UI/UX designs aligned with modern usability standards and client branding guidelines. Integration of third-party APIs and services to extend application functionality. Development and customization of CMS platforms such as WordPress, Joomla, and Sensenet.",
+          "full_experience_text": "06/2008 – 03/2011; Portugal\nSenior Web Developer / Front-End Developer - Freelance\n● Design and development of custom web applications and websites tailored to client requirements, from initial concept through deployment.\n● Full ownership of the software development lifecycle, including requirements gathering, architecture planning, coding, testing, and maintenance.\n● Creation of responsive and user-friendly UI/UX designs aligned with modern usability standards and client branding guidelines.\n● Integration of third-party APIs and services to extend application functionality.\n● Development and customization of CMS platforms such as WordPress, Joomla, and Sensenet.",
+          "enhanced_context": {
+            "business_impact": "NOT_FOUND",
+            "team_context": {
+              "team_size": "Independent contractor",
+              "team_structure": "NOT_FOUND",
+              "reporting_structure": "NOT_FOUND"
+            },
+            "leadership_scope": "Full ownership of the software development lifecycle",
+            "technical_leadership_activities": [
+              "Architecture planning",
+              "Full SDLC ownership"
+            ],
+            "innovation_contributions": [
+              "Responsive and user-friendly UI/UX designs"
+            ],
+            "cross_functional_activities": []
+          },
+          "project_details_enriched": [],
+          "responsibility_themes": {
+            "technical_depth": [
+              "Design and development of custom web applications",
+              "UI/UX designs",
+              "CMS customization",
+              "API integration"
+            ],
+            "people_management": [],
+            "process_ownership": [
+              "Full ownership of the software development lifecycle",
+              "Requirements gathering",
+              "Architecture planning",
+              "Testing",
+              "Maintenance"
+            ],
+            "strategic_contributions": []
+          }
+        },
+        {
+          "start_date": "2006-06",
+          "end_date": "2008-05",
+          "job_title": "Front-End Developer",
+          "company": "ESRI Portugal GIS Solutions",
+          "client": "NOT_APPLICABLE",
+          "keywords": [
+            "CRM Development",
+            "UI Design",
+            "Mentoring",
+            "Coaching",
+            "GIS"
+          ],
+          "project_size": "SMALL",
+          "project_description": "Frontend development role at a GIS solutions company focused on developing internal operational CRM system, UI design, and mentoring new team members.",
+          "roles_responsibilities": "Develop the internal operational CRM. UI design. Mentoring and coaching new colleagues.",
+          "full_experience_text": "06/2006 – 05/2008; Portugal\nFront-End Developer – ESRI Portugal GIS Solutions\n● Develop the internal operational CRM.\n● UI design.\n● Mentoring and coaching new colleagues.",
+          "enhanced_context": {
+            "business_impact": "NOT_FOUND",
+            "team_context": {
+              "team_size": "Has colleagues to mentor",
+              "team_structure": "NOT_FOUND",
+              "reporting_structure": "NOT_FOUND"
+            },
+            "leadership_scope": "NOT_FOUND",
+            "technical_leadership_activities": [],
+            "innovation_contributions": [],
+            "cross_functional_activities": [
+              "Mentoring and coaching new colleagues"
+            ]
+          },
+          "project_details_enriched": [
+            {
+              "project_name": "Internal Operational CRM",
+              "project_description": "Internal CRM system for operational management.",
+              "business_purpose": "Internal operations management",
+              "technical_challenges": [],
+              "architecture_decisions": [],
+              "technologies_with_context": [],
+              "scale_indicators": {
+                "users": "Internal operations team",
+                "data_volume": "NOT_FOUND",
+                "transaction_volume": "NOT_FOUND",
+                "geographic_scope": "NOT_FOUND"
+              }
+            }
+          ],
+          "responsibility_themes": {
+            "technical_depth": [
+              "CRM development",
+              "UI design"
+            ],
+            "people_management": [
+              "Mentoring and coaching new colleagues"
+            ],
+            "process_ownership": [],
+            "strategic_contributions": []
+          }
+        }
+      ],
+      "training_certifications": [],
+      "professional_summary": {
+        "overview": "With over 20 years of experience in front-end development, he has built a solid track record across high-impact projects in the banking, pharmaceutical, and technology sectors. He is currently focused on the development of a custom low-code platform from the ground up, contributing to the full software lifecycle with a strong emphasis on scalability, integration, and performance. Throughout his career, he has worked on a wide range of web applications, including corporate portals, home-banking systems, CMS platforms, and mobile solutions. He has hands-on experience with modern JavaScript frameworks such as React and Vue.js, as well as backend technologies like Node.js and .NET. He has also worked with SQL Server, Elasticsearch, and testing tools such as Jest and Testing Library. Additionally, he has experience with PHP (Symfony), WordPress, and SharePoint, demonstrating flexibility across different ecosystems. He actively contributes to code quality through code reviews, provides mentoring to junior developers, and supports cross-functional teams with his broad technical knowledge. His approach consistently reflects a strong commitment to best practices in front-end architecture, UI/UX, and software delivery.",
+        "years_of_experience": 19,
+        "career_level": "LEAD",
+        "key_sectors": [
+          "Banking",
+          "Pharmaceutical",
+          "Technology",
+          "Education",
+          "Retail",
+          "Transportation"
+        ],
+        "professional_identity": "Frontend development specialist with technical leadership focus and commitment to best practices in architecture, UI/UX, and software delivery",
+        "core_expertise_narrative": "Specializes in modern JavaScript frameworks (React, Vue.js) with deep experience in frontend architecture and technical leadership. Demonstrates full-stack capabilities with backend technologies (Node.js, .NET, PHP) and strong emphasis on code quality, mentoring, and cross-functional collaboration. Consistently focused on scalability, integration, and performance optimization."
+      },
+      "soft_skills": {
+        "communication_skills": [
+          {
+            "skill_name": "Mentorship & Coaching",
+            "description": "Consistently providing guidance and education to junior developers and new colleagues",
+            "evidence": [
+              "Mentoring to junior developers",
+              "Coaching and mentoring of new colleagues",
+              "Coaching and mentoring",
+              "Mentoring and coaching new colleagues"
+            ],
+            "frequency": "CONSISTENT"
+          },
+          {
+            "skill_name": "Cross-Functional Collaboration",
+            "description": "Working effectively with diverse teams across different disciplines",
+            "evidence": [
+              "Supports cross-functional teams with his broad technical knowledge",
+              "Cross-team advisor on web and UI/UX",
+              "Cross-team technical support"
+            ],
+            "frequency": "CONSISTENT"
+          },
+          {
+            "skill_name": "Technical Presentation",
+            "description": "Explaining complex technical information through workshops and sessions",
+            "evidence": [
+              "Promote workshop sessions on several web related technologies and subjects"
+            ],
+            "frequency": "OCCASIONAL"
+          }
+        ],
+        "organizational_skills": [
+          {
+            "skill_name": "Project Management",
+            "description": "Managing full software development lifecycle from requirements to deployment",
+            "evidence": [
+              "Managing the full software development lifecycle (SDLC), from requirements gathering and architecture design to implementation, testing, and deployment",
+              "Full ownership of the software development lifecycle, including requirements gathering, architecture planning, coding, testing, and maintenance"
+            ],
+            "frequency": "CONSISTENT"
+          },
+          {
+            "skill_name": "Strategic Planning",
+            "description": "Focus on long-term goals including scalability, integration, and performance",
+            "evidence": [
+              "Full software lifecycle with a strong emphasis on scalability, integration, and performance",
+              "Overseen Multi-Platform Integration"
+            ],
+            "frequency": "CONSISTENT"
+          },
+          {
+            "skill_name": "Process Improvement",
+            "description": "Commitment to improving efficiency and standardizing development processes",
+            "evidence": [
+              "Building a fully customized low-code platform from the ground up to streamline internal processes and enable rapid application development",
+              "Cofidis Normalisation Framework - simplifying and uniformize the cross-team development"
+            ],
+            "frequency": "CONSISTENT"
+          }
+        ],
+        "leadership_skills": [
+          {
+            "skill_name": "Technical Leadership",
+            "description": "Leading development efforts and ensuring best practices in architecture and code quality",
+            "evidence": [
+              "Leading frontend development efforts while also acting as Tech Lead",
+              "Ensuring best practices in software architecture, code quality, and development workflows",
+              "Project's tech lead",
+              "Lead the teams responsible for the company's website and home-banking"
+            ],
+            "frequency": "CONSISTENT"
+          },
+          {
+            "skill_name": "Architecture Ownership",
+            "description": "Taking responsibility for frontend architecture and design decisions",
+            "evidence": [
+              "Responsible for the internal portal front-end architecture",
+              "Architecture design"
+            ],
+            "frequency": "CONSISTENT"
+          },
+          {
+            "skill_name": "Code Quality Oversight",
+            "description": "Ensuring high standards through code reviews and approvals",
+            "evidence": [
+              "Code review and PR approval",
+              "Actively contributes to code quality through code reviews"
+            ],
+            "frequency": "CONSISTENT"
+          }
+        ],
+        "interpersonal_skills": [
+          {
+            "skill_name": "Advisory Role",
+            "description": "Providing expert guidance to teams on technical matters",
+            "evidence": [
+              "Cross-team advisor on web and UI/UX"
+            ],
+            "frequency": "CONSISTENT"
+          },
+          {
+            "skill_name": "Technical Support",
+            "description": "Supporting teams with broad technical knowledge",
+            "evidence": [
+              "Cross-team technical support",
+              "Supports cross-functional teams with his broad technical knowledge"
+            ],
+            "frequency": "CONSISTENT"
+          }
+        ]
+      },
+      "career_analysis": {
+        "career_trajectory": "Steady progression from frontend developer to technical leadership positions. Started as frontend developer at ESRI Portugal, transitioned to freelance work building full SDLC ownership, then agency work at Mongoose Digital, followed by 7+ years at Cofidis leading teams and architecture, progressing to tech lead positions at A/B Smartly and Enable where currently building custom low-code platform.",
+        "specialization_areas": [
+          "Frontend Architecture",
+          "React Development",
+          "Technical Leadership",
+          "Low-code Platforms",
+          "Banking Systems",
+          "Design Systems"
+        ],
+        "recurring_responsibilities": [
+          {
+            "responsibility": "Code review and approval",
+            "frequency_across_roles": 4,
+            "evolution": "Started with basic code review at Mongoose Digital, evolved to team-wide PR approval at Cofidis and A/B Smartly, now encompasses architecture and quality standards as Tech Lead"
+          },
+          {
+            "responsibility": "Mentoring and coaching",
+            "frequency_across_roles": 5,
+            "evolution": "Consistent throughout career from early role at ESRI through current position, indicating sustained commitment to team development"
+          },
+          {
+            "responsibility": "Frontend architecture",
+            "frequency_across_roles": 3,
+            "evolution": "Grew from UI design to responsible for internal portal architecture at Cofidis, now leading full platform architecture at Enable"
+          },
+          {
+            "responsibility": "RESTful API design",
+            "frequency_across_roles": 3,
+            "evolution": "Progressed from implementation at Mongoose to design and mocking at Cofidis, demonstrating growth in backend integration expertise"
+          },
+          {
+            "responsibility": "Cross-team collaboration",
+            "frequency_across_roles": 3,
+            "evolution": "Expanded from technical support to formal advisory role on web and UI/UX, now overseeing multi-platform integration"
+          }
+        ],
+        "technical_evolution": "Started with basic frontend technologies and CMS platforms, progressively adopted modern JavaScript frameworks (Backbone.js → React → Vue.js), embraced TypeScript, expanded into full-stack with Node.js and .NET backend work, adopted microfrontends architecture, implemented comprehensive testing strategies (Jest, Testing Library, Selenium), and currently focusing on low-code platform development with emphasis on scalability and integration.",
+        "leadership_progression": "Began with peer mentoring at ESRI Portugal, gained full project ownership as freelancer, took on formal mentoring and code review responsibilities at Mongoose Digital, progressed to leading teams and owning frontend architecture at Cofidis with cross-team advisory role, became project tech lead at A/B Smartly, and currently serves as Tech Lead at Enable with end-to-end SDLC management responsibilities.",
+        "domain_expertise": [
+          "Financial Services/Banking",
+          "E-commerce",
+          "Education",
+          "Transportation",
+          "Ticketing Systems",
+          "Content Management"
+        ]
+      },
+      "technical_skills_enriched": {
+        "by_category": {
+          "frontend_frameworks": [
+            {
+              "technology": "React",
+              "proficiency_indicators": [
+                "Used across multiple projects",
+                "Design system development",
+                "Component libraries",
+                "Testing implementation",
+                "Long-term usage (10+ years)"
+              ],
+              "years_of_use": "10+ years",
+              "contexts_used": [
+                "Enable low-code platform",
+                "A/B Smartly platform",
+                "Cofidis portal and applications",
+                "Mongoose Digital projects"
+              ],
+              "depth_indicators": [
+                "Microfrontends architecture (Piral Portal)",
+                "Design system framework",
+                "Jest and React Testing Library",
+                "Component development patterns",
+                "Stencil.js web components"
+              ]
+            },
+            {
+              "technology": "Vue.js",
+              "proficiency_indicators": [
+                "Production usage",
+                "Testing implementation"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "Cofidis Website"
+              ],
+              "depth_indicators": [
+                "Vue Testing Library",
+                "TypeScript integration"
+              ]
+            },
+            {
+              "technology": "Backbone.js",
+              "proficiency_indicators": [
+                "Multiple projects",
+                "SPA development"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "Cofidis portal",
+                "Mongoose Digital projects",
+                "FNAC catalogues"
+              ],
+              "depth_indicators": []
+            },
+            {
+              "technology": "TypeScript",
+              "proficiency_indicators": [
+                "Used across all modern projects",
+                "Type-safe development"
+              ],
+              "years_of_use": "7+ years",
+              "contexts_used": [
+                "All Cofidis projects",
+                "Design system framework"
+              ],
+              "depth_indicators": [
+                "Integration with React and Vue.js",
+                "Type-safe API design"
+              ]
+            },
+            {
+              "technology": "JavaScript",
+              "proficiency_indicators": [
+                "20+ years experience",
+                "Deep expertise"
+              ],
+              "years_of_use": "20+ years",
+              "contexts_used": [
+                "All projects throughout career"
+              ],
+              "depth_indicators": [
+                "Modern ES6+",
+                "Framework expertise",
+                "SPA development"
+              ]
+            }
+          ],
+          "backend_technologies": [
+            {
+              "technology": "Node.js",
+              "proficiency_indicators": [
+                "API development",
+                "Multiple projects"
+              ],
+              "years_of_use": "10+ years",
+              "contexts_used": [
+                "Cofidis projects",
+                "FNAC catalogues",
+                "Marketing Headless CMS"
+              ],
+              "depth_indicators": [
+                "Express framework",
+                "RESTful API design",
+                "Integration with frontend frameworks"
+              ]
+            },
+            {
+              "technology": "ASP.Net",
+              "proficiency_indicators": [
+                "Multiple projects",
+                "Both MVC and WebForms"
+              ],
+              "years_of_use": "10+ years",
+              "contexts_used": [
+                "Cofidis portal and applications",
+                "Mongoose Digital projects"
+              ],
+              "depth_indicators": [
+                "WebApi 2",
+                "MVC 5",
+                "EntityFramework",
+                "API Gateway integration"
+              ]
+            },
+            {
+              "technology": "PHP",
+              "proficiency_indicators": [
+                "Listed in skills",
+                "Symfony experience"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "General web development"
+              ],
+              "depth_indicators": [
+                "Symfony framework"
+              ]
+            }
+          ],
+          "databases": [
+            {
+              "technology": "SQL Server",
+              "proficiency_indicators": [
+                "Used across most projects"
+              ],
+              "years_of_use": "15+ years",
+              "contexts_used": [
+                "Cofidis applications",
+                "Mongoose Digital projects",
+                "Various CMS platforms"
+              ],
+              "depth_indicators": [
+                "Integration with .NET",
+                "Database design"
+              ]
+            },
+            {
+              "technology": "ElasticSearch",
+              "proficiency_indicators": [
+                "Enterprise usage"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "Cofidis portal",
+                "Cofinet home-banking",
+                "Cofidis Website"
+              ],
+              "depth_indicators": [
+                "Search implementation",
+                "Data indexing"
+              ]
+            },
+            {
+              "technology": "MongoDB",
+              "proficiency_indicators": [
+                "Headless CMS usage"
+              ],
+              "years_of_use": "3+ years",
+              "contexts_used": [
+                "Marketing Headless CMS"
+              ],
+              "depth_indicators": []
+            },
+            {
+              "technology": "MySQL",
+              "proficiency_indicators": [
+                "Listed in skills"
+              ],
+              "years_of_use": "10+ years",
+              "contexts_used": [
+                "Various web projects"
+              ],
+              "depth_indicators": []
+            }
+          ],
+          "cloud_platforms": [
+            {
+              "technology": "Azure DevOps",
+              "proficiency_indicators": [
+                "Used across Cofidis projects"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "All Cofidis projects"
+              ],
+              "depth_indicators": [
+                "CI/CD pipelines",
+                "Version control"
+              ]
+            }
+          ],
+          "testing_tools": [
+            {
+              "technology": "Jest",
+              "proficiency_indicators": [
+                "Used across multiple React and Vue projects"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "Cofidis projects",
+                "Design system framework"
+              ],
+              "depth_indicators": [
+                "React Testing Library",
+                "Vue Testing Library",
+                "Unit testing",
+                "Component testing"
+              ]
+            },
+            {
+              "technology": "Selenium",
+              "proficiency_indicators": [
+                "End-to-end testing"
+              ],
+              "years_of_use": "3+ years",
+              "contexts_used": [
+                "Cofinet home-banking"
+              ],
+              "depth_indicators": [
+                "Automated testing"
+              ]
+            },
+            {
+              "technology": "Karma",
+              "proficiency_indicators": [
+                "Test runner"
+              ],
+              "years_of_use": "3+ years",
+              "contexts_used": [
+                "Cofidis projects"
+              ],
+              "depth_indicators": []
+            }
+          ],
+          "devops_cicd": [
+            {
+              "technology": "Git",
+              "proficiency_indicators": [
+                "Used across all modern projects"
+              ],
+              "years_of_use": "15+ years",
+              "contexts_used": [
+                "All projects from 2011 onwards"
+              ],
+              "depth_indicators": [
+                "Version control",
+                "PR workflows"
+              ]
+            },
+            {
+              "technology": "Azure DevOps",
+              "proficiency_indicators": [
+                "CI/CD implementation"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "Cofidis projects"
+              ],
+              "depth_indicators": [
+                "Pipeline management",
+                "Automated deployments"
+              ]
+            }
+          ],
+          "design_tools": [
+            {
+              "technology": "SASS/SCSS",
+              "proficiency_indicators": [
+                "Used across most frontend projects"
+              ],
+              "years_of_use": "10+ years",
+              "contexts_used": [
+                "Cofidis projects",
+                "Design system framework"
+              ],
+              "depth_indicators": [
+                "Component styling",
+                "Design systems"
+              ]
+            },
+            {
+              "technology": "Bootstrap",
+              "proficiency_indicators": [
+                "UI framework usage"
+              ],
+              "years_of_use": "10+ years",
+              "contexts_used": [
+                "Multiple projects",
+                "Design system framework"
+              ],
+              "depth_indicators": [
+                "Responsive design",
+                "Component library integration"
+              ]
+            },
+            {
+              "technology": "LESS",
+              "proficiency_indicators": [
+                "CSS preprocessing"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "Mongoose Digital projects"
+              ],
+              "depth_indicators": []
+            }
+          ],
+          "methodologies": [
+            {
+              "technology": "Microfrontends",
+              "proficiency_indicators": [
+                "Piral Portal implementation"
+              ],
+              "years_of_use": "3+ years",
+              "contexts_used": [
+                "Apolo Portal v2"
+              ],
+              "depth_indicators": [
+                "Piral Portal architecture",
+                "Module federation",
+                "Independent deployment"
+              ]
+            },
+            {
+              "technology": "Design Systems",
+              "proficiency_indicators": [
+                "Created evolving design system"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "Cofidis Normalisation Framework"
+              ],
+              "depth_indicators": [
+                "Component libraries",
+                "Style guides",
+                "Cross-team standardization"
+              ]
+            },
+            {
+              "technology": "SDLC Management",
+              "proficiency_indicators": [
+                "End-to-end ownership"
+              ],
+              "years_of_use": "15+ years",
+              "contexts_used": [
+                "Enable",
+                "Freelance work"
+              ],
+              "depth_indicators": [
+                "Requirements gathering",
+                "Architecture design",
+                "Testing",
+                "Deployment"
+              ]
+            },
+            {
+              "technology": "Agile",
+              "proficiency_indicators": [
+                "Frequent release cycles"
+              ],
+              "years_of_use": "5+ years",
+              "contexts_used": [
+                "A/B Smartly"
+              ],
+              "depth_indicators": []
+            }
+          ]
+        },
+        "technology_stack_patterns": [
+          {
+            "stack_name": "Modern React Enterprise Stack",
+            "technologies": [
+              "React",
+              "TypeScript",
+              "Jest",
+              "React Testing Library",
+              "SASS",
+              "Node.js",
+              "Azure DevOps",
+              "Git"
+            ],
+            "frequency": "CONSISTENT"
+          },
+          {
+            "stack_name": "ASP.Net Full Stack",
+            "technologies": [
+              "ASP.Net MVC",
+              "WebApi 2",
+              "React/Vue.js",
+              "TypeScript",
+              "SQL Server",
+              "ElasticSearch"
+            ],
+            "frequency": "CONSISTENT"
+          },
+          {
+            "stack_name": "Microfrontends Stack",
+            "technologies": [
+              "Piral Portal",
+              "React",
+              "TypeScript",
+              "KrakenD Api Gateway",
+              "RabbitMQ",
+              "ElasticSearch"
+            ],
+            "frequency": "OCCASIONAL"
+          }
+        ],
+        "technical_breadth_vs_depth": {
+          "breadth_score": "BROAD",
+          "depth_areas": [
+            "React ecosystem",
+            "Frontend architecture",
+            "Design systems",
+            "TypeScript development",
+            "Microfrontends",
+            "Full SDLC management"
+          ],
+          "full_stack_capability": "FULL_STACK"
+        }
+      },
+      "professional_development": {
+        "continuous_learning_evidence": [
+          "Progression through JavaScript frameworks (jQuery → Backbone.js → React → Vue.js)",
+          "Adoption of TypeScript across projects",
+          "Evolution from MVC to microfrontends architecture",
+          "Expanded from frontend-only to full-stack capabilities",
+          "Adoption of modern testing frameworks (Jest, Testing Library)",
+          "Low-code platform development"
+        ],
+        "technology_adoption_pattern": "PRAGMATIC",
+        "workshop_and_teaching": [
+          "Promote workshop sessions on several web related technologies and subjects"
+        ],
+        "community_involvement": [],
+        "thought_leadership_indicators": [
+          "Cross-team advisor on web and UI/UX",
+          "Responsible for the internal portal front-end architecture",
+          "Leading frontend development efforts while also acting as Tech Lead",
+          "Design system framework creation"
+        ]
+      },
+      "work_style_analysis": {
+        "collaboration_style": "Strong collaborative approach with emphasis on cross-team support, advisory roles, and knowledge sharing through workshops and mentoring. Consistently supports cross-functional teams with broad technical knowledge.",
+        "technical_approach": "Strong commitment to best practices in front-end architecture, UI/UX, and software delivery. Emphasis on code quality through reviews, scalability, integration, and performance optimization.",
+        "problem_solving_approach": "Focus on systematic, end-to-end solutions with emphasis on architecture design, full SDLC management, and creating reusable frameworks (design systems, low-code platforms) to solve recurring problems.",
+        "quality_focus_areas": [
+          "Code review",
+          "Best practices",
+          "Testing (Jest, Selenium)",
+          "Architecture design",
+          "Performance optimization",
+          "Design systems"
+        ],
+        "preferred_role_types": [
+          "Technical leadership",
+          "Frontend architecture",
+          "Team mentoring",
+          "Cross-team advisory",
+          "Full SDLC ownership"
+        ]
+      },
+      "document_metadata": {
+        "cv_format": "Europass",
+        "document_quality": "HIGH",
+        "key_sections_present": [
+          "Professional Summary",
+          "Work Experience",
+          "Education",
+          "Language Skills",
+          "Digital Skills",
+          "Communication and Organisational Skills"
+        ],
+        "visual_elements": [
+          "Europass logo",
+          "Structured layout",
+          "Section headers"
+        ],
+        "professional_polish_level": "HIGH"
+      },
+      "narrative_elements": {
+        "opening_statement": "With over 20 years of experience in front-end development, he has built a solid track record across high-impact projects in the banking, pharmaceutical, and technology sectors. He is currently focused on the development of a custom low-code platform from the ground up, contributing to the full software lifecycle with a strong emphasis on scalability, integration, and performance. Throughout his career, he has worked on a wide range of web applications, including corporate portals, home-banking systems, CMS platforms, and mobile solutions. He has hands-on experience with modern JavaScript frameworks such as React and Vue.js, as well as backend technologies like Node.js and .NET. He has also worked with SQL Server, Elasticsearch, and testing tools such as Jest and Testing Library. Additionally, he has experience with PHP (Symfony), WordPress, and SharePoint, demonstrating flexibility across different ecosystems. He actively contributes to code quality through code reviews, provides mentoring to junior developers, and supports cross-functional teams with his broad technical knowledge. His approach consistently reflects a strong commitment to best practices in front-end architecture, UI/UX, and software delivery.",
+        "career_highlights": [
+          "Over 20 years of experience in front-end development",
+          "Built solid track record across high-impact projects in banking, pharmaceutical, and technology sectors",
+          "Currently developing custom low-code platform from the ground up",
+          "Led teams for 7+ years at Cofidis responsible for website and home-banking",
+          "Created Cofidis Normalisation Framework design system",
+          "Implemented microfrontends architecture (Piral Portal)",
+          "Tech Lead positions at A/B Smartly and Enable",
+          "Consistent mentoring throughout career"
+        ],
+        "value_propositions": [
+          "20+ years frontend development expertise",
+          "Technical leadership and architecture ownership",
+          "Full-stack capabilities with modern frameworks",
+          "Strong commitment to best practices and code quality",
+          "Cross-functional collaboration and advisory expertise",
+          "Design system and architecture experience",
+          "Mentoring and team development focus",
+          "Full SDLC management capability"
+        ],
+        "descriptive_phrases": [
+          "solid track record",
+          "hands-on experience",
+          "strong emphasis on scalability, integration, and performance",
+          "actively contributes to code quality",
+          "broad technical knowledge",
+          "strong commitment to best practices",
+          "flexibility across different ecosystems"
+        ],
+        "emphasis_patterns": [
+          "Best practices in frontend architecture, UI/UX, and software delivery",
+          "Code quality through reviews",
+          "Mentoring to junior developers",
+          "Cross-functional team support",
+          "Scalability, integration, and performance",
+          "Technical leadership",
+          "Full SDLC ownership",
+          "Modern JavaScript frameworks expertise"
+        ]
+      }
+    },
+    "usage": null,
+    "presetFile": "cv-A000002-frontend-web-developer.json"
+  }
+}

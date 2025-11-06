@@ -71,7 +71,7 @@ class PromptService {
   }
 
   /**
-   * Create prompt
+   * Create prompt (or overwrite if exists)
    * Required: userId, mnemonic, text
    * Optional: title, tags (string[])
    */
@@ -83,19 +83,28 @@ class PromptService {
     if (!t) throw new Error("text required");
 
     const list = await this._load(userId);
-    if (list.some(p => p.mnemonic === m)) {
-      throw new Error("mnemonic already exists");
-    }
+    const existingIdx = list.findIndex(p => p.mnemonic === m);
+    
     const now = new Date().toISOString();
     const record = {
       mnemonic: m,
       title: this._normStr(title),
       text: t,
       tags: Array.isArray(tags) ? tags.map(x => this._normStr(x)).filter(Boolean) : [],
-      createdAt: now,
+      createdAt: existingIdx >= 0 ? list[existingIdx].createdAt : now, // Keep original creation date
       updatedAt: now
     };
-    list.unshift(record);
+    
+    if (existingIdx >= 0) {
+      // Overwrite existing
+      list[existingIdx] = record;
+      console.log(`♻️  Overwriting existing prompt: ${m}`);
+    } else {
+      // Create new
+      list.unshift(record);
+      console.log(`✨ Creating new prompt: ${m}`);
+    }
+    
     await this._save(userId, list);
     return record;
   }

@@ -323,6 +323,36 @@ router.get('/download/:cvId', async (req, res) => {
   }
 });
 
+// GET /api/cvs/view/:cvId - View CV in browser
+router.get('/view/:cvId', async (req, res) => {
+  try {
+    const { cvId } = req.params;
+    const { userId } = req.query;
+
+    if (!userId) {
+      return res.status(400).json({ success: false, error: 'User ID is required' });
+    }
+
+    const cv = await cvService.getCVById(cvId, userId);
+    if (!cv) return res.status(404).json({ success: false, error: 'CV not found' });
+
+    const filePath = path.resolve(cv.filePath);
+    try {
+      await fsp.access(filePath);
+      
+      // Set content-disposition to inline for browser viewing
+      res.setHeader('Content-Disposition', `inline; filename="${cv.originalName || cv.filename}"`);
+      res.setHeader('Content-Type', 'application/pdf');
+      res.sendFile(filePath);
+    } catch {
+      res.status(404).json({ success: false, error: 'File not found on disk' });
+    }
+  } catch (error) {
+    console.error('View CV error:', error);
+    res.status(500).json({ success: false, error: 'Failed to view CV' });
+  }
+});
+
 /* -------------------------------- reset-all -------------------------------- */
 
 // POST /api/cvs/reset-all - Reset all CVs to uploaded status
@@ -366,6 +396,78 @@ router.use((error, req, res, next) => {
     return res.status(400).json({ success: false, error: error.message });
   }
   next(error);
+});
+
+// Add to existing routes/cvs.js
+
+/* ------------------------------ PARSING ENDPOINTS ------------------------------ */
+
+// POST /api/cvs/parse/stats - Get parsing statistics before starting
+router.post('/parse/stats', async (req, res) => {
+  try {
+    const { userId, parsingType } = req.body;
+
+    if (!userId) {
+      return res.status(400).json({ success: false, error: 'userId required' });
+    }
+
+    if (!parsingType) {
+      return res.status(400).json({ success: false, error: 'parsingType required' });
+    }
+
+    const validTypes = ['initial-all', 'initial-onlynew', 'detailed-all', 'detailed-onlynew'];
+    if (!validTypes.includes(parsingType)) {
+      return res.status(400).json({ 
+        success: false, 
+        error: `Invalid parsingType. Must be one of: ${validTypes.join(', ')}` 
+      });
+    }
+
+    const stats = await cvService.getParsingStats(userId, parsingType);
+
+    res.json({ success: true, data: stats });
+  } catch (error) {
+    console.error('Get parsing stats error:', error);
+    res.status(500).json({ success: false, error: error.message || 'Failed to get parsing stats' });
+  }
+});
+
+// POST /api/cvs/parse - Start batch CV parsing
+router.post('/parse', async (req, res) => {
+  try {
+    const { userId, parsingType } = req.body;
+
+    if (!userId) {
+      return res.status(400).json({ success: false, error: 'userId required' });
+    }
+
+    if (!parsingType) {
+      return res.status(400).json({ success: false, error: 'parsingType required' });
+    }
+
+    const validTypes = ['initial-all', 'initial-onlynew', 'detailed-all', 'detailed-onlynew'];
+    if (!validTypes.includes(parsingType)) {
+      return res.status(400).json({ 
+        success: false, 
+        error: `Invalid parsingType. Must be one of: ${validTypes.join(', ')}` 
+      });
+    }
+
+    // Start parsing (async, returns immediately)
+    const result = await cvService.parseCVsBatch(userId, parsingType);
+
+    res.json({ 
+      success: true, 
+      data: {
+        message: result.message,
+        totalCVs: result.totalCVs,
+        jobId: `parse-${Date.now()}` // Simple job ID for frontend reference
+      }
+    });
+  } catch (error) {
+    console.error('Start parsing error:', error);
+    res.status(500).json({ success: false, error: error.message || 'Failed to start parsing' });
+  }
 });
 
 module.exports = router;

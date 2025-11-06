@@ -1,0 +1,13 @@
+{
+  "is_cv": "Yes",
+  "confidence_level": 100,
+  "classification_reasoning": "This document clearly exhibits all characteristics of a comprehensive curriculum vitae, including detailed work history spanning approximately 20 years, structured education section, language skills assessment using the Common European Framework, digital skills inventory, and communication and organizational skills sections. The document follows the Europass CV format with standardized sections and professional layout.",
+  "cv_language_code": "eng",
+  "candidate_full_name": "NOT_FOUND",
+  "candidate_id": "A000006",
+  "candidate_main_profile": "Front-End Web Developer",
+  "current_employer": "Neobrain",
+  "candidate_nationality": "PT",
+  "country_of_residence": "PT",
+  "cv_format": "EUROPASS"
+}

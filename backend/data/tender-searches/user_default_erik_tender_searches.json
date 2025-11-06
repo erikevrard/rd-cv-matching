@@ -1,5 +1,232 @@
 [
   {
+    "mnemonic": "UDEF_PROJ",
+    "userId": "user_default_erik",
+    "tenderId": "Prince2",
+    "seniority": "Undefined",
+    "profiles": [
+      {
+        "title": "Project manager",
+        "description": "PRince 2 experience",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "Prince2"
+    ],
+    "active": true,
+    "createdAt": "2025-10-13T14:20:13.238Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
+    "mnemonic": "SEN_PROG",
+    "userId": "user_default_erik",
+    "tenderId": "Drupal Developer",
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "Programme Manager",
+        "description": "Building a new website for www.testing.com",
+        "natureOfTasks": [
+          "Develop the website"
+        ],
+        "knowledgeAndSkills": [
+          "JS",
+          "React",
+          "Drupal"
+        ]
+      }
+    ],
+    "requestedServices": [
+      "Web Development",
+      "Testing",
+      "DevOps",
+      "Support"
+    ],
+    "active": false,
+    "createdAt": "2025-10-12T09:32:04.254Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
+    "mnemonic": "LEAD_BACK",
+    "userId": "user_default_erik",
+    "tenderId": "XYZ",
+    "seniority": "Lead",
+    "profiles": [
+      {
+        "title": "Backend Web Developer",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "a",
+      "b"
+    ],
+    "active": false,
+    "createdAt": "2025-10-12T09:31:33.712Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
+    "mnemonic": "LEAD_ARCH",
+    "userId": "user_default_erik",
+    "tenderId": "XYZ",
+    "seniority": "Lead",
+    "profiles": [
+      {
+        "title": "Architect",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "a",
+      "b"
+    ],
+    "active": false,
+    "createdAt": "2025-10-12T09:31:18.313Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
+    "mnemonic": "MANA_ARCH",
+    "userId": "user_default_erik",
+    "tenderId": "XYZ",
+    "seniority": "Manager",
+    "profiles": [
+      {
+        "title": "Architect",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "a",
+      "b"
+    ],
+    "active": false,
+    "createdAt": "2025-10-12T09:30:48.752Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
+    "mnemonic": "PRO_ARCH",
+    "userId": "user_default_erik",
+    "tenderId": "XYZ",
+    "seniority": "Proficient",
+    "profiles": [
+      {
+        "title": "Architect",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "a",
+      "b"
+    ],
+    "active": false,
+    "createdAt": "2025-10-12T09:30:23.638Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
+    "mnemonic": "LEA_ARCH",
+    "userId": "user_default_erik",
+    "tenderId": "XYZ",
+    "seniority": "Lead",
+    "profiles": [
+      {
+        "title": "Architect",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "a",
+      "b"
+    ],
+    "active": false,
+    "createdAt": "2025-10-12T01:33:02.512Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
+    "mnemonic": "JUN_PROG2",
+    "userId": "user_default_erik",
+    "tenderId": "abc",
+    "seniority": "Junior",
+    "profiles": [
+      {
+        "title": "Programme mngr",
+        "description": "abc",
+        "natureOfTasks": [
+          "dfg"
+        ],
+        "knowledgeAndSkills": [
+          "r,u,o"
+        ]
+      }
+    ],
+    "requestedServices": [
+      "programme policy writinh"
+    ],
+    "active": false,
+    "createdAt": "2025-10-12T01:31:51.292Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
+    "mnemonic": "JUN_PROG",
+    "userId": "user_default_erik",
+    "tenderId": "abc",
+    "seniority": "Junior",
+    "profiles": [
+      {
+        "title": "Programme mngr",
+        "description": "",
+        "natureOfTasks": [],
+        "knowledgeAndSkills": []
+      }
+    ],
+    "requestedServices": [
+      "ux ressearch"
+    ],
+    "active": false,
+    "createdAt": "2025-10-08T04:39:22.389Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
+    "mnemonic": "SEN_ERIK",
+    "userId": "user_default_erik",
+    "tenderId": "Drupal Developer",
+    "seniority": "Senior",
+    "profiles": [
+      {
+        "title": "erik@evrard.net",
+        "description": "Building a new website for www.testing.com",
+        "natureOfTasks": [
+          "Develop the website"
+        ],
+        "knowledgeAndSkills": [
+          "JS",
+          "React",
+          "Drupal"
+        ]
+      }
+    ],
+    "requestedServices": [
+      "Web Development",
+      "Testing",
+      "DevOps",
+      "Support"
+    ],
+    "active": false,
+    "createdAt": "2025-10-08T04:05:08.623Z",
+    "updatedAt": "2025-10-16T13:15:15.710Z"
+  },
+  {
     "mnemonic": "SEN_BACK8",
     "userId": "user_default_erik",
     "tenderId": null,
@@ -18,7 +245,7 @@
     ],
     "active": false,
     "createdAt": "2025-10-06T15:30:09.581Z",
-    "updatedAt": "2025-10-06T15:30:09.581Z"
+    "updatedAt": "2025-10-16T13:15:15.710Z"
   },
   {
     "mnemonic": "SEN_BACK7",
@@ -39,28 +266,7 @@
     ],
     "active": false,
     "createdAt": "2025-10-06T15:30:08.072Z",
-    "updatedAt": "2025-10-06T15:30:08.072Z"
-  },
-  {
-    "mnemonic": "SEN_BACK6",
-    "userId": "user_default_erik",
-    "tenderId": null,
-    "seniority": "Senior",
-    "profiles": [
-      {
-        "title": "Backend Developer",
-        "description": "",
-        "natureOfTasks": [],
-        "knowledgeAndSkills": []
-      }
-    ],
-    "requestedServices": [
-      "API",
-      "DB"
-    ],
-    "active": false,
-    "createdAt": "2025-10-06T15:30:07.161Z",
-    "updatedAt": "2025-10-06T15:30:07.161Z"
+    "updatedAt": "2025-10-16T13:15:15.710Z"
   },
   {
     "mnemonic": "SEN_BACK5",
@@ -81,7 +287,7 @@
     ],
     "active": false,
     "createdAt": "2025-10-06T15:30:06.303Z",
-    "updatedAt": "2025-10-06T15:30:06.303Z"
+    "updatedAt": "2025-10-16T13:15:15.710Z"
   },
   {
     "mnemonic": "SEN_BACK4",
@@ -102,7 +308,7 @@
     ],
     "active": false,
     "createdAt": "2025-10-06T15:30:05.655Z",
-    "updatedAt": "2025-10-06T15:30:05.655Z"
+    "updatedAt": "2025-10-16T13:15:15.710Z"
   },
   {
     "mnemonic": "SEN_BACK3",
@@ -123,7 +329,7 @@
     ],
     "active": false,
     "createdAt": "2025-10-06T15:30:04.988Z",
-    "updatedAt": "2025-10-06T15:30:04.988Z"
+    "updatedAt": "2025-10-16T13:15:15.710Z"
   },
   {
     "mnemonic": "SEN_BACK2",
@@ -144,7 +350,7 @@
     ],
     "active": false,
     "createdAt": "2025-10-06T15:30:04.073Z",
-    "updatedAt": "2025-10-06T15:30:04.073Z"
+    "updatedAt": "2025-10-16T13:15:15.710Z"
   },
   {
     "mnemonic": "SEN_BACK",
@@ -165,6 +371,6 @@
     ],
     "active": false,
     "createdAt": "2025-10-06T15:30:03.062Z",
-    "updatedAt": "2025-10-06T15:30:03.062Z"
+    "updatedAt": "2025-10-16T13:15:15.710Z"
   }
 ]

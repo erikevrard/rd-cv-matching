@@ -1,0 +1,67 @@
+{
+  "userId": "user_default_erik",
+  "total": 6,
+  "lastUpdated": "2025-10-19T20:35:27.571Z",
+  "cvs": [
+    {
+      "id": "26cb72be-ba5d-4b7b-8c89-1ddcdc4871de",
+      "filename": "cv-A000003-backend-web-developer.pdf",
+      "status": "error",
+      "parsingState": "detailed",
+      "uploadedAt": "2025-10-12T01:37:10.573Z",
+      "processedAt": "2025-10-12T21:28:57.762Z",
+      "candidateName": "NOT_FOUND",
+      "profile": "Back-End Web Developer"
+    },
+    {
+      "id": "2e722ab7-666c-4208-8794-e31d63aac692",
+      "filename": "cv-A000002-frontend-web-developer-.pdf",
+      "status": "error",
+      "parsingState": "detailed",
+      "uploadedAt": "2025-10-12T01:37:10.569Z",
+      "processedAt": "2025-10-12T21:29:17.792Z",
+      "candidateName": "NOT_FOUND",
+      "profile": "Front-End Web Developer"
+    },
+    {
+      "id": "52429f69-b3b4-4d71-8399-827074a71415",
+      "filename": "cv-A000001-contract-manager.pdf",
+      "status": "error",
+      "parsingState": "detailed",
+      "uploadedAt": "2025-10-12T01:37:10.564Z",
+      "processedAt": "2025-10-12T21:29:37.819Z",
+      "candidateName": "John Johnson",
+      "profile": "Data Scientist"
+    },
+    {
+      "id": "69e50de2-5e83-43e6-a5d9-7e7de2f0682a",
+      "filename": "cv-A000005-data-protection-specialist.pdf",
+      "status": "error",
+      "parsingState": "detailed",
+      "uploadedAt": "2025-10-12T01:37:10.586Z",
+      "processedAt": "2025-10-12T21:29:57.835Z",
+      "candidateName": "Michael Garcia",
+      "profile": "Product Manager"
+    },
+    {
+      "id": "8854bfaf-f9ca-4fb1-bbf6-de04eb375882",
+      "filename": "cv-A000004-data-business-analyst.pdf",
+      "status": "error",
+      "parsingState": "detailed",
+      "uploadedAt": "2025-10-12T01:37:10.577Z",
+      "processedAt": "2025-10-12T21:30:18.112Z",
+      "candidateName": "John Brown",
+      "profile": "Data Scientist"
+    },
+    {
+      "id": "b49ce09d-d726-41be-b94d-af0cef172534",
+      "filename": "cv-A000007-graphic_designer.pdf",
+      "status": "error",
+      "parsingState": "initial",
+      "uploadedAt": "2025-10-13T04:46:06.984Z",
+      "processedAt": "2025-10-13T04:46:27.813Z",
+      "candidateName": "Charlotte Dooms",
+      "profile": "Graphic Designer"
+    }
+  ]
+}

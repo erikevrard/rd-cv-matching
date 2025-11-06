@@ -1,0 +1,821 @@
+/* ============================================================================
+   MATCHING INTERFACE STYLES - Clean & Professional v3.0
+   Matches CV Pool card aesthetic with light, readable design
+   ============================================================================ */
+
+/* Matching Container */
+.matching-container {
+    padding: 0;
+    background: var(--background, #f8fafc);
+}
+
+.matching-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    margin: 24px;
+}
+
+.matching-empty-state .empty-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    opacity: 0.5;
+}
+
+.matching-empty-state h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 12px;
+}
+
+.matching-empty-state p {
+    font-size: 16px;
+    color: #64748b;
+    margin-bottom: 24px;
+}
+
+/* ============================================================================
+   MATCHING HEADER - Light & Clean
+   ============================================================================ */
+
+.matching-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 24px;
+    padding: 24px 24px 20px 24px;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.matching-info h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+}
+
+.matching-subtitle {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+.matching-subtitle strong {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.cv-count {
+    display: inline-block;
+    margin-left: 12px;
+    padding: 4px 12px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.matching-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* ============================================================================
+   VIEW TOGGLE - Subtle & Modern
+   ============================================================================ */
+
+.view-toggle {
+    display: flex;
+    gap: 0;
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+    color: #1e293b;
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.toggle-btn.active {
+    background: white;
+    color: #1e293b;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ============================================================================
+   TABLE VIEW - Clean White Background
+   ============================================================================ */
+
+.table-container {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    margin: 0 24px 24px 24px;
+}
+
+.matching-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.matching-table thead {
+    background: #f8fafc;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.matching-table th {
+    padding: 16px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #475569;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.matching-table th.text-center {
+    text-align: center;
+}
+
+.matching-table th:hover {
+    background: #f1f5f9;
+}
+
+.sort-icon {
+    margin-left: 4px;
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.sort-icon.active {
+    color: #3b82f6;
+}
+
+.matching-table tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.matching-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.matching-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.matching-table td {
+    padding: 16px 12px;
+    color: #475569;
+}
+
+/* Cell Styles */
+.cell-name {
+    max-width: 200px;
+}
+
+.name-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.name-cell strong {
+    color: #1e293b;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.cv-id {
+    font-size: 11px;
+    color: #94a3b8;
+    font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+}
+
+.nationality-cell {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.eu-badge {
+    font-size: 16px;
+}
+
+.empty-cell {
+    text-align: center;
+    padding: 48px 20px;
+    color: #94a3b8;
+}
+
+/* ============================================================================
+   FIT VISUALIZATION - Minimalist Progress Bars
+   ============================================================================ */
+
+.fit-cell {
+    text-align: center;
+    min-width: 110px;
+}
+
+.fit-bar-container {
+    position: relative;
+    width: 100%;
+    height: 32px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fit-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 6px;
+}
+
+/* Simplified color scheme - only 3 levels */
+.fit-cell.fit-high .fit-bar {
+    background: #10b981; /* Green for 80%+ */
+}
+
+.fit-cell.fit-medium .fit-bar {
+    background: #f59e0b; /* Amber for 60-79% */
+}
+
+.fit-cell.fit-low .fit-bar,
+.fit-cell.fit-very-low .fit-bar {
+    background: #94a3b8; /* Gray for <60% */
+}
+
+.fit-value {
+    position: relative;
+    z-index: 1;
+    font-weight: 600;
+    font-size: 13px;
+    color: #1e293b;
+}
+
+/* Overall Score - Prominent but Clean */
+.fit-cell.overall {
+    min-width: 90px;
+}
+
+.overall-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    min-width: 60px;
+    text-align: center;
+}
+
+.fit-high .score-badge {
+    background: #10b981;
+}
+
+.fit-medium .score-badge {
+    background: #f59e0b;
+}
+
+.fit-low .score-badge,
+.fit-very-low .score-badge {
+    background: #94a3b8;
+}
+
+/* ============================================================================
+   CHART VIEW - Light Background
+   ============================================================================ */
+
+.chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    margin: 0 24px 24px 24px;
+}
+
+.chart-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.chart-info {
+    font-size: 14px;
+    color: #64748b;
+}
+
+.chart-info strong {
+    color: #1e293b;
+}
+
+/* Chart Legend - Minimal & Clean */
+.chart-legend {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    background: #f8fafc;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.legend-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.legend-title {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1e293b;
+}
+
+.legend-items {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #475569;
+}
+
+.legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.legend-dot.lang-a {
+    background: #ef4444;
+}
+
+.legend-dot.lang-b {
+    background: #f59e0b;
+}
+
+.legend-dot.lang-c {
+    background: #10b981;
+}
+
+.legend-dot.lang-none {
+    background: transparent;
+    border: 2px solid #cbd5e1;
+}
+
+.legend-dot.size-1 {
+    width: 10px;
+    height: 10px;
+    background: #64748b;
+}
+
+.legend-dot.size-2 {
+    width: 16px;
+    height: 16px;
+    background: #64748b;
+}
+
+/* ============================================================================
+   SCATTER PLOT - Clean Grid
+   ============================================================================ */
+
+.scatter-chart {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    background: white;
+}
+
+.chart-svg {
+    display: block;
+}
+
+.chart-svg line {
+    stroke: #e2e8f0;
+}
+
+.chart-svg text {
+    fill: #94a3b8;
+    font-size: 11px;
+}
+
+.dots-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.chart-dot {
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    pointer-events: all;
+    transform: translate(-50%, -50%);
+}
+
+.chart-dot.size-1 {
+    width: 12px;
+    height: 12px;
+}
+
+.chart-dot.size-2 {
+    width: 18px;
+    height: 18px;
+}
+
+.chart-dot.lang-none {
+    border: 2px solid #cbd5e1;
+    background: white !important;
+}
+
+.chart-dot:hover {
+    transform: translate(-50%, -50%) scale(1.4);
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ============================================================================
+   DOT TOOLTIP - Professional & Readable
+   ============================================================================ */
+
+.dot-tooltip {
+    position: fixed;
+    z-index: 10000;
+    background: #1e293b;
+    color: white;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    font-size: 13px;
+    min-width: 280px;
+    pointer-events: none;
+    animation: tooltipFadeIn 0.2s ease;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tooltip-header {
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 10px 10px 0 0;
+}
+
+.tooltip-body {
+    padding: 14px 18px;
+}
+
+.tooltip-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+}
+
+.tooltip-row span {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+}
+
+.tooltip-row strong {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.tooltip-row.highlight {
+    padding-top: 8px;
+    font-size: 14px;
+}
+
+.tooltip-row.highlight strong {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.tooltip-body hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    margin: 8px 0;
+}
+
+/* Color classes for tooltip fit values */
+.tooltip-row .fit-high {
+    color: #10b981;
+}
+
+.tooltip-row .fit-medium {
+    color: #fbbf24;
+}
+
+.tooltip-row .fit-low,
+.tooltip-row .fit-very-low {
+    color: #cbd5e1;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 1200px) {
+    .matching-table {
+        font-size: 13px;
+    }
+    
+    .matching-table th,
+    .matching-table td {
+        padding: 12px 8px;
+    }
+
+    .fit-cell {
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .matching-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .matching-controls {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .view-toggle {
+        width: 100%;
+    }
+    
+    .toggle-btn {
+        flex: 1;
+        justify-content: center;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+        margin: 0 12px 12px 12px;
+    }
+    
+    .matching-table {
+        min-width: 900px;
+    }
+    
+    .chart-legend {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .legend-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .scatter-chart {
+        min-height: 500px;
+    }
+
+    .chart-svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .chart-container {
+        margin: 0 12px 12px 12px;
+    }
+}
+
+/* ============================================================================
+   DARK MODE SUPPORT (Optional - matches your theme toggle)
+   ============================================================================ */
+
+[data-theme="dark"] .matching-container {
+    background: #0f172a;
+}
+
+[data-theme="dark"] .matching-header,
+[data-theme="dark"] .table-container,
+[data-theme="dark"] .chart-container {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+[data-theme="dark"] .matching-table thead {
+    background: #334155;
+}
+
+[data-theme="dark"] .matching-table th {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .matching-table tbody tr {
+    border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .matching-table tbody tr:hover {
+    background: #334155;
+}
+
+[data-theme="dark"] .matching-table td {
+    color: #cbd5e1;
+}
+
+[data-theme="dark"] .name-cell strong {
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .fit-bar-container {
+    background: #334155;
+}
+
+[data-theme="dark"] .chart-legend {
+    background: #334155;
+}
+
+[data-theme="dark"] .chart-dot.lang-none {
+    background: #1e293b !important;
+}
+
+[data-theme="dark"] .scatter-chart {
+    background: #1e293b;
+}
+
+[data-theme="dark"] .chart-svg line {
+    stroke: #334155;
+}
+
+[data-theme="dark"] .chart-svg text {
+    fill: #64748b;
+}
+
+/* When showing ID only (no name available) */
+.cv-id-only {
+    font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+    font-size: 13px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.profile-cell {
+    font-size: 14px;
+    color: #475569;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .cv-id-only {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .profile-cell {
+    color: #cbd5e1;
+}
+
+/* Add this to the legend dots section */
+
+.legend-dot.lang-native {
+    background: #8b5cf6; /* Purple for native */
+}
+
+/* Add this to the chart dots section */
+
+.chart-dot.lang-native {
+    background: #8b5cf6 !important;
+    border: 2px solid #6d28d9;
+}
+
+/* ============================================================================
+   CHART DOT LABELS - Permanent Name Display
+   ============================================================================ */
+
+.chart-dot-label {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 500;
+    color: #475569;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2px 6px;
+    border-radius: 4px;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    transform: translateY(-50%);
+    z-index: 5;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .chart-dot-label {
+    background: rgba(30, 41, 59, 0.95);
+    color: #cbd5e1;
+    border-color: #334155;
+}
+
+/* Fade labels on chart hover to reduce clutter */
+.scatter-chart:hover .chart-dot-label {
+    opacity: 0.3;
+}
+
+/* Highlight label when hovering its dot */
+.chart-dot:hover + .chart-dot-label {
+    opacity: 1 !important;
+    font-weight: 600;
+    color: #1e293b;
+    border-color: #3b82f6;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .chart-dot:hover + .chart-dot-label {
+    color: #f8fafc;
+    background: #1e293b;
+    border-color: #60a5fa;
+}
+
+/* Make dots slightly more prominent */
+.chart-dot {
+    z-index: 10;
+}
+
+.chart-dot:hover {
+    z-index: 20;
+}

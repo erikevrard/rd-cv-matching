@@ -137,10 +137,26 @@ class AuthService {
   async authenticateUser({ email, password }) {
     await this.initializeUsersFile();
     const users = await this.loadUsers();
+
+    console.log('=== LOGIN ATTEMPT ===');
+    console.log('Email received:', email);
+    console.log('Password received:', password);
+    console.log('Total users:', users.length);
+
     const user = users.find((u) => u.email.toLowerCase() === String(email || "").toLowerCase());
+
+    console.log('User found:', !!user);
+    if (user) {
+        console.log('User email:', user.email);
+        console.log('User hash (first 20 chars):', user.passwordHash?.substring(0, 20));
+    }
+
     if (!user) return { success: false, error: "Invalid credentials" };
 
     const match = await bcrypt.compare(String(password || ""), user.passwordHash);
+
+    console.log('Password match:', match);
+
     if (!match) return { success: false, error: "Invalid credentials" };
 
     if (!user.active) return { success: false, error: "User is inactive" };

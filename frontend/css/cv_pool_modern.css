@@ -1,0 +1,501 @@
+/* Modern CV Pool Styles - Professional & Clean Design */
+
+/* ============================================================================
+   CV LIST ITEM - Modern Card Design
+   ============================================================================ */
+
+.cv-item {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.cv-item:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+    transform: translateY(-1px);
+}
+
+.cv-item.selected {
+    border-color: #3b82f6;
+    background: #f8faff;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+/* ============================================================================
+   STATUS ICONS - Modern SVG-Based
+   ============================================================================ */
+
+.cv-status-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    font-size: 20px;
+}
+
+/* Uploaded/Pending State */
+.cv-item[data-status="uploaded"] .cv-status-icon {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    color: #64748b;
+}
+
+/* Processing State */
+.cv-item[data-status="processing"] .cv-status-icon,
+.cv-item[data-status="parsing_initial"] .cv-status-icon,
+.cv-item[data-status="parsing_detailed"] .cv-status-icon {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #2563eb;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Processed State */
+.cv-item[data-status="processed"] .cv-status-icon {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #059669;
+}
+
+/* Error State */
+.cv-item[data-status="error"] .cv-status-icon {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #dc2626;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+/* ============================================================================
+   CV ITEM LAYOUT
+   ============================================================================ */
+
+.cv-item-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.cv-info {
+    display: flex;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
+}
+
+.cv-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.cv-filename {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 6px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cv-meta {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 8px;
+}
+
+/* ============================================================================
+   PREVIEW DATA TAGS - Redesigned for Readability
+   ============================================================================ */
+
+.cv-preview-data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.preview-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #475569;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.preview-item:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+/* Icon styling within preview items */
+.preview-item::before {
+    font-size: 14px;
+}
+
+/* ============================================================================
+   CV ACTIONS & BADGES
+   ============================================================================ */
+
+.cv-actions {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.cv-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+}
+
+/* Status Badge - More Professional */
+.cv-status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cv-status-badge.status-uploaded {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+.cv-status-badge.status-processing,
+.cv-status-badge.status-parsing_initial,
+.cv-status-badge.status-parsing_detailed {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.cv-status-badge.status-processed {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.cv-status-badge.status-error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* Parsing State Badge - Modern Design */
+.cv-parsing-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    background: #ede9fe;
+    color: #6d28d9;
+    white-space: nowrap;
+}
+
+/* Remove emoji, add proper indicator */
+.cv-parsing-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* ============================================================================
+   DELETE BUTTON - Modern & Subtle
+   ============================================================================ */
+
+.btn-icon-delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #e2e8f0;
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #64748b;
+}
+
+.btn-icon-delete:hover {
+    background: #fee2e2;
+    border-color: #fecaca;
+    color: #dc2626;
+    transform: scale(1.05);
+}
+
+.btn-icon-delete svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================================================
+   ERROR MESSAGE
+   ============================================================================ */
+
+.cv-error {
+    margin-top: 12px;
+    padding: 12px;
+    background: #fef2f2;
+    border-left: 3px solid #ef4444;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #991b1b;
+}
+
+/* ============================================================================
+   EMPTY STATE
+   ============================================================================ */
+
+.cv-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.upload-icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    opacity: 0.5;
+}
+
+.cv-empty-state h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+}
+
+.cv-empty-state p {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 24px;
+    max-width: 400px;
+}
+
+/* ============================================================================
+   SUMMARY STATS - Clean Design
+   ============================================================================ */
+
+.cv-summary {
+    margin-bottom: 24px;
+}
+
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+}
+
+.stat-item {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.stat-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stat-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-item.pending {
+    border-left: 3px solid #64748b;
+}
+
+.stat-item.processing {
+    border-left: 3px solid #3b82f6;
+}
+
+.stat-item.parsed {
+    border-left: 3px solid #10b981;
+}
+
+.stat-item.failed {
+    border-left: 3px solid #ef4444;
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .cv-item {
+        padding: 16px;
+    }
+
+    .cv-item-header {
+        flex-direction: column;
+    }
+
+    .cv-actions {
+        align-self: flex-end;
+    }
+
+    .cv-preview-data {
+        flex-direction: column;
+    }
+
+    .summary-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .summary-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Candidate information badges */
+.cv-candidate-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.info-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: #f3f4f6;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.info-badge svg {
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+/* Badge colors */
+.name-badge { 
+    background: #dbeafe; 
+    color: #1e40af; 
+    font-weight: 600;
+}
+
+.profile-badge { 
+    background: #fef3c7; 
+    color: #92400e; 
+}
+
+.nationality-badge.eu-citizen { 
+    background: #dcfce7; 
+    color: #166534; 
+}
+
+.nationality-badge.non-eu { 
+    background: #f3f4f6; 
+    color: #374151; 
+}
+
+.residence-badge { 
+    background: #e0e7ff; 
+    color: #3730a3; 
+}
+
+.company-badge { 
+    background: #fce7f3; 
+    color: #831843; 
+}
+
+.missing-badge { 
+    background: #fee2e2; 
+    color: #991b1b; 
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Source badges */
+.cv-source-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.source-preset {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.source-mock {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.source-llm {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cv-candidate-info {
+        gap: 4px;
+    }
+    
+    .info-badge {
+        font-size: 10px;
+        padding: 3px 6px;
+    }
+    
+    .info-badge svg {
+        width: 10px;
+        height: 10px;
+    }
+}

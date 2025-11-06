@@ -1,0 +1,514 @@
+/* Export Manager Enhanced Styles */
+
+/* ============================================================================
+   DEBUG SECTION
+   ============================================================================ */
+
+.debug-section {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.debug-section h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.debug-note {
+    margin: 0 0 1.5rem 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.debug-cv-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.debug-cv-option {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.debug-cv-option:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateX(4px);
+}
+
+.debug-cv-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.debug-cv-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.debug-cv-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.debug-cv-meta {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.debug-cv-option .badge {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.debug-cv-option .badge-initial {
+    background: rgba(255, 193, 7, 0.3);
+}
+
+.debug-cv-option .badge-detailed {
+    background: rgba(76, 175, 80, 0.3);
+}
+
+.debug-cv-option .btn-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.debug-cv-option .btn-icon:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================================================
+   EXPORT INTERFACE ENHANCEMENTS
+   ============================================================================ */
+
+.export-interface {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.export-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.export-section h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+/* Selected CV Card */
+.selected-cv-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.selected-cv-card .cv-icon {
+    font-size: 3rem;
+    flex-shrink: 0;
+}
+
+.selected-cv-card .cv-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.selected-cv-card .cv-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.selected-cv-card .cv-meta {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.selected-cv-card .badge {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.selected-cv-card .btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    flex-shrink: 0;
+}
+
+.selected-cv-card .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Export Format Tabs */
+.export-format-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.export-tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-weight: 500;
+    color: #64748b;
+    transition: all 0.2s ease;
+    margin-bottom: -2px;
+}
+
+.export-tab:hover {
+    color: #475569;
+    background: #f8fafc;
+}
+
+.export-tab.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+}
+
+/* Export Panels */
+.export-panel {
+    display: none;
+}
+
+.export-panel.active {
+    display: block;
+}
+
+.export-description {
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #667eea;
+}
+
+.export-description p {
+    margin: 0;
+    color: #475569;
+    line-height: 1.6;
+}
+
+/* Template Grid */
+.template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.template-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.template-card:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.template-card.selected {
+    border-color: #667eea;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+}
+
+.template-card .template-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.template-card .template-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.template-card .template-name {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #1a202c;
+}
+
+.template-card .template-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+.template-card .badge-default {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #854d0e;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.template-selected {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 24px;
+    height: 24px;
+    background: #667eea;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+/* Template Upload */
+.template-upload {
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    margin-top: 2rem;
+    border: 2px dashed #cbd5e1;
+}
+
+.template-upload h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.template-upload p {
+    margin: 0 0 1rem 0;
+    color: #64748b;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.template-upload code {
+    background: white;
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #667eea;
+}
+
+/* Buttons */
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    width: 100%;
+    justify-content: center;
+}
+
+/* Messages */
+.info-message,
+.warning-message {
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.info-message {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+}
+
+.warning-message {
+    background: #fef3c7;
+    border-left: 4px solid #f59e0b;
+}
+
+.info-message svg,
+.warning-message svg {
+    flex-shrink: 0;
+}
+
+.info-message strong,
+.warning-message strong {
+    color: #1a202c;
+    font-size: 1rem;
+}
+
+.info-message p,
+.warning-message p {
+    margin: 0;
+    color: #475569;
+    line-height: 1.6;
+}
+
+.info-message ul,
+.warning-message ul {
+    margin: 0.5rem 0 0 1.5rem;
+    color: #475569;
+}
+
+.info-message code,
+.warning-message code {
+    background: white;
+    padding: 0.125rem 0.5rem;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.85rem;
+}
+
+/* Empty State */
+.export-empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.export-empty-state .empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.5;
+}
+
+.export-empty-state h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.export-empty-state p {
+    margin: 0 0 2rem 0;
+    color: #64748b;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Form Controls */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #64748b;
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .export-interface {
+        padding: 0;
+    }
+
+    .export-section {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .selected-cv-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .template-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .export-format-tabs {
+        flex-direction: column;
+        border-bottom: none;
+    }
+
+    .export-tab {
+        justify-content: center;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+    }
+
+    .export-tab.active {
+        border-left-color: #667eea;
+        border-bottom-color: transparent;
+    }
+}

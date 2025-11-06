@@ -15,6 +15,24 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.put("/:userId/:mnemonic", async (req, res) => {
+  try {
+    const { userId, mnemonic } = req.params;
+    const updated = await llmService.updateConfig(userId, mnemonic, req.body);
+    
+    if (!updated) {
+      return res.status(404).json({ 
+        success: false, 
+        error: "LLM configuration not found" 
+      });
+    }
+    
+    res.json({ success: true, data: llmService.toPublic(updated) });
+  } catch (err) {
+    res.status(400).json({ success: false, error: String(err.message || err) });
+  }
+});
+
 // LIST all configs (masked keys)
 // GET /api/llms/:userId
 router.get("/:userId", async (req, res) => {

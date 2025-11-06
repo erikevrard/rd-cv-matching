@@ -83,10 +83,11 @@ class TenderSearchService {
       .filter(Boolean);
   }
 
-  // Seniority → 3-letter code
+  // Seniority → mnemonic code (UPDATED with new codes)
   getSeniorityCode(seniority) {
     const s = this.normalizeStr(seniority).toLowerCase();
     const map = {
+      undefined: "UDEF",
       intern: "INT",
       trainee: "INT",
       junior: "JUN",
@@ -96,29 +97,35 @@ class TenderSearchService {
       proficient: "PRO",
       professional: "PRO",
       senior: "SEN",
-      lead: "LEA",
-      principal: "PRI",
-      staff: "STF",
-      manager: "MGR",
-      director: "DIR",
+      lead: "LEAD",      // 4 letters
+      principal: "PRIN", // 4 letters
+      staff: "PRIN",
+      manager: "MANA",   // 4 letters
+      director: "DIRE",  // 4 letters
       executive: "EXE",
       head: "HED",
       associate: "ASC",
       consultant: "CON",
     };
+    
     if (map[s]) return map[s];
+    
+    // Pattern matching fallbacks
+    if (/undef/.test(s)) return "UDEF";
     if (/intern|trainee/.test(s)) return "INT";
     if (/jun/.test(s)) return "JUN";
     if (/med|intermediate|mid/.test(s)) return "MED";
     if (/profici|profes/.test(s)) return "PRO";
     if (/sen/.test(s)) return "SEN";
-    if (/lead/.test(s)) return "LEA";
-    if (/princi|staff/.test(s)) return "PRI";
-    if (/manag/.test(s)) return "MGR";
-    if (/director/.test(s)) return "DIR";
+    if (/lead/.test(s)) return "LEAD";
+    if (/princi|staff/.test(s)) return "PRIN";
+    if (/manag/.test(s)) return "MANA";
+    if (/director/.test(s)) return "DIRE";
     if (/exec/.test(s)) return "EXE";
+    
+    // Fallback: extract letters
     const letters = this.onlyLettersUpper(seniority);
-    return (letters + "XXX").slice(0, 3);
+    return (letters + "XXXX").slice(0, 4); // Default to 4 letters
   }
 
   // Profile title → 4-letter code
@@ -228,9 +235,9 @@ class TenderSearchService {
   }
 
   createBaseMnemonic(seniority, firstProfileTitle) {
-    const s3 = this.getSeniorityCode(seniority);
-    const p4 = this.getProfileCode(firstProfileTitle);
-    return `${s3}_${p4}`; // 3 + '_' + 4
+    const senCode = this.getSeniorityCode(seniority);
+    const profCode = this.getProfileCode(firstProfileTitle);
+    return `${senCode}_${profCode}`;
   }
 
   async generateUniqueMnemonic(userId, seniority, firstProfileTitle) {
@@ -293,10 +300,10 @@ class TenderSearchService {
     const now = new Date().toISOString();
 
     const record = {
-      mnemonic,                // e.g., SEN_BACK
+      mnemonic,                // e.g., LEAD_BACK or MANA_FULL
       userId,
       tenderId: tenderId ?? null,
-      seniority,               // e.g., "Senior"
+      seniority,               // e.g., "Lead", "Manager", "Director"
       profiles: normalizedProfiles, // [{title, description, natureOfTasks[], knowledgeAndSkills[]}]
       requestedServices,       // array of strings
       active: false,

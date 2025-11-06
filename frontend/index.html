@@ -5,12 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Professional CV Management and Parsing System">
     <title>CV Management System</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cv_pool_modern.css">
+    <link rel="stylesheet" href="css/parse_modal_modern.css">
+    <link rel="stylesheet" href="css/export-manager-styles.css">
+    <link rel="stylesheet" href="css/matching_styles.css">
+
 </head>
 
 <body>
-    <!-- Authentication Modal -->
+    <!-- ============================================================================
+         AUTHENTICATION MODAL
+         ============================================================================ -->
     <div id="auth-modal" class="modal">
         <div class="modal-content">
             <div class="auth-container">
@@ -23,11 +31,11 @@
                 <form id="signin-form" class="auth-form">
                     <div class="form-group">
                         <label for="signin-email">Email</label>
-                        <input type="email" id="signin-email" required>
+                        <input type="email" id="signin-email" autocomplete="email" required>
                     </div>
                     <div class="form-group">
                         <label for="signin-password">Password</label>
-                        <input type="password" id="signin-password" required>
+                        <input type="password" id="signin-password" autocomplete="current-password" required>
                     </div>
                     <button type="submit" class="btn-primary">Sign In</button>
                 </form>
@@ -36,19 +44,19 @@
                 <form id="signup-form" class="auth-form hidden">
                     <div class="form-group">
                         <label for="signup-name">Full Name</label>
-                        <input type="text" id="signup-name" required>
+                        <input type="text" id="signup-name" autocomplete="name" required>
                     </div>
                     <div class="form-group">
                         <label for="signup-email">Email</label>
-                        <input type="email" id="signup-email" required>
+                        <input type="email" id="signup-email" autocomplete="email" required>
                     </div>
                     <div class="form-group">
                         <label for="signup-password">Password</label>
-                        <input type="password" id="signup-password" required>
+                        <input type="password" id="signup-password" autocomplete="new-password" required>
                     </div>
                     <div class="form-group">
                         <label for="signup-confirm">Confirm Password</label>
-                        <input type="password" id="signup-confirm" required>
+                        <input type="password" id="signup-confirm" autocomplete="new-password" required>
                     </div>
                     <button type="submit" class="btn-primary">Sign Up</button>
                 </form>
@@ -62,19 +70,38 @@
         </div>
     </div>
 
-    <!-- Main Application -->
+    <!-- ============================================================================
+         MAIN APPLICATION
+         ============================================================================ -->
     <div id="main-app" class="hidden">
+
         <!-- Header -->
         <header class="app-header">
             <div class="header-content">
                 <div class="logo">
-                    <h1>CV Manager</h1>
+                    <h1>CV Standardisation Tool</h1>
                 </div>
                 <div class="user-menu">
-                    <span id="user-name">Erik Evrard</span>
-                    <button id="llm-manager-btn" class="btn-secondary">LLM Config</button> <!-- NEW -->
-                    <button id="settings-menu-btn" class="btn-secondary">Settings</button>
-                    <button id="logout-btn" class="btn-secondary">Logout</button>
+                    <span id="user-name">User</span>
+                    <button id="settings-menu-btn" class="btn-secondary" aria-label="Open Settings">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                            </path>
+                        </svg>
+                        Settings
+                    </button>
+                    <button id="logout-btn" class="btn-secondary" aria-label="Logout">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        Logout
+                    </button>
                 </div>
             </div>
         </header>
@@ -82,206 +109,231 @@
         <!-- Navigation -->
         <nav class="main-nav">
             <div class="nav-content">
-                <button class="nav-tab active" data-tab="cv-pool">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14,2 14,8 20,8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10,9 9,9 8,9"></polyline>
-                    </svg>
-                    CV Pool
-                </button>
-                <button class="nav-tab" data-tab="profiles">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    Profiles
-                </button>
-                <button class="nav-tab" data-tab="matching">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="M21 21l-4.35-4.35"></path>
-                    </svg>
-                    Matching
-                </button>
-                <button class="nav-tab" data-tab="reports">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 3v18h18"></path>
-                        <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"></path>
-                    </svg>
-                    Reports
-                </button>
-            </div>
-        </nav>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- CV Pool Tab -->
-            <!-- Replace your existing CV Pool tab content -->
-<section id="cv-pool" class="tab-content active">
-    <!-- Configuration Warning - NEW ADDITION -->
-    <div id="config-warning"></div>
-    
-    <!-- CV Summary Stats - NEW ADDITION -->
-    <div id="cv-summary" class="cv-summary">
-        <!-- Summary will be populated by CVPoolManager -->
-    </div>
-    
-    <div class="content-header">
-        <div class="header-left">
-            <h2>CV Pool</h2>
-            <p class="subtitle">Upload and manage your CV collection with AI-powered parsing</p>
-        </div>
-        <div class="header-actions">
-            <!-- Enhanced upload functionality -->
-            <input type="file" id="cv-file-input" multiple accept=".pdf,.docx,.doc,.txt" style="display: none;">
-            
-            <!-- Keep your existing upload button but make it work with CVPoolManager -->
-            <button id="cv-upload-btn" class="btn-primary">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7,10 12,15 17,10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
-                Upload CV
-            </button>
-            
-            <!-- NEW: Additional AI functionality buttons -->
-            <button id="cv-process-all-btn" class="btn-secondary">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
-                </svg>
-                Process All
-            </button>
-            
-            <button id="cv-settings-btn" class="btn-secondary">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="3"></circle>
-                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V5a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                </svg>
-                Settings
-            </button>
-        </div>
-    </div>
-
-    <!-- KEEP your existing upload area -->
-    <div id="upload-area" class="upload-area hidden">
-        <div class="upload-zone" id="upload-zone">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="17,8 12,3 7,8"></polyline>
-                <line x1="12" y1="3" x2="12" y2="15"></line>
-            </svg>
-            <h3>Drop CV files here</h3>
-            <p>or click to browse</p>
-            <input type="file" id="file-input" multiple accept=".pdf,.doc,.docx,.txt" hidden>
-        </div>
-        <div class="upload-actions">
-            <button id="cancel-upload" class="btn-secondary">Cancel</button>
-        </div>
-    </div>
-
-    <!-- Enhanced CV Management Section -->
-    <div class="cv-management-section">
-        
-        <!-- NEW: Modern CV List for CVPoolManager -->
-        <div id="cv-list-container" class="cv-list-container">
-            <!-- This will be populated by CVPoolManager -->
-        </div>
-        
-        <!-- KEEP: Your existing table-based view -->
-        <div class="table-container" id="legacy-table-container" style="display: none;">
-            <div class="table-header">
-                <div class="table-controls">
-                    <div class="search-box">
-                        <input type="text" id="cv-search" placeholder="Search CVs...">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <div class="nav-tabs-container">
+                    <button class="nav-tab active" data-tab="cv-pool" aria-label="CV Pool">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <polyline points="10,9 9,9 8,9"></polyline>
+                        </svg>
+                        CV Pool
+                    </button>
+                    <button class="nav-tab" data-tab="tender-requests" aria-label="Tender Requests">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Tender Requests
+                    </button>
+                    <button class="nav-tab" data-tab="matching" aria-label="Matching">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
                             <circle cx="11" cy="11" r="8"></circle>
                             <path d="M21 21l-4.35-4.35"></path>
                         </svg>
-                    </div>
-                    <div class="filter-group">
-                        <select id="company-filter">
-                            <option value="">All Companies</option>
-                        </select>
-                        <select id="profile-filter">
-                            <option value="">All Profiles</option>
-                        </select>
-                    </div>
-                    
-                    <!-- NEW: Auto-refresh control -->
-                    <div class="auto-refresh-control">
-                        <label>
-                            <input type="checkbox" id="auto-refresh-toggle">
-                            Auto-refresh
-                        </label>
-                    </div>
+                        Matching
+                    </button>
+                    <button class="nav-tab" data-tab="export" aria-label="Export">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Export
+                    </button>
                 </div>
-                <div class="table-stats">
-                    <span id="cv-count">0 CVs</span>
+
+                <!-- Active Tender Request Indicator -->
+                <div id="tender-search-status" class="tender-search-status hidden">
+                    <span class="status-label">Active Request:</span>
+                    <span id="active-search-name" class="status-name">None</span>
+                    <div class="status-actions">
+                        <button id="change-search-btn" class="btn-icon" title="Change active request"
+                            aria-label="Change active request">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <polyline points="1,4 1,10 7,10"></polyline>
+                                <path d="M3.51,15a9,9 0 1,0 2.13-9.36L1,10"></path>
+                            </svg>
+                        </button>
+                        <button id="deactivate-search-btn" class="btn-icon" title="Deactivate current request"
+                            aria-label="Deactivate current request">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="15" y1="9" x2="9" y2="15"></line>
+                                <line x1="9" y1="9" x2="15" y2="15"></line>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-            
-            <div class="table-wrapper">
-                <table id="cv-table" class="cv-table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Company</th>
-                            <th>Profile</th>
-                            <th>Seniority</th>
-                            <th>Type</th>
-                            <th>Uploaded</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cv-table-body">
-                        <!-- CV rows will be inserted here -->
-                    </tbody>
-                </table>
-                
-                <div id="empty-state" class="empty-state">
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14,2 14,8 20,8"></polyline>
-                    </svg>
-                    <h3>No CVs uploaded yet</h3>
-                    <p>Start by uploading your first CV using the upload button above.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- NEW: CV Details Panel for CVPoolManager -->
-    <div id="cv-details-container" class="cv-details-container" style="display: none;">
-        <!-- CV details will be populated when a CV is selected -->
-        <div class="cv-details-placeholder">
-            <div class="placeholder-icon">📄</div>
-            <h3>Select a CV to view details</h3>
-            <p>Click on any CV from the list to view its processing status and extracted information.</p>
-        </div>
-    </div>
-</section>
+        </nav>
 
-            <!-- END OF SECTION -->
+        <!-- ============================================================================
+             MAIN CONTENT AREA
+             ============================================================================ -->
+        <main class="main-content">
 
-            <!-- Profiles Tab -->
-            <section id="profiles" class="tab-content">
+            <!-- ========================================================================
+                 CV POOL TAB
+                 ======================================================================== -->
+            <section id="cv-pool" class="tab-content active">
+
+                <!-- Configuration Warning -->
+                <div id="config-warning"></div>
+
+                <!-- CV Summary Stats -->
+                <div id="cv-summary" class="cv-summary"></div>
+
+                <!-- Content Header -->
                 <div class="content-header">
                     <div class="header-left">
-                        <h2>Profiles</h2>
-                        <p class="subtitle">Manage candidate profiles and requirements</p>
+                        <h2>CV Pool</h2>
+                        <p class="subtitle">Upload and manage your CV collection with AI-powered parsing</p>
+                    </div>
+                    <div class="header-actions">
+                        <!-- Parse CVs button injected by JS -->
+
+                        <input type="file" id="cv-file-input" multiple accept=".pdf,.docx,.doc,.txt"
+                            style="display: none;">
+
+                        <button id="cv-upload-btn" class="btn-primary" aria-label="Upload CV">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="17,8 12,3 7,8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg>
+                            Upload CV
+                        </button>
                     </div>
                 </div>
-                <div class="placeholder-content">
-                    <p>Profile management functionality coming soon...</p>
+
+                <!-- Upload Area (Hidden by default) -->
+                <div id="upload-area" class="upload-area hidden">
+                    <div class="upload-zone" id="upload-zone">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17,8 12,3 7,8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <h3>Drop CV files here</h3>
+                        <p>or click to browse</p>
+                        <input type="file" id="file-input" multiple accept=".pdf,.doc,.docx,.txt" hidden>
+                    </div>
+                    <div class="upload-actions">
+                        <button id="cancel-upload" class="btn-secondary">Cancel</button>
+                    </div>
+                </div>
+
+                <!-- CV Management Section -->
+                <div class="cv-management-section">
+
+                    <!-- Modern CV List -->
+                    <div id="cv-list-container" class="cv-list-container">
+                        <!-- Populated by CVPoolManager -->
+                    </div>
+
+                    <!-- Legacy Table View (Hidden) -->
+                    <div class="table-container" id="legacy-table-container" style="display: none;">
+                        <div class="table-header">
+                            <div class="table-controls">
+                                <div class="search-box">
+                                    <input type="text" id="cv-search" placeholder="Search CVs..."
+                                        aria-label="Search CVs">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <path d="M21 21l-4.35-4.35"></path>
+                                    </svg>
+                                </div>
+                                <div class="filter-group">
+                                    <select id="company-filter" aria-label="Filter by Company">
+                                        <option value="">All Companies</option>
+                                    </select>
+                                    <select id="profile-filter" aria-label="Filter by Profile">
+                                        <option value="">All Profiles</option>
+                                    </select>
+                                </div>
+                                <div class="auto-refresh-control">
+                                    <label>
+                                        <input type="checkbox" id="auto-refresh-toggle">
+                                        Auto-refresh
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="table-stats">
+                                <span id="cv-count">0 CVs</span>
+                            </div>
+                        </div>
+
+                        <div class="table-wrapper">
+                            <table id="cv-table" class="cv-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Company</th>
+                                        <th>Profile</th>
+                                        <th>Seniority</th>
+                                        <th>Type</th>
+                                        <th>Uploaded</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cv-table-body">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+
+                            <div id="empty-state" class="empty-state">
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                </svg>
+                                <h3>No CVs uploaded yet</h3>
+                                <p>Start by uploading your first CV using the upload button above.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CV Details Panel -->
+                <div id="cv-details-container" class="cv-details-container" style="display: none;">
+                    <div class="cv-details-placeholder">
+                        <div class="placeholder-icon">📄</div>
+                        <h3>Select a CV to view details</h3>
+                        <p>Click on any CV from the list to view its processing status and extracted information.</p>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ========================================================================
+                 TENDER REQUESTS TAB
+                 ======================================================================== -->
+            <section id="tender-requests" class="tab-content">
+                <div class="content-header">
+                    <div class="header-left">
+                        <h2>Tender Requests</h2>
+                        <p class="subtitle">Manage requested profiles and services in tenders</p>
+                    </div>
+                </div>
+                <div class="tender-requests-container">
+                    <!-- JavaScript renders here -->
                 </div>
             </section>
 
-            <!-- Matching Tab -->
+            <!-- ========================================================================
+                 MATCHING TAB
+                 ======================================================================== -->
             <section id="matching" class="tab-content">
                 <div class="content-header">
                     <div class="header-left">
@@ -290,39 +342,156 @@
                     </div>
                 </div>
                 <div class="placeholder-content">
-                    <p>Matching engine functionality coming soon...</p>
+                    <p>Loading matching engine...</p>
                 </div>
             </section>
 
-            <!-- Reports Tab -->
-            <section id="reports" class="tab-content">
+            <!-- ========================================================================
+                 EXPORT TAB
+                 ======================================================================== -->
+            <section id="export" class="tab-content">
                 <div class="content-header">
                     <div class="header-left">
-                        <h2>Reports</h2>
-                        <p class="subtitle">Analytics and insights</p>
+                        <h2>Export CVs</h2>
+                        <p class="subtitle">Export CVs to various formats with multi-language support</p>
                     </div>
                 </div>
-                <div class="placeholder-content">
-                    <p>Reporting functionality coming soon...</p>
+
+                <div id="export-container" class="export-container">
+                    <!-- Populated by export-manager.js -->
                 </div>
             </section>
+
+            <!-- ========================================================================
+                 SETTINGS TAB
+                 ======================================================================== -->
+            <section id="settings" class="tab-content">
+                <h2 class="visually-hidden">Settings</h2>
+
+                <!-- Settings Navigation -->
+                <div class="settings-nav" role="tablist" aria-label="Settings sections">
+                    <button class="settings-tab active" role="tab" aria-selected="true"
+                        aria-controls="setting-llm-providers" data-setting="llm-providers" id="settings-tab-llm">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1"></path>
+                        </svg>
+                        LLM Providers
+                    </button>
+                    <button class="settings-tab" role="tab" aria-selected="false"
+                        aria-controls="setting-prompt-templates" data-setting="prompt-templates"
+                        id="settings-tab-prompts">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14,2 14,8 20,8"></polyline>
+                        </svg>
+                        Prompt Templates
+                    </button>
+                    <button class="settings-tab" role="tab" aria-selected="false" aria-controls="setting-taxonomy"
+                        data-setting="taxonomy" id="settings-tab-taxonomy">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                            </path>
+                        </svg>
+                        Taxonomy
+                    </button>
+                    <button class="settings-tab" role="tab" aria-selected="false" aria-controls="setting-users"
+                        data-setting="users" id="settings-tab-users">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        Users
+                    </button>
+                </div>
+
+                <!-- Settings Body -->
+                <div class="settings-body">
+
+                    <!-- Toolbar -->
+                    <div class="settings-toolbar">
+                        <button id="settings-fullscreen-toggle" class="btn-secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                                </path>
+                            </svg>
+                            Toggle Fullscreen
+                        </button>
+                    </div>
+
+                    <!-- LLM Providers Panel -->
+                    <div id="setting-llm-providers" class="setting-content active" role="tabpanel"
+                        aria-labelledby="settings-tab-llm">
+                        <h3>LLM Providers</h3>
+                        <div id="llm-providers-mount">
+                            <!-- Populated by ui.js -->
+                        </div>
+                    </div>
+
+                    <!-- Prompt Templates Panel -->
+                    <div id="setting-prompt-templates" class="setting-content hidden" role="tabpanel"
+                        aria-labelledby="settings-tab-prompts">
+                        <h3>Prompt Templates</h3>
+                        <div id="prompt-templates-mount">
+                            <!-- Populated by ui.js -->
+                        </div>
+                    </div>
+
+                    <!-- Taxonomy Panel -->
+                    <div id="setting-taxonomy" class="setting-content hidden" role="tabpanel"
+                        aria-labelledby="settings-tab-taxonomy">
+                        <h3>Taxonomy</h3>
+                        <div id="taxonomy-mount">
+                            <!-- Populated by ui.js -->
+                        </div>
+                    </div>
+
+                    <!-- Users Panel -->
+                    <div id="setting-users" class="setting-content hidden" role="tabpanel"
+                        aria-labelledby="settings-tab-users">
+                        <h3>Users</h3>
+                        <div id="users-mount">
+                            <!-- Populated by ui.js -->
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
         </main>
     </div>
 
-    <!-- Loading Overlay -->
+    <!-- ============================================================================
+         LOADING OVERLAY
+         ============================================================================ -->
     <div id="loading-overlay" class="loading-overlay hidden">
         <div class="loading-spinner"></div>
         <p>Processing CV...</p>
     </div>
 
-    <!-- Scripts -->
+    <!-- ============================================================================
+         SCRIPTS - Load in correct order
+         ============================================================================ -->
     <script src="js/config.js"></script>
     <script src="js/theme-manager.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/ui.js"></script>
-    <script src="js/app.js"></script>
     <script src="js/cv-pool.js"></script>
     <script src="js/llm-manager.js"></script>
+    <script src="js/tender-search-builder.js"></script>
+    <script src="js/prompt-manager.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/parse-manager.js"></script>
+    <script src="js/matching-manager.js"></script>
+    <script src="js/export-manager.js"></script>
 
 </body>
 

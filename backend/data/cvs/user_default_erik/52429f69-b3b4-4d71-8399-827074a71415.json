@@ -1,0 +1,57 @@
+{
+  "id": "52429f69-b3b4-4d71-8399-827074a71415",
+  "userId": "user_default_erik",
+  "originalName": "cv-A000001-contract-manager.pdf",
+  "filename": "4149f064-9171-463d-b379-ea9d3a1d0427.pdf",
+  "filePath": "data/uploads/pdf/4149f064-9171-463d-b379-ea9d3a1d0427.pdf",
+  "fileSize": 135788,
+  "fileType": "pdf",
+  "contentHash": "46a6e396131e3d1d4e0723532152085eb705a85b27c2f256c45095842f46f9cd",
+  "status": "error",
+  "processing": false,
+  "uploadedAt": "2025-10-12T01:37:10.564Z",
+  "processedAt": "2025-10-12T21:29:37.819Z",
+  "extractionData": null,
+  "confidence": null,
+  "errorMessage": "Parsing failed: Detailed parsing requires initial parsing first. Please run initial parsing before detailed parsing.",
+  "parsingState": "detailed",
+  "initialParsingData": {
+    "parsedAt": "2025-10-12T21:28:17.723Z",
+    "llmMnemonic": "PRESET",
+    "promptMnemonic": "INITIAL_PARSING",
+    "rawResponse": "{\n  \"is_cv\": \"Yes\",\n  \"confidence_level\": 100,\n  \"classification_reasoning\": \"This document clearly exhibits all characteristics of a comprehensive curriculum vitae, including detailed work history spanning over 20 years, structured education section, language skills assessment using the Common European Framework, digital skills inventory, and extensive communication and organizational skills sections. The document follows the Europass CV format with standardized sections and professional layout.\",\n  \"cv_language_code\": \"eng\",\n  \"candidate_full_name\": \"NOT_FOUND\",\n  \"candidate_id\": \"A000001\",\n  \"candidate_main_profile\": \"Project & Contract Manager\",\n  \"current_employer\": \"Randstad Digital Belgium\",\n  \"candidate_nationality\": \"BE\",\n  \"country_of_residence\": \"BE\",\n  \"cv_format\": \"EUROPASS\"\n}",
+    "extractedData": {
+      "is_cv": "Yes",
+      "confidence_level": 100,
+      "classification_reasoning": "This document clearly exhibits all characteristics of a comprehensive curriculum vitae, including detailed work history spanning over 20 years, structured education section, language skills assessment using the Common European Framework, digital skills inventory, and extensive communication and organizational skills sections. The document follows the Europass CV format with standardized sections and professional layout.",
+      "cv_language_code": "eng",
+      "candidate_full_name": "NOT_FOUND",
+      "candidate_id": "A000001",
+      "candidate_main_profile": "Project & Contract Manager",
+      "current_employer": "Randstad Digital Belgium",
+      "candidate_nationality": "BE",
+      "country_of_residence": "BE",
+      "cv_format": "EUROPASS"
+    },
+    "usage": null,
+    "presetFile": "cv-a000001-contract-manager.json"
+  },
+  "detailedParsingData": {
+    "parsedAt": "2025-10-12T21:29:37.819Z",
+    "llmMnemonic": "MOCK",
+    "promptMnemonic": "DETAILED_PARSING",
+    "rawResponse": "{\n  \"candidateId\": \"CAND-442275\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Johnson\",\n  \"fullName\": \"John Johnson\",\n  \"email\": \"john.johnson@email.com\",\n  \"profile\": \"Data Scientist\",\n  \"seniority\": \"Senior\",\n  \"yearsOfExperience\": 6,\n  \"extractionNotes\": \"Mock data generated for testing\"\n}",
+    "extractedData": {
+      "candidateId": "CAND-442275",
+      "firstName": "John",
+      "lastName": "Johnson",
+      "fullName": "John Johnson",
+      "email": "john.johnson@email.com",
+      "profile": "Data Scientist",
+      "seniority": "Senior",
+      "yearsOfExperience": 6,
+      "extractionNotes": "Mock data generated for testing"
+    },
+    "usage": null
+  }
+}

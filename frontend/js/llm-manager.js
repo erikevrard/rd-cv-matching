@@ -1,156 +1,152 @@
 // LLM Manager - v2.2.0
 // Manages LLM configurations for AI-powered CV processing
 
-const API_BASE_URL = 'http://localhost:3001';
+(function () {
+    'use strict';
 
-class LLMManager {
-    constructor() {
-        this.llms = [];
-        this.activeLLM = null;
-        this.editingLLM = null;
-    }
+    const API_BASE_URL = window.CVManager?.config?.api?.baseUrl || 'http://localhost:3001';
 
-    async init() {
-        await this.loadLLMs();
-        this.setupEventListeners();
-    }
-
-    // ============================================================================
-    // AUTHENTICATION HELPER
-    // ============================================================================
-
-    async authenticatedFetch(url, options = {}) {
-        const auth = window.CVManager.auth;
-        
-        if (!auth || !auth.isAuthenticated()) {
-            throw new Error('Not authenticated');
+    class LLMManager {
+        constructor() {
+            this.llms = [];
+            this.activeLLM = null;
+            this.editingLLM = null;
         }
 
-        const token = auth.getToken();
-        
-        const defaultOptions = {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            }
-        };
+        async init() {
+            await this.loadLLMs();
+            this.setupEventListeners();
+        }
 
-        const mergedOptions = {
-            ...defaultOptions,
-            ...options,
-            headers: {
-                ...defaultOptions.headers,
-                ...options.headers
-            }
-        };
+        // ============================================================================
+        // AUTHENTICATION HELPER
+        // ============================================================================
 
-        try {
-            const response = await fetch(url, mergedOptions);
+        async authenticatedFetch(url, options = {}) {
+            const auth = window.CVManager.auth;
 
-            if (response.status === 401) {
-                this.showToast('Session expired. Please log in again.', 'error');
-                window.CVManager.auth?.logout();
-                throw new Error('Authentication failed');
+            if (!auth || !auth.isAuthenticated()) {
+                throw new Error('Not authenticated');
             }
 
-            return response;
-        } catch (error) {
-            console.error('API request error:', error);
-            throw error;
-        }
-    }
+            const token = auth.getToken();
 
-    // ============================================================================
-    // EVENT LISTENERS
-    // ============================================================================
+            const defaultOptions = {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            };
 
-    setupEventListeners() {
-        // Open LLM manager button
-        const llmBtn = document.getElementById('llm-manager-btn');
-        if (llmBtn) {
-            llmBtn.addEventListener('click', () => this.showLLMManager());
-        }
+            const mergedOptions = {
+                ...defaultOptions,
+                ...options,
+                headers: {
+                    ...defaultOptions.headers,
+                    ...options.headers
+                }
+            };
 
-        // Also hook into settings button if LLM manager doesn't have dedicated button yet
-        const settingsBtn = document.getElementById('settings-menu-btn');
-        if (settingsBtn && !llmBtn) {
-            // We'll add a check to show LLM manager instead of old settings
-            settingsBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                this.showLLMManager();
-            });
-        }
-    }
+            try {
+                const response = await fetch(url, mergedOptions);
 
-    // ============================================================================
-    // DATA LOADING
-    // ============================================================================
+                if (response.status === 401) {
+                    this.showToast('Session expired. Please log in again.', 'error');
+                    window.CVManager.auth?.logout();
+                    throw new Error('Authentication failed');
+                }
 
-    async loadLLMs() {
-        const userId = window.CVManager.auth?.getCurrentUser()?.id;
-        if (!userId) return;
-
-        try {
-            const response = await this.authenticatedFetch(
-                `${API_BASE_URL}/api/llms/${userId}`
-            );
-            const result = await response.json();
-
-            if (result.success) {
-                this.llms = result.data || [];
-                this.activeLLM = this.llms.find(llm => llm.active);
-                console.log('Loaded', this.llms.length, 'LLM configurations');
+                return response;
+            } catch (error) {
+                console.error('API request error:', error);
+                throw error;
             }
-        } catch (error) {
-            console.error('Error loading LLMs:', error);
-            this.showToast('Failed to load LLM configurations', 'error');
         }
-    }
 
-    async getActiveLLM() {
-        const userId = window.CVManager.auth?.getCurrentUser()?.id;
-        if (!userId) return null;
+        // ============================================================================
+        // EVENT LISTENERS
+        // ============================================================================
 
-        try {
-            const response = await this.authenticatedFetch(
-                `${API_BASE_URL}/api/llms/${userId}/active`
-            );
-            const result = await response.json();
-
-            if (result.success) {
-                this.activeLLM = result.data;
-                return result.data;
+        setupEventListeners() {
+            // Open LLM manager button (if it exists separately)
+            const llmBtn = document.getElementById('llm-manager-btn');
+            if (llmBtn) {
+                llmBtn.addEventListener('click', () => this.showLLMManager());
             }
-        } catch (error) {
-            // 404 is normal if no active LLM
-            if (error.message?.includes('404')) {
-                return null;
+
+            // DO NOT bind to settings-menu-btn - that's exclusively handled by ui.js
+            // LLM manager is now accessed through Settings > LLM Providers
+        }
+
+        // ============================================================================
+        // DATA LOADING
+        // ============================================================================
+
+        async loadLLMs() {
+            const userId = window.CVManager.auth?.getCurrentUser()?.id;
+            if (!userId) return;
+
+            try {
+                const response = await this.authenticatedFetch(
+                    `${API_BASE_URL}/api/llms/${userId}`
+                );
+                const result = await response.json();
+
+                if (result.success) {
+                    this.llms = result.data || [];
+                    this.activeLLM = this.llms.find(llm => llm.active);
+                    console.log('Loaded', this.llms.length, 'LLM configurations');
+                }
+            } catch (error) {
+                console.error('Error loading LLMs:', error);
+                this.showToast('Failed to load LLM configurations', 'error');
             }
-            console.error('Error getting active LLM:', error);
-        }
-        return null;
-    }
-
-    // ============================================================================
-    // UI - MAIN MANAGER
-    // ============================================================================
-
-    showLLMManager() {
-        let modal = document.getElementById('llm-manager-modal');
-        if (!modal) {
-            this.createLLMManagerModal();
-            modal = document.getElementById('llm-manager-modal');
         }
 
-        modal.style.display = 'flex';
-        this.renderLLMList();
-    }
+        async getActiveLLM() {
+            const userId = window.CVManager.auth?.getCurrentUser()?.id;
+            if (!userId) return null;
 
-    createLLMManagerModal() {
-        const modal = document.createElement('div');
-        modal.id = 'llm-manager-modal';
-        modal.className = 'modal';
-        modal.innerHTML = `
+            try {
+                const response = await this.authenticatedFetch(
+                    `${API_BASE_URL}/api/llms/${userId}/active`
+                );
+                const result = await response.json();
+
+                if (result.success) {
+                    this.activeLLM = result.data;
+                    return result.data;
+                }
+            } catch (error) {
+                // 404 is normal if no active LLM
+                if (error.message?.includes('404')) {
+                    return null;
+                }
+                console.error('Error getting active LLM:', error);
+            }
+            return null;
+        }
+
+        // ============================================================================
+        // UI - MAIN MANAGER
+        // ============================================================================
+
+        showLLMManager() {
+            let modal = document.getElementById('llm-manager-modal');
+            if (!modal) {
+                this.createLLMManagerModal();
+                modal = document.getElementById('llm-manager-modal');
+            }
+
+            modal.style.display = 'flex';
+            this.renderLLMList();
+        }
+
+        createLLMManagerModal() {
+            const modal = document.createElement('div');
+            modal.id = 'llm-manager-modal';
+            modal.className = 'modal';
+            modal.innerHTML = `
             <div class="modal-content" style="max-width: 900px;">
                 <div class="modal-header">
                     <h2>LLM Configurations</h2>
@@ -179,22 +175,22 @@ class LLMManager {
             </div>
         `;
 
-        document.body.appendChild(modal);
+            document.body.appendChild(modal);
 
-        // Close on background click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                this.closeLLMManager();
-            }
-        });
-    }
+            // Close on background click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    this.closeLLMManager();
+                }
+            });
+        }
 
-    renderLLMList() {
-        const container = document.getElementById('llm-list-container');
-        if (!container) return;
+        renderLLMList() {
+            const container = document.getElementById('llm-list-container');
+            if (!container) return;
 
-        if (this.llms.length === 0) {
-            container.innerHTML = `
+            if (this.llms.length === 0) {
+                container.innerHTML = `
                 <div class="empty-state" style="padding: 60px 20px;">
                     <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                         <circle cx="12" cy="12" r="3"></circle>
@@ -205,19 +201,19 @@ class LLMManager {
                     <button class="btn-primary" onclick="llmManager.showAddLLM()">Add Your First LLM</button>
                 </div>
             `;
-            return;
+                return;
+            }
+
+            const cards = this.llms.map(llm => this.createLLMCard(llm)).join('');
+            container.innerHTML = `<div class="llm-grid">${cards}</div>`;
         }
 
-        const cards = this.llms.map(llm => this.createLLMCard(llm)).join('');
-        container.innerHTML = `<div class="llm-grid">${cards}</div>`;
-    }
+        createLLMCard(llm) {
+            const isActive = llm.active;
+            const activeClass = isActive ? 'llm-card-active' : '';
+            const activeBadge = isActive ? '<span class="badge active-badge">ACTIVE</span>' : '';
 
-    createLLMCard(llm) {
-        const isActive = llm.active;
-        const activeClass = isActive ? 'llm-card-active' : '';
-        const activeBadge = isActive ? '<span class="badge active-badge">ACTIVE</span>' : '';
-
-        return `
+            return `
             <div class="llm-card ${activeClass}">
                 <div class="llm-card-header">
                     <div class="llm-card-title">
@@ -261,42 +257,42 @@ class LLMManager {
                 </div>
             </div>
         `;
-    }
+        }
 
-    maskKey(key) {
-        if (!key || key === '[SET]') return '••••••••';
-        if (key.length <= 8) return '••••••••';
-        return `${key.slice(0, 3)}•••${key.slice(-4)}`;
-    }
+        maskKey(key) {
+            if (!key || key === '[SET]') return '••••••••';
+            if (key.length <= 8) return '••••••••';
+            return `${key.slice(0, 3)}•••${key.slice(-4)}`;
+        }
 
-    // ============================================================================
-    // UI - ADD/EDIT FORM
-    // ============================================================================
+        // ============================================================================
+        // UI - ADD/EDIT FORM
+        // ============================================================================
 
-    showAddLLM() {
-        this.editingLLM = null;
-        this.renderLLMForm();
-    }
+        showAddLLM() {
+            this.editingLLM = null;
+            this.renderLLMForm();
+        }
 
-    editLLM(mnemonic) {
-        this.editingLLM = this.llms.find(llm => llm.mnemonic === mnemonic);
-        this.renderLLMForm();
-    }
+        editLLM(mnemonic) {
+            this.editingLLM = this.llms.find(llm => llm.mnemonic === mnemonic);
+            this.renderLLMForm();
+        }
 
-    renderLLMForm() {
-        const container = document.getElementById('llm-form-container');
-        const listContainer = document.getElementById('llm-list-container');
-        
-        if (!container) return;
+        renderLLMForm() {
+            const container = document.getElementById('llm-form-container');
+            const listContainer = document.getElementById('llm-list-container');
 
-        const isEdit = !!this.editingLLM;
-        const llm = this.editingLLM || {};
+            if (!container) return;
 
-        // Hide list, show form
-        if (listContainer) listContainer.classList.add('hidden');
-        container.classList.remove('hidden');
+            const isEdit = !!this.editingLLM;
+            const llm = this.editingLLM || {};
 
-        container.innerHTML = `
+            // Hide list, show form
+            if (listContainer) listContainer.classList.add('hidden');
+            container.classList.remove('hidden');
+
+            container.innerHTML = `
             <div class="llm-form">
                 <div class="form-header">
                     <h3>${isEdit ? 'Edit' : 'Add'} LLM Configuration</h3>
@@ -359,289 +355,295 @@ class LLMManager {
                 <div id="llm-form-result"></div>
             </div>
         `;
-    }
-
-    cancelForm() {
-        const container = document.getElementById('llm-form-container');
-        const listContainer = document.getElementById('llm-list-container');
-        
-        if (container) container.classList.add('hidden');
-        if (listContainer) listContainer.classList.remove('hidden');
-        
-        this.editingLLM = null;
-    }
-
-    async testConnection() {
-        const resultDiv = document.getElementById('llm-form-result');
-        if (!resultDiv) return;
-
-        const config = this.getFormData();
-        
-        if (!config.model || !config.version || !config.apiUrl) {
-            resultDiv.innerHTML = '<div class="result-error">Please fill in required fields</div>';
-            return;
         }
 
-        if (!config.apiKey && !this.editingLLM) {
-            resultDiv.innerHTML = '<div class="result-error">API key is required for new configurations</div>';
-            return;
+        cancelForm() {
+            const container = document.getElementById('llm-form-container');
+            const listContainer = document.getElementById('llm-list-container');
+
+            if (container) container.classList.add('hidden');
+            if (listContainer) listContainer.classList.remove('hidden');
+
+            this.editingLLM = null;
         }
 
-        resultDiv.innerHTML = '<div class="result-info">Testing connection...</div>';
+        async testConnection() {
+            const resultDiv = document.getElementById('llm-form-result');
+            if (!resultDiv) return;
 
-        try {
-            // For testing, we need to determine the provider from the URL
-            let provider = 'custom';
-            if (config.apiUrl.includes('anthropic.com')) provider = 'claude';
-            if (config.apiUrl.includes('openai.com')) provider = 'openai';
+            const config = this.getFormData();
 
-            const testPayload = {
-                provider,
-                model: config.model,
-                apiUrl: config.apiUrl,
-                apiKey: config.apiKey || 'test-key' // Use placeholder if testing existing config
-            };
-
-            const response = await this.authenticatedFetch(
-                `${API_BASE_URL}/api/settings/test`,
-                {
-                    method: 'POST',
-                    body: JSON.stringify(testPayload)
-                }
-            );
-
-            const result = await response.json();
-
-            if (result.success && result.data.success) {
-                resultDiv.innerHTML = `<div class="result-success">✓ Connection successful! Response time: ${result.data.responseTime}ms</div>`;
-            } else {
-                resultDiv.innerHTML = `<div class="result-error">✗ Connection failed: ${result.data?.error || 'Unknown error'}</div>`;
-            }
-        } catch (error) {
-            resultDiv.innerHTML = `<div class="result-error">✗ Connection test failed: ${error.message}</div>`;
-        }
-    }
-
-    async saveLLM() {
-        const resultDiv = document.getElementById('llm-form-result');
-        if (!resultDiv) return;
-
-        const config = this.getFormData();
-        const userId = window.CVManager.auth?.getCurrentUser()?.id;
-
-        if (!userId) {
-            resultDiv.innerHTML = '<div class="result-error">User not authenticated</div>';
-            return;
-        }
-
-        // Validation
-        if (!config.model || !config.version || !config.apiUrl) {
-            resultDiv.innerHTML = '<div class="result-error">Please fill in all required fields</div>';
-            return;
-        }
-
-        if (!this.editingLLM && !config.apiKey) {
-            resultDiv.innerHTML = '<div class="result-error">API key is required for new configurations</div>';
-            return;
-        }
-
-        try {
-            const payload = {
-                userId,
-                name: config.name || null,
-                model: config.model,
-                version: config.version,
-                apiUrl: config.apiUrl,
-                apiKey: config.apiKey || undefined,
-                temperature: parseFloat(config.temperature) || 0,
-                maxTokens: parseInt(config.maxTokens) || 1024,
-                timeoutMs: parseInt(config.timeoutMs) || 30000
-            };
-
-            // TODO: Implement UPDATE endpoint when available
-            // For now, only CREATE is supported
-            if (this.editingLLM) {
-                resultDiv.innerHTML = '<div class="result-error">Update functionality coming soon. Please delete and recreate.</div>';
+            if (!config.model || !config.version || !config.apiUrl) {
+                resultDiv.innerHTML = '<div class="result-error">Please fill in required fields</div>';
                 return;
             }
 
-            const response = await this.authenticatedFetch(
-                `${API_BASE_URL}/api/llms`,
-                {
-                    method: 'POST',
-                    body: JSON.stringify(payload)
-                }
-            );
-
-            const result = await response.json();
-
-            if (result.success) {
-                this.showToast('LLM configuration saved successfully!', 'success');
-                await this.loadLLMs();
-                this.cancelForm();
-                this.renderLLMList();
-            } else {
-                resultDiv.innerHTML = `<div class="result-error">Failed to save: ${result.error}</div>`;
+            if (!config.apiKey && !this.editingLLM) {
+                resultDiv.innerHTML = '<div class="result-error">API key is required for new configurations</div>';
+                return;
             }
-        } catch (error) {
-            resultDiv.innerHTML = `<div class="result-error">Failed to save: ${error.message}</div>`;
+
+            resultDiv.innerHTML = '<div class="result-info">Testing connection...</div>';
+
+            try {
+                // For testing, we need to determine the provider from the URL
+                let provider = 'custom';
+                if (config.apiUrl.includes('anthropic.com')) provider = 'claude';
+                if (config.apiUrl.includes('openai.com')) provider = 'openai';
+
+                const testPayload = {
+                    provider,
+                    model: config.model,
+                    apiUrl: config.apiUrl,
+                    apiKey: config.apiKey || 'test-key' // Use placeholder if testing existing config
+                };
+
+                const response = await this.authenticatedFetch(
+                    `${API_BASE_URL}/api/settings/test`,
+                    {
+                        method: 'POST',
+                        body: JSON.stringify(testPayload)
+                    }
+                );
+
+                const result = await response.json();
+
+                if (result.success && result.data.success) {
+                    resultDiv.innerHTML = `<div class="result-success">✓ Connection successful! Response time: ${result.data.responseTime}ms</div>`;
+                } else {
+                    resultDiv.innerHTML = `<div class="result-error">✗ Connection failed: ${result.data?.error || 'Unknown error'}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result-error">✗ Connection test failed: ${error.message}</div>`;
+            }
+        }
+
+        async saveLLM() {
+            const resultDiv = document.getElementById('llm-form-result');
+            if (!resultDiv) return;
+
+            const config = this.getFormData();
+            const userId = window.CVManager.auth?.getCurrentUser()?.id;
+
+            if (!userId) {
+                resultDiv.innerHTML = '<div class="result-error">User not authenticated</div>';
+                return;
+            }
+
+            // Validation
+            if (!config.model || !config.version || !config.apiUrl) {
+                resultDiv.innerHTML = '<div class="result-error">Please fill in all required fields</div>';
+                return;
+            }
+
+            if (!this.editingLLM && !config.apiKey) {
+                resultDiv.innerHTML = '<div class="result-error">API key is required for new configurations</div>';
+                return;
+            }
+
+            try {
+                const payload = {
+                    userId,
+                    name: config.name || null,
+                    model: config.model,
+                    version: config.version,
+                    apiUrl: config.apiUrl,
+                    apiKey: config.apiKey || undefined,
+                    temperature: parseFloat(config.temperature) || 0,
+                    maxTokens: parseInt(config.maxTokens) || 1024,
+                    timeoutMs: parseInt(config.timeoutMs) || 30000
+                };
+
+                // TODO: Implement UPDATE endpoint when available
+                // For now, only CREATE is supported
+                if (this.editingLLM) {
+                    resultDiv.innerHTML = '<div class="result-error">Update functionality coming soon. Please delete and recreate.</div>';
+                    return;
+                }
+
+                const response = await this.authenticatedFetch(
+                    `${API_BASE_URL}/api/llms`,
+                    {
+                        method: 'POST',
+                        body: JSON.stringify(payload)
+                    }
+                );
+
+                const result = await response.json();
+
+                if (result.success) {
+                    this.showToast('LLM configuration saved successfully!', 'success');
+                    await this.loadLLMs();
+                    this.cancelForm();
+                    this.renderLLMList();
+                } else {
+                    resultDiv.innerHTML = `<div class="result-error">Failed to save: ${result.error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="result-error">Failed to save: ${error.message}</div>`;
+            }
+        }
+
+        getFormData() {
+            return {
+                name: document.getElementById('llm-name')?.value.trim(),
+                model: document.getElementById('llm-model')?.value.trim(),
+                version: document.getElementById('llm-version')?.value.trim(),
+                apiUrl: document.getElementById('llm-api-url')?.value.trim(),
+                apiKey: document.getElementById('llm-api-key')?.value.trim(),
+                temperature: document.getElementById('llm-temperature')?.value,
+                maxTokens: document.getElementById('llm-max-tokens')?.value,
+                timeoutMs: document.getElementById('llm-timeout')?.value
+            };
+        }
+
+        // ============================================================================
+        // ACTIONS
+        // ============================================================================
+
+        async setActive(mnemonic) {
+            const userId = window.CVManager.auth?.getCurrentUser()?.id;
+            if (!userId) return;
+
+            try {
+                const response = await this.authenticatedFetch(
+                    `${API_BASE_URL}/api/llms/${userId}/${mnemonic}/active`,
+                    {
+                        method: 'POST',
+                        body: JSON.stringify({ active: true })
+                    }
+                );
+
+                const result = await response.json();
+
+                if (result.success) {
+                    this.showToast('Active LLM updated', 'success');
+                    await this.loadLLMs();
+                    this.renderLLMList();
+                } else {
+                    this.showToast(`Failed to set active: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                this.showToast('Failed to set active LLM', 'error');
+            }
+        }
+
+        async deleteLLM(mnemonic) {
+            if (!confirm('Are you sure you want to delete this LLM configuration?')) {
+                return;
+            }
+
+            const userId = window.CVManager.auth?.getCurrentUser()?.id;
+            if (!userId) return;
+
+            try {
+                const response = await this.authenticatedFetch(
+                    `${API_BASE_URL}/api/llms/${userId}/${mnemonic}`,
+                    {
+                        method: 'DELETE'
+                    }
+                );
+
+                const result = await response.json();
+
+                if (result.success) {
+                    this.showToast('LLM configuration deleted', 'success');
+                    await this.loadLLMs();
+                    this.renderLLMList();
+                } else {
+                    this.showToast(`Failed to delete: ${result.error}`, 'error');
+                }
+            } catch (error) {
+                this.showToast('Failed to delete LLM', 'error');
+            }
+        }
+
+        closeLLMManager() {
+            const modal = document.getElementById('llm-manager-modal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+            this.editingLLM = null;
+        }
+
+        // ============================================================================
+        // UTILITY METHODS
+        // ============================================================================
+
+        escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        formatDate(isoString) {
+            if (!isoString) return 'N/A';
+            try {
+                return new Date(isoString).toLocaleDateString('en-GB', {
+                    day: '2-digit',
+                    month: 'short',
+                    year: 'numeric'
+                });
+            } catch {
+                return 'Invalid date';
+            }
+        }
+
+        showToast(message, type = 'info') {
+            // Reuse the toast system from cv-pool if available
+            if (window.cvPoolManager && window.cvPoolManager.showToast) {
+                window.cvPoolManager.showToast(message, type);
+                return;
+            }
+
+            // Fallback toast implementation
+            let container = document.getElementById('toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toast-container';
+                container.className = 'toast-container';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.textContent = message;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 5000);
         }
     }
 
-    getFormData() {
-        return {
-            name: document.getElementById('llm-name')?.value.trim(),
-            model: document.getElementById('llm-model')?.value.trim(),
-            version: document.getElementById('llm-version')?.value.trim(),
-            apiUrl: document.getElementById('llm-api-url')?.value.trim(),
-            apiKey: document.getElementById('llm-api-key')?.value.trim(),
-            temperature: document.getElementById('llm-temperature')?.value,
-            maxTokens: document.getElementById('llm-max-tokens')?.value,
-            timeoutMs: document.getElementById('llm-timeout')?.value
+    // ============================================================================
+    // INITIALIZATION
+    // ============================================================================
+
+    let llmManager;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const checkAuthAndInit = () => {
+            if (window.CVManager && window.CVManager.auth && window.CVManager.auth.isAuthenticated()) {
+                llmManager = new LLMManager();
+                llmManager.init();
+
+                // MOVE THIS LINE HERE - after creating the instance
+                window.llmManager = llmManager;
+
+                console.log('✅ LLMManager initialized');
+            } else {
+                setTimeout(checkAuthAndInit, 100);
+            }
         };
-    }
 
-    // ============================================================================
-    // ACTIONS
-    // ============================================================================
+        setTimeout(checkAuthAndInit, 500);
+    });
 
-    async setActive(mnemonic) {
-        const userId = window.CVManager.auth?.getCurrentUser()?.id;
-        if (!userId) return;
+    console.log('✅ LLM Manager module loaded (v2.2.0)');
 
-        try {
-            const response = await this.authenticatedFetch(
-                `${API_BASE_URL}/api/llms/${userId}/${mnemonic}/active`,
-                {
-                    method: 'POST',
-                    body: JSON.stringify({ active: true })
-                }
-            );
-
-            const result = await response.json();
-
-            if (result.success) {
-                this.showToast('Active LLM updated', 'success');
-                await this.loadLLMs();
-                this.renderLLMList();
-            } else {
-                this.showToast(`Failed to set active: ${result.error}`, 'error');
-            }
-        } catch (error) {
-            this.showToast('Failed to set active LLM', 'error');
-        }
-    }
-
-    async deleteLLM(mnemonic) {
-        if (!confirm('Are you sure you want to delete this LLM configuration?')) {
-            return;
-        }
-
-        const userId = window.CVManager.auth?.getCurrentUser()?.id;
-        if (!userId) return;
-
-        try {
-            const response = await this.authenticatedFetch(
-                `${API_BASE_URL}/api/llms/${userId}/${mnemonic}`,
-                {
-                    method: 'DELETE'
-                }
-            );
-
-            const result = await response.json();
-
-            if (result.success) {
-                this.showToast('LLM configuration deleted', 'success');
-                await this.loadLLMs();
-                this.renderLLMList();
-            } else {
-                this.showToast(`Failed to delete: ${result.error}`, 'error');
-            }
-        } catch (error) {
-            this.showToast('Failed to delete LLM', 'error');
-        }
-    }
-
-    closeLLMManager() {
-        const modal = document.getElementById('llm-manager-modal');
-        if (modal) {
-            modal.style.display = 'none';
-        }
-        this.editingLLM = null;
-    }
-
-    // ============================================================================
-    // UTILITY METHODS
-    // ============================================================================
-
-    escapeHtml(text) {
-        if (!text) return '';
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-
-    formatDate(isoString) {
-        if (!isoString) return 'N/A';
-        try {
-            return new Date(isoString).toLocaleDateString('en-GB', {
-                day: '2-digit',
-                month: 'short',
-                year: 'numeric'
-            });
-        } catch {
-            return 'Invalid date';
-        }
-    }
-
-    showToast(message, type = 'info') {
-        // Reuse the toast system from cv-pool if available
-        if (window.cvPoolManager && window.cvPoolManager.showToast) {
-            window.cvPoolManager.showToast(message, type);
-            return;
-        }
-
-        // Fallback toast implementation
-        let container = document.getElementById('toast-container');
-        if (!container) {
-            container = document.createElement('div');
-            container.id = 'toast-container';
-            container.className = 'toast-container';
-            document.body.appendChild(container);
-        }
-
-        const toast = document.createElement('div');
-        toast.className = `toast toast-${type}`;
-        toast.textContent = message;
-
-        container.appendChild(toast);
-
-        setTimeout(() => {
-            if (toast.parentNode) {
-                toast.parentNode.removeChild(toast);
-            }
-        }, 5000);
-    }
-}
-
-// ============================================================================
-// INITIALIZATION
-// ============================================================================
-
-let llmManager;
-
-document.addEventListener('DOMContentLoaded', () => {
-    const checkAuthAndInit = () => {
-        if (window.CVManager && window.CVManager.auth && window.CVManager.auth.isAuthenticated()) {
-            llmManager = new LLMManager();
-            llmManager.init();
-            console.log('✅ LLMManager initialized');
-        } else {
-            setTimeout(checkAuthAndInit, 100);
-        }
-    };
-    
-    setTimeout(checkAuthAndInit, 500);
-});
-
-console.log('✅ LLM Manager module loaded (v2.2.0)');
+})(); // <-- Close IIFE

@@ -1,0 +1,13 @@
+{
+  "is_cv": "Yes",
+  "confidence_level": 100,
+  "classification_reasoning": "This document clearly exhibits all characteristics of a curriculum vitae, including comprehensive work history spanning over 20 years, detailed education section, language skills matrix, digital skills inventory, and structured professional experience with company names, dates, and responsibilities. The document follows the Europass CV format with standardized sections and language proficiency framework.",
+  "cv_language_code": "eng",
+  "candidate_full_name": "NOT_FOUND",
+  "candidate_id": "A000002",
+  "candidate_main_profile": "Front-End Web Developer",
+  "current_employer": "Randstad Digital Portugal",
+  "candidate_nationality": "PT",
+  "country_of_residence": "PT",
+  "cv_format": "EUROPASS"
+}

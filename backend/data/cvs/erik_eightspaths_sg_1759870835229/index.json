@@ -1,0 +1,25 @@
+{
+  "userId": "erik_eightspaths_sg_1759870835229",
+  "total": 2,
+  "lastUpdated": "2025-10-12T21:24:06.622Z",
+  "cvs": [
+    {
+      "id": "474bbfa6-512b-4775-a465-42ef2a87cfb8",
+      "filename": "Randstad Digital Portugal - Candidate #52962 - Mobile Developer [EN].pdf",
+      "status": "uploaded",
+      "uploadedAt": "2025-10-07T21:02:39.270Z",
+      "processedAt": null,
+      "candidateName": null,
+      "profile": null
+    },
+    {
+      "id": "40843825-02b2-49a1-827d-7e5f4d9755e7",
+      "filename": "cv-A000001.pdf",
+      "status": "uploaded",
+      "uploadedAt": "2025-10-07T21:02:39.263Z",
+      "processedAt": null,
+      "candidateName": null,
+      "profile": null
+    }
+  ]
+}

@@ -15,6 +15,7 @@ const llmRoutes = require('./routes/llms');
 const usersRoutes = require('./routes/users');
 const taxonomyRoutes = require("./routes/taxonomy");
 const promptRoutes = require("./routes/prompts");
+const exportRoutes = require('./routes/export');
 
 // Import services
 const fileUtils = require('./utils/file-utils');
@@ -58,8 +59,22 @@ class CVManagerServer {
         }
     }
 
+    // In backend/server.js - Replace the setupMiddleware() section
+
     setupMiddleware() {
         // Security middleware
+        // this.app.use(helmet({
+        //     crossOriginEmbedderPolicy: false,
+        //     contentSecurityPolicy: {
+        //         directives: {
+        //             defaultSrc: ["'self'"],
+        //             styleSrc: ["'self'", "'unsafe-inline'"],
+        //             scriptSrc: ["'self'", "'unsafe-inline'"],
+        //             imgSrc: ["'self'", "data:", "blob:"],
+        //             connectSrc: ["'self'", "https://api.anthropic.com", "https://api.openai.com"]
+        //         }
+        //     }
+        // }));
         this.app.use(helmet({
             crossOriginEmbedderPolicy: false,
             contentSecurityPolicy: {
@@ -67,8 +82,14 @@ class CVManagerServer {
                     defaultSrc: ["'self'"],
                     styleSrc: ["'self'", "'unsafe-inline'"],
                     scriptSrc: ["'self'", "'unsafe-inline'"],
+                    scriptSrcAttr: ["'unsafe-inline'"],  // ← ADD THIS LINE
                     imgSrc: ["'self'", "data:", "blob:"],
-                    connectSrc: ["'self'", "https://api.anthropic.com", "https://api.openai.com"]
+                    connectSrc: ["'self'", "https://api.anthropic.com", "https://api.openai.com"],
+                    baseUri: ["'self'"],
+                    fontSrc: ["'self'", "https:", "data:"],
+                    formAction: ["'self'"],
+                    frameAncestors: ["'self'"],
+                    objectSrc: ["'none'"]
                 }
             }
         }));
@@ -81,15 +102,20 @@ class CVManagerServer {
             allowedHeaders: ['Content-Type', 'Authorization']
         }));
 
-        // Rate limiting
+        // Rate limiting - DISABLED FOR DEVELOPMENT
+        // Uncomment this block for production:
+        /*
         const limiter = rateLimit({
-            windowMs: 15 * 60 * 1000, // 15 minutes
-            max: 100, // Limit each IP to 100 requests per windowMs
+            windowMs: 15 * 60 * 1000,
+            max: 100,
             message: 'Too many requests from this IP, please try again later.',
             standardHeaders: true,
             legacyHeaders: false
         });
         this.app.use(limiter);
+        */
+
+        console.log('⚠️  Rate limiting DISABLED for development');
 
         // Body parsing
         this.app.use(express.json({ limit: '10mb' }));
@@ -114,6 +140,7 @@ class CVManagerServer {
         this.app.use('/api/users', usersRoutes);
         this.app.use("/api/taxonomy", taxonomyRoutes);
         this.app.use("/api/prompts", promptRoutes);
+        this.app.use('/api/export', exportRoutes);
 
         // Health check
         this.app.get('/api/health', (req, res) => {

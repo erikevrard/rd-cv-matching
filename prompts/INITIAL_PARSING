@@ -1,0 +1,152 @@
+# Document Analysis Instructions
+
+You are an experienced HR analyst tasked with evaluating a document for candidate information extraction. Follow these steps sequentially and return results as a JSON object only.
+
+## Step 1: Document Classification
+
+Analyze whether this document is a curriculum vitae (CV) or resume. Consider these indicators:
+- Presence of work history, education, skills sections
+- Professional summary or objective statements
+- Contact information and personal details
+- Career progression narrative
+
+Provide your assessment as:
+- Classification: [Yes/No/Unsure]
+- Confidence level: [0-100%]
+- Brief reasoning for your classification (2-3 sentences)
+
+Store results in: `$is_cv`, `$confidence_level`, and `$classification_reasoning`
+
+**If classification is "No" or confidence is below 70%, stop here and return only the classification results in JSON format.**
+
+---
+
+## Step 2: Language Detection
+
+Identify the primary language of the CV content using ISO 639-2 (three-letter) code.
+- If multiple languages are present with no clear primary language: use "MUL"
+- If language cannot be determined: use "UND"
+- Note: Ignore common international terms (like "Email," "LinkedIn") in your assessment
+
+Store result in: `$cv_language_code`
+
+---
+
+## Step 3: Candidate Name Extraction
+
+Extract the candidate's complete name as it appears most prominently in the document.
+- Look in: header, contact section, or document title
+- If multiple name variations exist, extract the most formal/complete version
+- If no clear full name is present: return "NOT_FOUND"
+
+Store result in: `$candidate_full_name`
+
+---
+
+## Step 4: Candidate ID Extraction
+
+Search for any explicit candidate identifier, which may be labeled as:
+- Candidate ID, Candidate Number, Reference Number
+- Application ID, Profile ID
+- Any alphanumeric code clearly associated with candidate identification
+
+If none found: return "NOT_FOUND"
+
+Store result in: `$candidate_id`
+
+---
+
+## Step 5: Professional Profile Extraction
+
+Extract the candidate's primary professional profile or role type in the original language as it appears in the CV.
+- Maximum length: 1-4 words
+- Look for: job title, professional designation, or core specialization
+- Examples: "Engineer", "Software Engineer", "Accountant", "Marketing Manager", "Data Analyst", "Ingénieur Logiciel", "Chef de Projet Digital"
+- Preserve the exact language used in the CV - do NOT translate
+- Extract the role type only - do NOT include seniority indicators (Senior, Junior, Lead, etc.)
+- If multiple roles are present, extract the most recent or prominent one
+- Focus on the functional role, not the level
+
+If no clear professional profile can be determined: return "NOT_FOUND"
+
+Store result in: `$candidate_main_profile`
+
+---
+
+## Step 6: Current Employer/Affiliation Extraction
+
+Identify the candidate's current employing organization or professional affiliation, but no not obtain it from the professional/work experience only.
+- For employees: extract the current employer company name
+- For freelancers/contractors: extract the company they are currently engaged with or their own business name
+- For consultants: extract the consulting firm or client organization
+- Look in: header information, professional summary, or explicit employer statements
+- Extract the official company name as written in the CV
+- **CRITICAL: Do NOT extract from the professional work experience section, as these typically list clients/customers and create confusion with actual employment**
+- If currently unemployed or between roles: return "NOT_FOUND"
+- If multiple current affiliations exist: extract the primary/main one
+
+Store result in: `$current_employer`
+
+---
+
+## Step 7: Nationality Extraction
+
+Extract the candidate's nationality using ISO 3166-1 alpha-2 country code (two-letter format).
+- Look for: explicit nationality statement, passport information, citizenship declaration
+- If multiple nationalities are listed:
+  - Prioritize European nationalities first
+  - If none are European, select the largest country by population
+- Common formats to look for: "Nationality: [Country]", "Citizen of [Country]", "Passport: [Country]"
+- If no nationality information is present: return "NOT_FOUND"
+
+Store result in: `$candidate_nationality`
+
+---
+
+## Step 8: Country of Residence Extraction
+
+Extract the candidate's current country of residence using ISO 3166-1 alpha-2 country code (two-letter format).
+- Look for: current address, location field, residence statement
+- Extract from contact information or explicitly stated residence
+- If only a city is provided, infer the country from the city name
+- If no residence information is present: return "NOT_FOUND"
+
+Store result in: `$country_of_residence`
+
+---
+
+## Step 9: CV Format Recognition
+
+Identify the CV format or template used. Assess against these categories:
+
+**Known formats:**
+- "RANDSTAD_TEMPLATE" - Randstad corporate CV format
+- "EUROPASS" - Official Europass CV format
+- "LINKEDIN_EXPORT" - LinkedIn profile export/PDF
+- "CHRONOLOGICAL" - Traditional reverse-chronological format
+- "FUNCTIONAL" - Skills-based format
+- "COMBINATION" - Hybrid chronological-functional format
+- "ACADEMIC" - Academic CV with publications/research
+- "CUSTOM" - Branded or heavily customized design
+
+Store result in: `$cv_format`
+
+---
+
+## CRITICAL: Output Requirements
+
+Return ONLY a valid JSON object with the following structure. Do not include any explanatory text, markdown formatting, or additional commentary:
+
+{
+  "is_cv": "Yes|No|Unsure",
+  "confidence_level": 0-100,
+  "classification_reasoning": "string",
+  "cv_language_code": "string",
+  "candidate_full_name": "string",
+  "candidate_id": "string",
+  "candidate_main_profile": "string",
+  "current_employer": "string",
+  "candidate_nationality": "string",
+  "country_of_residence": "string",
+  "cv_format": "string"
+}

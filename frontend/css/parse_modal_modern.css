@@ -1,0 +1,363 @@
+/* ============================================================================
+   PARSE CVS MODAL - MODERN DESIGN (v2.0)
+   Matches the sleek CV Pool card aesthetic
+   ============================================================================ */
+
+/* Parse Modal Override - Wider for better card display */
+#parse-modal .modal-content {
+    max-width: 700px;
+}
+
+/* Parse Options Grid - Modern Card Layout */
+.parse-options-grid {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+/* Parse Option Card - Redesigned to match CV items */
+.parse-option-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .parse-option-card {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+.parse-option-card:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
+}
+
+.parse-option-card.selected {
+    border-color: #3b82f6;
+    background: #f8faff;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="dark"] .parse-option-card.selected {
+    background: color-mix(in srgb, var(--primary-color) 15%, var(--surface));
+    border-color: var(--primary-color);
+}
+
+/* Parse Option Icon - Modern gradient background like CV status icons */
+.parse-option-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    font-size: 24px;
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #2563eb;
+}
+
+.parse-option-card.selected .parse-option-icon {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+}
+
+/* Parse Option Content */
+.parse-option-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.parse-option-content h4 {
+    margin: 0 0 6px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+[data-theme="dark"] .parse-option-content h4 {
+    color: var(--text-primary);
+}
+
+.parse-option-content p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #64748b;
+}
+
+[data-theme="dark"] .parse-option-content p {
+    color: var(--text-secondary);
+}
+
+/* Radio Button - Hidden, card click handles selection */
+.parse-option-select {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.parse-option-select input[type="radio"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #3b82f6;
+}
+
+/* Parse Stats Container - Modern card design */
+.parse-stats {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .parse-stats {
+    background: var(--surface);
+    border-color: var(--border);
+}
+
+.parse-stats h4 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+[data-theme="dark"] .parse-stats h4 {
+    color: var(--text-primary);
+    border-bottom-color: var(--border);
+}
+
+/* Parse Stat Row - Clean spacing */
+.parse-stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+[data-theme="dark"] .parse-stat-row {
+    border-bottom-color: var(--border);
+}
+
+.parse-stat-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.parse-stat-label {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .parse-stat-label {
+    color: var(--text-secondary);
+}
+
+.parse-stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+[data-theme="dark"] .parse-stat-value {
+    color: var(--text-primary);
+}
+
+/* Parse Warning - Redesigned with modern alert style */
+.parse-warning {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #f59e0b;
+    border-left: 4px solid #f59e0b;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+[data-theme="dark"] .parse-warning {
+    background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
+    border-color: #f59e0b;
+}
+
+.parse-warning-content {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.parse-warning-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.parse-warning-text {
+    flex: 1;
+}
+
+.parse-warning-text strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #92400e;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+[data-theme="dark"] .parse-warning-text strong {
+    color: #fde68a;
+}
+
+.parse-warning-text p {
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #92400e;
+}
+
+[data-theme="dark"] .parse-warning-text p {
+    color: #fde68a;
+}
+
+.parse-warning-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Parse Info - Success/Info boxes */
+.parse-info {
+    padding: 14px 16px;
+    border-radius: 12px;
+    margin-top: 16px;
+    border-left: 4px solid currentColor;
+}
+
+.parse-info strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.parse-info p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* Blue info variant */
+.parse-info[style*="background: #dbeafe"],
+.parse-info[style*="background:#dbeafe"] {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%) !important;
+    border-color: #3b82f6;
+    color: #1e40af;
+}
+
+[data-theme="dark"] .parse-info[style*="background: #dbeafe"],
+[data-theme="dark"] .parse-info[style*="background:#dbeafe"] {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    color: #bfdbfe;
+}
+
+/* Loading state for stats container */
+.parse-stats .loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+[data-theme="dark"] .parse-stats .loading {
+    color: var(--text-secondary);
+}
+
+/* Confirm Parse Button States */
+#confirm-parse-btn {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+#confirm-parse-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#confirm-parse-btn:not(:disabled):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #parse-modal .modal-content {
+        max-width: 95%;
+        margin: 20px;
+    }
+
+    .parse-option-card {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .parse-option-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        margin: 0 auto;
+    }
+
+    .parse-option-select {
+        margin: 0 auto;
+    }
+
+    .parse-stat-row {
+        flex-direction: column;
+        gap: 4px;
+        align-items: flex-start;
+        padding: 12px 0;
+    }
+
+    .parse-stat-value {
+        font-size: 18px;
+    }
+}
+
+/* Animation for modal appearance */
+#parse-modal {
+    animation: fadeInModal 0.2s ease;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#parse-modal .modal-content {
+    animation: slideUpModal 0.3s ease;
+}
+
+@keyframes slideUpModal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

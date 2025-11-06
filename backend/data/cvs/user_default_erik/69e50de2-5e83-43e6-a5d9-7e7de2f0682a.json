@@ -1,0 +1,57 @@
+{
+  "id": "69e50de2-5e83-43e6-a5d9-7e7de2f0682a",
+  "userId": "user_default_erik",
+  "originalName": "cv-A000005-data-protection-specialist.pdf",
+  "filename": "bd7f6f4c-6b5c-43c1-8d27-a3fcf4818f51.pdf",
+  "filePath": "data/uploads/pdf/bd7f6f4c-6b5c-43c1-8d27-a3fcf4818f51.pdf",
+  "fileSize": 95602,
+  "fileType": "pdf",
+  "contentHash": "60fbec03558c03b7bc95d2789188950adcb9adeb518794cb9044dca17dff2ee0",
+  "status": "error",
+  "processing": false,
+  "uploadedAt": "2025-10-12T01:37:10.586Z",
+  "processedAt": "2025-10-12T21:29:57.835Z",
+  "extractionData": null,
+  "confidence": null,
+  "errorMessage": "Parsing failed: Detailed parsing requires initial parsing first. Please run initial parsing before detailed parsing.",
+  "parsingState": "detailed",
+  "initialParsingData": {
+    "parsedAt": "2025-10-12T21:27:37.577Z",
+    "llmMnemonic": "PRESET",
+    "promptMnemonic": "INITIAL_PARSING",
+    "rawResponse": "{\n  \"is_cv\": \"Yes\",\n  \"confidence_level\": 100,\n  \"classification_reasoning\": \"This document clearly exhibits all characteristics of a comprehensive curriculum vitae, including detailed work history spanning over 25 years, structured education and training section with degrees and professional credentials, language skills assessment using the Common European Framework, digital skills inventory, and communication and organizational skills sections. The document follows the Europass CV format with standardized sections and professional layout.\",\n  \"cv_language_code\": \"eng\",\n  \"candidate_full_name\": \"Lieven Bogaert\",\n  \"candidate_id\": \"A000005\",\n  \"candidate_main_profile\": \"Data Protection Specialist\",\n  \"current_employer\": \"Advocom Advocaten & Bemiddelaars\",\n  \"candidate_nationality\": \"BE\",\n  \"country_of_residence\": \"BE\",\n  \"cv_format\": \"EUROPASS\"\n}",
+    "extractedData": {
+      "is_cv": "Yes",
+      "confidence_level": 100,
+      "classification_reasoning": "This document clearly exhibits all characteristics of a comprehensive curriculum vitae, including detailed work history spanning over 25 years, structured education and training section with degrees and professional credentials, language skills assessment using the Common European Framework, digital skills inventory, and communication and organizational skills sections. The document follows the Europass CV format with standardized sections and professional layout.",
+      "cv_language_code": "eng",
+      "candidate_full_name": "Lieven Bogaert",
+      "candidate_id": "A000005",
+      "candidate_main_profile": "Data Protection Specialist",
+      "current_employer": "Advocom Advocaten & Bemiddelaars",
+      "candidate_nationality": "BE",
+      "country_of_residence": "BE",
+      "cv_format": "EUROPASS"
+    },
+    "usage": null,
+    "presetFile": "cv-a000005-data-protection-specialist.json"
+  },
+  "detailedParsingData": {
+    "parsedAt": "2025-10-12T21:29:57.835Z",
+    "llmMnemonic": "MOCK",
+    "promptMnemonic": "DETAILED_PARSING",
+    "rawResponse": "{\n  \"candidateId\": \"CAND-156331\",\n  \"firstName\": \"Michael\",\n  \"lastName\": \"Garcia\",\n  \"fullName\": \"Michael Garcia\",\n  \"email\": \"michael.garcia@email.com\",\n  \"profile\": \"Product Manager\",\n  \"seniority\": \"Mid-level\",\n  \"yearsOfExperience\": 12,\n  \"extractionNotes\": \"Mock data generated for testing\"\n}",
+    "extractedData": {
+      "candidateId": "CAND-156331",
+      "firstName": "Michael",
+      "lastName": "Garcia",
+      "fullName": "Michael Garcia",
+      "email": "michael.garcia@email.com",
+      "profile": "Product Manager",
+      "seniority": "Mid-level",
+      "yearsOfExperience": 12,
+      "extractionNotes": "Mock data generated for testing"
+    },
+    "usage": null
+  }
+}

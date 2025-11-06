@@ -14,10 +14,12 @@
             if (this.initialized) return;
             
             try {
-                console.log('Initializing CV Management System...');
+                console.log('🔧 Initializing CV Management System...');
                 
                 // Wait for all modules to be available
                 await this.waitForModules();
+                
+                console.log('✅ All required modules loaded');
                 
                 // Initialize error handling
                 this.setupErrorHandling();
@@ -32,25 +34,42 @@
                 this.setupPeriodicTasks();
                 
                 this.initialized = true;
-                console.log('CV Management System initialized successfully');
+                console.log('✅ CV Management System initialized successfully');
                 
             } catch (error) {
-                console.error('Failed to initialize application:', error);
+                console.error('❌ Failed to initialize application:', error);
                 this.showCriticalError('Application failed to initialize. Please refresh the page.');
             }
         }
         
         async waitForModules() {
             // Wait for all required modules to be loaded
-            const maxWait = 5000; // 5 seconds
+            const maxWait = 10000; // Increased to 10 seconds
             const checkInterval = 100; // 100ms
             let waited = 0;
             
+            console.log('⏳ Waiting for required modules...');
+            
             while (waited < maxWait) {
-                if (window.CVManager.auth && 
-                    window.CVManager.ui && 
-                    window.CVManager.cvManager &&
-                    window.CVManager.config) {
+                const hasAuth = !!window.CVManager.auth;
+                const hasUI = !!window.CVManager.ui;
+                const hasConfig = !!window.CVManager.config;
+                const hasCVManager = !!window.CVManager.cvManager;
+                
+                // Log status every second
+                if (waited % 1000 === 0) {
+                    console.log('📊 Module status:', {
+                        auth: hasAuth,
+                        ui: hasUI,
+                        config: hasConfig,
+                        cvManager: hasCVManager,
+                        waited: `${waited}ms`
+                    });
+                }
+                
+                // Check if all required modules are available
+                if (hasAuth && hasUI && hasCVManager && hasConfig) {
+                    console.log('✅ All modules ready after', waited, 'ms');
                     return;
                 }
                 
@@ -58,7 +77,16 @@
                 waited += checkInterval;
             }
             
-            throw new Error('Required modules failed to load within timeout');
+            // If we get here, modules didn't load in time
+            const status = {
+                auth: !!window.CVManager.auth,
+                ui: !!window.CVManager.ui,
+                config: !!window.CVManager.config,
+                cvManager: !!window.CVManager.cvManager
+            };
+            
+            console.error('❌ Module loading timeout. Status:', status);
+            throw new Error('Required modules failed to load within timeout: ' + JSON.stringify(status));
         }
         
         setupErrorHandling() {
@@ -90,24 +118,24 @@
                     switch(event.key) {
                         case '1':
                             event.preventDefault();
-                            window.CVManager.ui.switchTab('cv-pool');
+                            window.CVManager.ui?.switchTab('cv-pool');
                             break;
                         case '2':
                             event.preventDefault();
-                            window.CVManager.ui.switchTab('profiles');
+                            window.CVManager.ui?.switchTab('tender-requests');
                             break;
                         case '3':
                             event.preventDefault();
-                            window.CVManager.ui.switchTab('matching');
+                            window.CVManager.ui?.switchTab('matching');
                             break;
                         case '4':
                             event.preventDefault();
-                            window.CVManager.ui.switchTab('reports');
+                            window.CVManager.ui?.switchTab('export');
                             break;
                         case 'u':
                             event.preventDefault();
-                            if (window.CVManager.ui.getActiveTab() === 'cv-pool') {
-                                document.getElementById('upload-btn').click();
+                            if (window.CVManager.ui?.getActiveTab() === 'cv-pool') {
+                                document.getElementById('cv-upload-btn')?.click();
                             }
                             break;
                     }
@@ -118,7 +146,7 @@
                     // Close upload area if open
                     const uploadArea = document.getElementById('upload-area');
                     if (uploadArea && !uploadArea.classList.contains('hidden')) {
-                        document.getElementById('cancel-upload').click();
+                        document.getElementById('cancel-upload')?.click();
                     }
                 }
             });
@@ -138,10 +166,10 @@
         addKeyboardShortcutTooltips() {
             const shortcuts = [
                 { element: '.nav-tab[data-tab="cv-pool"]', shortcut: 'Ctrl+1' },
-                { element: '.nav-tab[data-tab="profiles"]', shortcut: 'Ctrl+2' },
+                { element: '.nav-tab[data-tab="tender-requests"]', shortcut: 'Ctrl+2' },
                 { element: '.nav-tab[data-tab="matching"]', shortcut: 'Ctrl+3' },
-                { element: '.nav-tab[data-tab="reports"]', shortcut: 'Ctrl+4' },
-                { element: '#upload-btn', shortcut: 'Ctrl+U' }
+                { element: '.nav-tab[data-tab="export"]', shortcut: 'Ctrl+4' },
+                { element: '#cv-upload-btn', shortcut: 'Ctrl+U' }
             ];
             
             shortcuts.forEach(({ element, shortcut }) => {
@@ -252,7 +280,7 @@
             if (window.CVManager.ui) {
                 window.CVManager.ui.showNotification(message, 'error', 5000);
             } else {
-                alert(message);
+                console.error(message);
             }
         }
         

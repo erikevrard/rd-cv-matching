@@ -26,3 +26,21 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Data directories (user-specific)
+backend/data/cvs/
+backend/data/uploads/
+backend/data/export-templates/*.docx
+
+# Backup files
+*.backup.*
+*.OLD.*
+
+# Test CVs
+CVs*/
+cv-*.pdf
+cv-*.docx
+
+# OS files
+.DS_Store
+Thumbs.db

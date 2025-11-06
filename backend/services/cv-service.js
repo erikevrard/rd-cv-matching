@@ -1,29 +1,30 @@
-// backend/services/cv-service.js
+// backend/services/cv-service.js - REWRITTEN for scalability
+const PARSING_THROTTLE_CONFIG = {
+  INITIAL: 10000,
+  DETAILED: 20000
+};
+
 const fs = require("fs").promises;
-const fscb = require("fs"); // streams
+const fscb = require("fs");
 const path = require("path");
 const { randomUUID, createHash } = require("crypto");
 
-// -------------- AI SERVICE (robust resolver, no throws) --------------
-const aiRaw = require("./ai-service");
+const llmService = require('./llm-service');
+const promptService = require('./prompt-service');
+const llmCaller = require('./llm-caller');
+const presetParser = require('./preset-parser');
 
-// Try to find a "process text" function in whatever shape was exported.
-// Returns an async function (text, userId) => { success, data? }
+// AI service resolution (same as before)
+const aiRaw = require("./ai-service");
 function resolveAIProcess(mod) {
   const candidates = [];
-
-  // Direct function export
   if (typeof mod === "function") candidates.push(mod);
-
-  // Object instance with various method names
   if (mod && typeof mod === "object") {
     const names = ["processCVText", "processText", "process", "run", "handle"];
     for (const n of names) {
       if (typeof mod[n] === "function") candidates.push(mod[n].bind(mod));
     }
   }
-
-  // default export variations
   if (mod && typeof mod.default !== "undefined") {
     if (typeof mod.default === "function") candidates.push(mod.default);
     if (mod.default && typeof mod.default === "object") {
@@ -34,14 +35,11 @@ function resolveAIProcess(mod) {
       }
     }
   }
-
-  // Pick the first viable candidate
   const picked = candidates.find((fn) => typeof fn === "function");
   if (picked) {
     return async (text, userId) => {
       try {
         const out = await picked(text, userId);
-        // Normalize to { success, data }
         if (out && typeof out === "object" && "success" in out) return out;
         return { success: true, data: out || null };
       } catch (err) {
@@ -49,9 +47,7 @@ function resolveAIProcess(mod) {
       }
     };
   }
-
-  // Fallback: no-op AI that produces a minimal structured payload
-  return async (text /*, userId */) => {
+  return async (text) => {
     return {
       success: true,
       data: {
@@ -65,86 +61,168 @@ function resolveAIProcess(mod) {
     };
   };
 }
-
 const aiProcess = resolveAIProcess(aiRaw);
 
-// -------------- CV SERVICE --------------
 class CVService {
   constructor() {
     this.cvsDataPath = path.join(__dirname, "../data/cvs");
     this.uploadsPath = path.join(__dirname, "../data/uploads");
-    this.locks = new Map(); // per-user in-memory lock to serialize writes
+    this.initPresetParser();
   }
 
-  // ---------------- LOCKING ----------------
-  async acquireLock(userId) {
-    while (this.locks.get(userId)) {
-      await new Promise((r) => setTimeout(r, 10));
+  async initPresetParser() {
+    try {
+      await presetParser.init();
+    } catch (error) {
+      console.error('Failed to initialize preset parser:', error);
     }
-    this.locks.set(userId, true);
-  }
-  releaseLock(userId) {
-    this.locks.delete(userId);
   }
 
-  // ---------------- IO HELPERS ----------------
-  getUserCVsFilePath(userId) {
-    return path.join(this.cvsDataPath, `${userId}_cvs.json`);
+  // ============================================================================
+  // FILE PATHS - NEW STRUCTURE
+  // ============================================================================
+
+  getUserCVDirectory(userId) {
+    return path.join(this.cvsDataPath, userId);
   }
 
-  async atomicWrite(filePath, data) {
-    await fs.mkdir(path.dirname(filePath), { recursive: true });
-    const tmp = `${filePath}.tmp`;
-    await fs.writeFile(tmp, data, "utf8");
-    await fs.rename(tmp, filePath);
+  getCVFilePath(userId, cvId) {
+    return path.join(this.getUserCVDirectory(userId), `${cvId}.json`);
+  }
+
+  getIndexFilePath(userId) {
+    return path.join(this.getUserCVDirectory(userId), 'index.json');
+  }
+
+  async ensureUserDirectory(userId) {
+    const dir = this.getUserCVDirectory(userId);
+    await fs.mkdir(dir, { recursive: true });
+  }
+
+  // ============================================================================
+  // CORE CV OPERATIONS - ONE FILE PER CV
+  // ============================================================================
+
+  async loadCV(userId, cvId) {
+    try {
+      const filePath = this.getCVFilePath(userId, cvId);
+      const data = await fs.readFile(filePath, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      if (error.code === 'ENOENT') return null;
+      throw error;
+    }
+  }
+
+  async saveCV(userId, cv) {
+    await this.ensureUserDirectory(userId);
+    
+    const filePath = this.getCVFilePath(userId, cv.id);
+    const tmpFile = `${filePath}.tmp`;
+    
+    // Atomic write
+    await fs.writeFile(tmpFile, JSON.stringify(cv, null, 2), 'utf8');
+    await fs.rename(tmpFile, filePath);
+    
+    // Update index
+    await this.updateIndex(userId);
+    
+    return cv;
+  }
+
+  async saveCVRecord(userId, cv) {
+    return await this.saveCV(userId, cv);
+  }
+
+  // ============================================================================
+  // INDEX OPERATIONS (for fast listing)
+  // ============================================================================
+
+  async loadIndex(userId) {
+    try {
+      const indexPath = this.getIndexFilePath(userId);
+      const data = await fs.readFile(indexPath, 'utf8');
+      return JSON.parse(data);
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        return { userId, total: 0, cvs: [], lastUpdated: null };
+      }
+      throw error;
+    }
+  }
+
+  async updateIndex(userId) {
+    const dir = this.getUserCVDirectory(userId);
+    
+    try {
+      const files = await fs.readdir(dir);
+      const cvFiles = files.filter(f => f.endsWith('.json') && f !== 'index.json');
+      
+      const cvMetadata = [];
+      
+      for (const file of cvFiles) {
+        const cvId = file.replace('.json', '');
+        const cv = await this.loadCV(userId, cvId);
+        
+        if (cv) {
+          cvMetadata.push({
+            id: cv.id,
+            filename: cv.originalName || cv.filename,
+            status: cv.status,
+            parsingState: cv.parsingState,
+            uploadedAt: cv.uploadedAt,
+            processedAt: cv.processedAt,
+            candidateName: cv.detailedParsingData?.extractedData?.fullName || 
+                          cv.initialParsingData?.extractedData?.candidate_full_name || null,
+            profile: cv.detailedParsingData?.extractedData?.profile ||
+                    cv.initialParsingData?.extractedData?.candidate_main_profile || null
+          });
+        }
+      }
+      
+      const index = {
+        userId,
+        total: cvMetadata.length,
+        lastUpdated: new Date().toISOString(),
+        cvs: cvMetadata
+      };
+      
+      const indexPath = this.getIndexFilePath(userId);
+      await fs.writeFile(indexPath, JSON.stringify(index, null, 2), 'utf8');
+      
+      return index;
+      
+    } catch (error) {
+      if (error.code === 'ENOENT') {
+        await this.ensureUserDirectory(userId);
+        return { userId, total: 0, cvs: [], lastUpdated: new Date().toISOString() };
+      }
+      throw error;
+    }
   }
 
   async loadUserCVs(userId) {
-    const filePath = this.getUserCVsFilePath(userId);
-    try {
-      const data = await fs.readFile(filePath, "utf8");
-      const arr = JSON.parse(data || "[]");
-      return Array.isArray(arr) ? arr : [];
-    } catch {
-      return [];
-    }
+    const index = await this.loadIndex(userId);
+    
+    // Load all CV files
+    const cvs = await Promise.all(
+      index.cvs.map(meta => this.loadCV(userId, meta.id))
+    );
+    
+    return cvs.filter(Boolean);
   }
 
   async saveCVs(userId, cvs) {
-    await this.acquireLock(userId);
-    try {
-      const filePath = this.getUserCVsFilePath(userId);
-      await this.atomicWrite(filePath, JSON.stringify(cvs, null, 2));
-    } finally {
-      this.releaseLock(userId);
+    // Save each CV individually
+    for (const cv of cvs) {
+      await this.saveCV(userId, cv);
     }
   }
 
-  async saveCVRecord(userId, cvRecord) {
-    await this.acquireLock(userId);
-    try {
-      const filePath = this.getUserCVsFilePath(userId);
-      let cvs = [];
-      try {
-        const data = await fs.readFile(filePath, "utf8");
-        cvs = JSON.parse(data || "[]");
-      } catch {
-        cvs = [];
-      }
+  // ============================================================================
+  // HASHING / DEDUPE
+  // ============================================================================
 
-      const idx = cvs.findIndex((cv) => cv.id === cvRecord.id);
-      if (idx >= 0) cvs[idx] = cvRecord;
-      else cvs.unshift(cvRecord);
-
-      await this.atomicWrite(filePath, JSON.stringify(cvs, null, 2));
-    } finally {
-      this.releaseLock(userId);
-    }
-  }
-
-  // ---------------- HASHING / DEDUPE HELPERS ----------------
-
-  // Streaming SHA-256 for a file
   async computeFileHash(filePath) {
     return new Promise((resolve, reject) => {
       const hash = createHash("sha256");
@@ -155,7 +233,6 @@ class CVService {
     });
   }
 
-  // Fill contentHash on historical records (if their files still exist)
   async ensureHashesForUser(userId) {
     const cvs = await this.loadUserCVs(userId);
     let changed = false;
@@ -169,19 +246,17 @@ class CVService {
           const st = await fs.stat(abs);
           if (st.isFile()) {
             cv.contentHash = await this.computeFileHash(abs);
+            await this.saveCV(userId, cv);
             changed = true;
-          } else {
-            cv.status = cv.status || "error";
-            cv.errorMessage = cv.errorMessage || "File path is not a file";
           }
         } catch {
           cv.status = cv.status || "error";
           cv.errorMessage = cv.errorMessage || "File missing during hash fill";
+          await this.saveCV(userId, cv);
         }
       }
     }
 
-    if (changed) await this.saveCVs(userId, cvs);
     return cvs;
   }
 
@@ -191,51 +266,66 @@ class CVService {
     return cvs.some((cv) => (cv.contentHash || "").toLowerCase() === needle);
   }
 
-  // ---------------- PUBLIC API (routes expect these) ----------------
+  // ============================================================================
+  // PUBLIC API
+  // ============================================================================
 
-  // GET /api/cvs/:userId
   async getUserCVs(userId, opts = {}) {
     const { status, limit, offset } = opts;
-    const all = await this.loadUserCVs(userId);
+    
+    const index = await this.loadIndex(userId);
+    let cvList = index.cvs;
 
-    let filtered = all;
     if (status) {
       const s = String(status).toLowerCase();
-      filtered = all.filter(
+      cvList = cvList.filter(
         (cv) => (cv.status || "uploaded").toLowerCase() === s
       );
     }
 
     const off = Number.isFinite(offset) ? offset : 0;
-    const lim = Number.isFinite(limit) ? limit : filtered.length;
+    const lim = Number.isFinite(limit) ? limit : cvList.length;
+    const paginated = cvList.slice(off, off + lim);
+
+    // Load full CV data for paginated results
+    const fullCVs = await Promise.all(
+      paginated.map(meta => this.loadCV(userId, meta.id))
+    );
 
     return {
-      cvs: filtered.slice(off, off + lim),
-      total: filtered.length,
+      cvs: fullCVs.filter(Boolean),
+      total: cvList.length,
+      summary: this.calculateSummary(index.cvs),
       limit: lim,
       offset: off,
     };
   }
 
-  // GET /api/cvs/detail/:cvId
-  async getCVById(cvId, userId) {
-    const all = await this.loadUserCVs(userId);
-    return all.find((cv) => cv.id === cvId) || null;
+  calculateSummary(cvs) {
+    return {
+      total: cvs.length,
+      uploaded: cvs.filter(cv => cv.status === 'uploaded').length,
+      processing: cvs.filter(cv => ['processing', 'parsing_initial', 'parsing_detailed'].includes(cv.status)).length,
+      parsed: cvs.filter(cv => cv.status === 'processed').length,
+      failed: cvs.filter(cv => cv.status === 'error').length
+    };
   }
 
-  // POST /api/cvs/upload (called per file)
+  async getCVById(cvId, userId) {
+    return await this.loadCV(userId, cvId);
+  }
+
   async createCVRecord({
     userId,
     originalName,
-    filename,   // stored filename on disk (multer)
-    filePath,   // absolute (or project-relative) path from multer
+    filename,
+    filePath,
     fileSize,
-    fileType,   // 'pdf' | 'txt' | 'docx' | 'doc'
-    contentHash // optional, route can provide
+    fileType,
+    contentHash
   }) {
     const now = new Date().toISOString();
 
-    // compute hash if not provided
     let hash = contentHash || null;
     if (!hash && filePath) {
       try {
@@ -246,13 +336,11 @@ class CVService {
         if (st.isFile()) {
           hash = await this.computeFileHash(abs);
         }
-      } catch {
-        // ignore; will leave null
-      }
+      } catch {}
     }
 
     const cvRecord = {
-      id: randomUUID(),              // keep original behavior (not file-based)
+      id: randomUUID(),
       userId,
       originalName,
       filename,
@@ -261,20 +349,21 @@ class CVService {
       fileType: (fileType || "").toLowerCase().replace(/^\./, ""),
       contentHash: hash,
 
-      status: "uploaded",            // uploaded | processing | processed | error
+      status: "uploaded",
+      parsingState: "unparsed",
       processing: false,
       uploadedAt: now,
       processedAt: null,
-      extractionData: null,
+      initialParsingData: null,
+      detailedParsingData: null,
       confidence: null,
       errorMessage: null,
     };
 
-    await this.saveCVRecord(userId, cvRecord);
+    await this.saveCV(userId, cvRecord);
     return cvRecord;
   }
 
-  // POST /api/cvs/process-all
   async processAllPendingCVs(userId) {
     const cvs = await this.loadUserCVs(userId);
     const alreadyProcessed = cvs.filter((c) => c.status === "processed").length;
@@ -286,7 +375,6 @@ class CVService {
       return { queued: 0, alreadyProcessed };
     }
 
-    // Process asynchronously so the route can return immediately
     (async () => {
       for (const cv of toProcess) {
         try {
@@ -296,7 +384,7 @@ class CVService {
           cv.status = "error";
           cv.processing = false;
           cv.errorMessage = String(err.message || err);
-          await this.saveCVRecord(userId, cv);
+          await this.saveCV(userId, cv);
         }
       }
     })();
@@ -304,22 +392,18 @@ class CVService {
     return { queued, alreadyProcessed };
   }
 
-  // POST /api/cvs/:cvId/reprocess
   async reprocessCV(cvId, userId) {
-    const cvs = await this.loadUserCVs(userId);
-    const cv = cvs.find((c) => c.id === cvId);
+    const cv = await this.loadCV(userId, cvId);
     if (!cv) return { success: false, error: `CV ${cvId} not found` };
 
-    // Reset flags
     cv.status = "uploaded";
     cv.processing = false;
     cv.processedAt = null;
     cv.extractionData = null;
     cv.confidence = null;
     cv.errorMessage = null;
-    await this.saveCVRecord(userId, cv);
+    await this.saveCV(userId, cv);
 
-    // Async reprocess
     (async () => {
       try {
         await this.processCV(userId, cv);
@@ -328,67 +412,61 @@ class CVService {
         cv.status = "error";
         cv.processing = false;
         cv.errorMessage = String(err.message || err);
-        await this.saveCVRecord(userId, cv);
+        await this.saveCV(userId, cv);
       }
     })();
 
     return { success: true };
   }
 
-  // DELETE /api/cvs/:cvId
   async deleteCV(cvId, userId) {
-    await this.acquireLock(userId);
-    try {
-      const filePath = this.getUserCVsFilePath(userId);
-      let cvs = [];
-      try {
-        const data = await fs.readFile(filePath, "utf8");
-        cvs = JSON.parse(data || "[]");
-      } catch {
-        cvs = [];
-      }
-
-      const idx = cvs.findIndex((cv) => cv.id === cvId);
-      if (idx === -1) {
-        return { success: false, error: "CV not found" };
-      }
-
-      const [removed] = cvs.splice(idx, 1);
-      await this.atomicWrite(filePath, JSON.stringify(cvs, null, 2));
-
-      // Best-effort remove the file on disk
-      if (removed && removed.filePath) {
-        try {
-          const abs = path.isAbsolute(removed.filePath)
-            ? removed.filePath
-            : path.join(__dirname, "..", removed.filePath);
-          await fs.unlink(abs);
-        } catch {
-          // ignore (file may already be gone)
-        }
-      }
-
-      return { success: true };
-    } finally {
-      this.releaseLock(userId);
+    const cv = await this.loadCV(userId, cvId);
+    if (!cv) {
+      return { success: false, error: "CV not found" };
     }
+
+    // Delete file
+    const filePath = this.getCVFilePath(userId, cvId);
+    try {
+      await fs.unlink(filePath);
+    } catch (error) {
+      if (error.code !== 'ENOENT') {
+        throw error;
+      }
+    }
+
+    // Delete uploaded file
+    if (cv.filePath) {
+      try {
+        const abs = path.isAbsolute(cv.filePath)
+          ? cv.filePath
+          : path.join(__dirname, "..", cv.filePath);
+        await fs.unlink(abs);
+      } catch {}
+    }
+
+    // Update index
+    await this.updateIndex(userId);
+
+    return { success: true };
   }
 
-  // Called by upload route
   async queueForProcessing(cvId, userId) {
-    const cvs = await this.loadUserCVs(userId);
-    const cv = cvs.find((c) => c.id === cvId);
+    const cv = await this.loadCV(userId, cvId);
     if (!cv) return { success: false, error: "CV not found" };
 
     if (cv.status === "processed" || cv.status === "error") {
       cv.status = "uploaded";
       cv.processing = false;
-      await this.saveCVRecord(userId, cv);
+      await this.saveCV(userId, cv);
     }
     return { success: true };
   }
 
-  // ---------------- CORE PROCESSING ----------------
+  // ============================================================================
+  // PROCESSING (same as before, but uses saveCV instead of saveCVRecord)
+  // ============================================================================
+
   async processCV(userId, cv) {
     const displayName =
       cv.filename ||
@@ -398,19 +476,16 @@ class CVService {
 
     console.log(`Starting to process CV: ${cv.id}`);
 
-    // Mark as processing and persist
     cv.status = "processing";
     cv.processing = true;
-    await this.saveCVRecord(userId, cv);
+    await this.saveCV(userId, cv);
 
-    // Validate required fields
     if (!cv.filePath || !cv.fileType) {
       throw new Error(
         `CV ${cv.id} missing filePath/fileType (filename: ${displayName})`
       );
     }
 
-    // Verify file exists and is a file
     const abs = path.isAbsolute(cv.filePath)
       ? cv.filePath
       : path.join(__dirname, "..", cv.filePath);
@@ -419,17 +494,12 @@ class CVService {
       throw new Error(`File missing: ${cv.filePath}`);
     }
 
-    console.log(`CV marked as processing: ${displayName}`);
     console.log(`Extracting text from: ${abs}`);
-
     const text = await this.extractTextFromFile(abs, cv.fileType);
-    console.log(`Text extracted, length: ${text ? text.length : 0} characters`);
 
     console.log(`Calling AI service for CV: ${cv.id}`);
     const aiResult = await aiProcess(text, userId);
-    console.log(`AI processing result for ${displayName}:`, aiResult);
 
-    // Persist processed result
     cv.status = aiResult && aiResult.success === false ? "error" : "processed";
     cv.processing = false;
     cv.processedAt = new Date().toISOString();
@@ -443,17 +513,10 @@ class CVService {
         ? aiResult.error || "AI processing failed"
         : null;
 
-    await this.saveCVRecord(userId, cv);
-
-    if (cv.status === "processed") {
-      console.log(`CV successfully parsed: ${displayName}`);
-    } else {
-      console.log(`CV processing failed: ${displayName}`);
-    }
+    await this.saveCV(userId, cv);
     return cv;
   }
 
-  // ---------------- EXTRACTION ----------------
   async extractTextFromFile(absPath, fileType) {
     if (!absPath) throw new Error("No filePath provided to extract text");
     if (!fileType) throw new Error("No fileType provided to extract text");
@@ -465,21 +528,430 @@ class CVService {
     }
 
     if (ft === "pdf") {
-      // TODO: replace with real PDF extraction (e.g., pdf-parse)
       const buf = await fs.readFile(absPath);
-      // keep placeholder; avoid decoding garbage binary to UTF-8
       return `Binary PDF (${Math.max(1, Math.round(buf.length / 1024))}KB)`;
     }
 
     if (ft === "docx" || ft === "doc") {
-      // TODO: replace with real DOCX/DOC extraction (e.g., mammoth)
       const buf = await fs.readFile(absPath);
       return `Binary ${ft.toUpperCase()} (${Math.max(1, Math.round(buf.length / 1024))}KB)`;
     }
 
     throw new Error(`Unsupported file type: ${fileType}`);
   }
+
+  // ============================================================================
+  // PARSING (same as before, uses saveCV)
+  // ============================================================================
+
+  async getParsingStats(userId, parsingType) {
+    const cvs = await this.loadUserCVs(userId);
+    const activeLLM = await llmService.getActive(userId);
+
+    let cvsToProcess = 0;
+    let cvsToSkip = 0;
+
+    for (const cv of cvs) {
+      if (this.shouldParseCV(cv, parsingType)) {
+        cvsToProcess++;
+      } else {
+        cvsToSkip++;
+      }
+    }
+
+    const isInitial = parsingType.startsWith('initial');
+    const throttleMs = isInitial ? PARSING_THROTTLE_CONFIG.INITIAL : PARSING_THROTTLE_CONFIG.DETAILED;
+
+    const estimatedDuration = Math.ceil((cvsToProcess * throttleMs) / 1000);
+
+    return {
+      cvsToProcess,
+      cvsToSkip,
+      estimatedDuration,
+      throttleMs: throttleMs,
+      hasActiveLLM: !!activeLLM,
+      llmProvider: activeLLM ? activeLLM.name : null,
+      llmModel: activeLLM ? activeLLM.model : null
+    };
+  }
+
+  shouldParseCV(cv, parsingType) {
+    const state = cv.parsingState || 'unparsed';
+
+    switch (parsingType) {
+      case 'initial-all':
+        return true;
+      case 'initial-onlynew':
+        return state === 'unparsed';
+      case 'detailed-all':
+        return state === 'initial' || state === 'detailed';
+      case 'detailed-onlynew':
+        return state === 'initial';
+      default:
+        return false;
+    }
+  }
+
+  async parseCVsBatch(userId, parsingType) {
+    console.log(`\n========================================`);
+    console.log(`Starting batch parsing: ${parsingType} for user ${userId}`);
+    console.log(`========================================\n`);
+
+    const activeLLM = await llmService.getActive(userId);
+    console.log(`Active LLM: ${activeLLM ? activeLLM.mnemonic : 'None (will use presets or mock)'}`);
+
+    const promptMnemonic = parsingType.startsWith('initial')
+      ? 'INITIAL_PARSING'
+      : 'DETAILED_PARSING';
+
+    const isInitial = parsingType.startsWith('initial');
+    const throttleMs = isInitial ? PARSING_THROTTLE_CONFIG.INITIAL : PARSING_THROTTLE_CONFIG.DETAILED;
+    console.log(`Using throttle delay: ${throttleMs}ms (${throttleMs / 1000}s)`);
+
+    let prompt = null;
+    if (activeLLM) {
+      prompt = await promptService.getPrompt(userId, promptMnemonic);
+      if (!prompt) {
+        console.error(`Prompt ${promptMnemonic} not found for user ${userId}`);
+        throw new Error(`Prompt template "${promptMnemonic}" not found. Please create it first.`);
+      }
+      console.log(`Using prompt: ${promptMnemonic}`);
+    }
+
+    const cvs = await this.loadUserCVs(userId);
+    const cvsToProcess = cvs.filter(cv => this.shouldParseCV(cv, parsingType));
+    console.log(`Found ${cvsToProcess.length} CVs to parse (${cvs.length - cvsToProcess.length} will be skipped)\n`);
+
+    if (cvsToProcess.length === 0) {
+      return {
+        success: true,
+        processed: 0,
+        failed: 0,
+        skipped: cvs.length,
+        message: 'No CVs to parse'
+      };
+    }
+
+    (async () => {
+      let processed = 0;
+      let failed = 0;
+      let usedPreset = 0;
+      let usedLLM = 0;
+      let usedMock = 0;
+
+      for (const cv of cvsToProcess) {
+        const cvName = cv.originalName || cv.filename;
+
+        try {
+          console.log(`\n----------------------------------------`);
+          console.log(`Parsing CV ${processed + failed + 1}/${cvsToProcess.length}`);
+          console.log(`File: ${cvName}`);
+          console.log(`----------------------------------------`);
+
+          cv.status = isInitial ? 'parsing_initial' : 'parsing_detailed';
+          await this.saveCV(userId, cv);
+
+          const presetType = promptMnemonic === 'INITIAL_PARSING' ? 'initial' : 'detailed';
+
+          console.log(`Checking for preset data (type: ${presetType})...`);
+          const hasPreset = await presetParser.hasPreset(cvName, presetType);
+
+          if (hasPreset) {
+            console.log(`✅ Found preset data, using it`);
+            await this.parseWithPreset(cv, promptMnemonic, userId, parsingType);
+            usedPreset++;
+          } else if (activeLLM) {
+            console.log(`📡 No preset found, using LLM: ${activeLLM.mnemonic}`);
+            await this.parseWithLLM(cv, activeLLM, prompt, userId, parsingType);
+            usedLLM++;
+          } else {
+            console.log(`🎲 No preset or LLM available, using mock data`);
+            await this.parseWithMockData(cv, promptMnemonic, userId, parsingType);
+            usedMock++;
+          }
+
+          processed++;
+          console.log(`✅ Successfully parsed: ${cvName}`);
+
+        } catch (error) {
+          failed++;
+          console.error(`\n❌ Failed to parse CV: ${cvName}`);
+          console.error(`Error: ${error.message}`);
+
+          cv.status = 'error';
+          cv.errorMessage = this.formatUserFriendlyError(error);
+          await this.saveCV(userId, cv);
+        }
+
+        if (processed + failed < cvsToProcess.length) {
+          console.log(`⏳ Waiting ${throttleMs / 1000}s before next CV...`);
+          await this.delay(throttleMs);
+        }
+      }
+
+      console.log(`\n========================================`);
+      console.log(`✅ Batch parsing complete!`);
+      console.log(`  Processed: ${processed}`);
+      console.log(`  Failed: ${failed}`);
+      console.log(`  Used Preset: ${usedPreset}`);
+      console.log(`  Used LLM: ${usedLLM}`);
+      console.log(`  Used Mock: ${usedMock}`);
+      console.log(`========================================\n`);
+    })();
+
+    return {
+      success: true,
+      totalCVs: cvsToProcess.length,
+      message: `Started parsing ${cvsToProcess.length} CVs`
+    };
+  }
+
+  formatUserFriendlyError(error) {
+    const msg = error.message || String(error);
+
+    if (msg.includes('<!DOCTYPE') || msg.includes('Unexpected token \'<\'')) {
+      return 'LLM API returned an error page instead of JSON. The API might be down, or the request was invalid. Check backend logs for details.';
+    }
+
+    if (msg.includes('JSON.parse') || msg.includes('not valid JSON')) {
+      return 'Failed to parse LLM response as JSON. The AI model might have returned invalid data. Check backend logs for the raw response.';
+    }
+
+    if (msg.includes('ECONNREFUSED') || msg.includes('ETIMEDOUT')) {
+      return 'Could not connect to LLM API. Check your network connection and API configuration.';
+    }
+
+    if (msg.includes('401') || msg.includes('403') || msg.includes('Unauthorized')) {
+      return 'LLM API authentication failed. Check your API key configuration.';
+    }
+
+    if (msg.includes('429') || msg.includes('rate limit')) {
+      return 'LLM API rate limit exceeded. Please wait before trying again.';
+    }
+
+    if (msg.includes('preset')) {
+      return `Preset loading failed: ${msg}`;
+    }
+
+    return `Parsing failed: ${msg}`;
+  }
+
+  async parseWithPreset(cv, promptMnemonic, userId, parsingType) {
+    const cvName = cv.originalName || cv.filename;
+    console.log(`📦 Loading preset data for: ${cvName}`);
+
+    const presetType = promptMnemonic === 'INITIAL_PARSING' ? 'initial' : 'detailed';
+
+    if (presetType === 'detailed' && cv.parsingState !== 'initial') {
+      throw new Error('Detailed parsing requires initial parsing first. Please run initial parsing before detailed parsing.');
+    }
+
+    const presetResult = await presetParser.loadPreset(cvName, presetType);
+
+    if (!presetResult || !presetResult.success) {
+      throw new Error(`Failed to load preset: ${presetResult?.error || 'Unknown error'}`);
+    }
+
+    console.log(`✅ Preset data loaded successfully`);
+    console.log(`  Preset file: ${presetResult.presetFile}`);
+
+    const isInitial = presetType === 'initial';
+    const now = new Date().toISOString();
+
+    if (isInitial) {
+      cv.parsingState = 'initial';
+      cv.initialParsingData = {
+        parsedAt: now,
+        llmMnemonic: 'PRESET',
+        promptMnemonic: promptMnemonic,
+        rawResponse: JSON.stringify(presetResult.data, null, 2),
+        extractedData: presetResult.data,
+        usage: null,
+        presetFile: presetResult.presetFile
+      };
+    } else {
+      cv.parsingState = 'detailed';
+      cv.detailedParsingData = {
+        parsedAt: now,
+        llmMnemonic: 'PRESET',
+        promptMnemonic: promptMnemonic,
+        rawResponse: JSON.stringify(presetResult.data, null, 2),
+        extractedData: presetResult.data,
+        usage: null,
+        presetFile: presetResult.presetFile
+      };
+    }
+
+    cv.status = 'processed';
+    cv.processedAt = now;
+    cv.errorMessage = null;
+
+    await this.saveCV(userId, cv);
+    return cv;
+  }
+
+  async parseWithLLM(cv, llmConfig, prompt, userId, parsingType) {
+    console.log(`🤖 Parsing with LLM: ${llmConfig.mnemonic}`);
+
+    const isInitial = parsingType.startsWith('initial');
+    if (!isInitial && cv.parsingState !== 'initial') {
+      throw new Error('Detailed parsing requires initial parsing first. Please run initial parsing before detailed parsing.');
+    }
+
+    const abs = path.isAbsolute(cv.filePath)
+      ? cv.filePath
+      : path.join(__dirname, "..", cv.filePath);
+
+    console.log(`📄 Extracting text from CV file...`);
+    const cvText = await this.extractTextFromFile(abs, cv.fileType);
+    console.log(`  Extracted text length: ${cvText.length} characters`);
+
+    const fullPrompt = prompt.text.replace(/{CV_TEXT}/g, cvText);
+
+    console.log(`📡 Calling LLM API...`);
+    const llmResponse = await llmCaller.call(llmConfig, fullPrompt, llmConfig.timeoutMs);
+
+    if (!llmResponse.success) {
+      console.error(`❌ LLM call failed:`, llmResponse.error);
+      throw new Error(llmResponse.error || 'LLM call failed without error message');
+    }
+
+    console.log(`✅ LLM responded successfully`);
+
+    let extractedData;
+    try {
+      const text = llmResponse.data.text;
+      const jsonMatch = text.match(/```json\s*([\s\S]*?)\s*```/) ||
+        text.match(/```\s*([\s\S]*?)\s*```/) ||
+        [null, text];
+
+      const jsonText = jsonMatch[1].trim();
+      extractedData = JSON.parse(jsonText);
+      console.log(`✅ JSON parsed successfully`);
+    } catch (e) {
+      console.error(`❌ Failed to parse LLM response as JSON:`, e.message);
+      throw new Error(`Failed to parse LLM response as JSON: ${e.message}. Check backend logs for raw response.`);
+    }
+
+    const now = new Date().toISOString();
+
+    if (isInitial) {
+      cv.parsingState = 'initial';
+      cv.initialParsingData = {
+        parsedAt: now,
+        llmMnemonic: llmConfig.mnemonic,
+        promptMnemonic: prompt.mnemonic,
+        rawResponse: llmResponse.data.text,
+        extractedData: extractedData,
+        usage: llmResponse.data.usage
+      };
+    } else {
+      cv.parsingState = 'detailed';
+      cv.detailedParsingData = {
+        parsedAt: now,
+        llmMnemonic: llmConfig.mnemonic,
+        promptMnemonic: prompt.mnemonic,
+        rawResponse: llmResponse.data.text,
+        extractedData: extractedData,
+        usage: llmResponse.data.usage
+      };
+    }
+
+    cv.status = 'processed';
+    cv.processedAt = now;
+    cv.errorMessage = null;
+
+    await this.saveCV(userId, cv);
+    return cv;
+  }
+
+  async parseWithMockData(cv, promptMnemonic, userId, parsingType) {
+    console.log(`🎲 Generating mock data (no active LLM or preset)`);
+
+    const mockData = this.generateMockParsingData(promptMnemonic);
+
+    const isInitial = parsingType.startsWith('initial');
+    const now = new Date().toISOString();
+
+    if (isInitial) {
+      cv.parsingState = 'initial';
+      cv.initialParsingData = {
+        parsedAt: now,
+        llmMnemonic: 'MOCK',
+        promptMnemonic: promptMnemonic,
+        rawResponse: JSON.stringify(mockData, null, 2),
+        extractedData: mockData,
+        usage: null
+      };
+    } else {
+      cv.parsingState = 'detailed';
+      cv.detailedParsingData = {
+        parsedAt: now,
+        llmMnemonic: 'MOCK',
+        promptMnemonic: promptMnemonic,
+        rawResponse: JSON.stringify(mockData, null, 2),
+        extractedData: mockData,
+        usage: null
+      };
+    }
+
+    cv.status = 'processed';
+    cv.processedAt = now;
+    cv.errorMessage = null;
+
+    await this.saveCV(userId, cv);
+    return cv;
+  }
+
+  generateMockParsingData(promptMnemonic) {
+    // ... (keep existing mock data generation code)
+    const firstNames = [
+      'John', 'Jane', 'Michael', 'Sarah', 'David', 'Emma'
+    ];
+    const lastNames = [
+      'Smith', 'Johnson', 'Williams', 'Brown', 'Jones', 'Garcia'
+    ];
+    const profiles = [
+      'Software Engineer', 'Data Scientist', 'Product Manager'
+    ];
+    
+    const pick = (arr) => arr[Math.floor(Math.random() * arr.length)];
+    
+    const firstName = pick(firstNames);
+    const lastName = pick(lastNames);
+    
+    if (promptMnemonic === 'INITIAL_PARSING') {
+      return {
+        is_cv: "Yes",
+        confidence_level: Math.floor(85 + Math.random() * 15),
+        classification_reasoning: "Mock data generated for testing",
+        cv_language_code: pick(['eng', 'fra', 'deu']),
+        candidate_full_name: `${firstName} ${lastName}`,
+        candidate_id: `CAND-${Math.floor(100000 + Math.random() * 900000)}`,
+        candidate_main_profile: pick(profiles),
+        current_employer: 'Tech Company',
+        candidate_nationality: pick(['US', 'GB', 'FR']),
+        country_of_residence: pick(['US', 'GB', 'FR']),
+        cv_format: pick(['EUROPASS', 'STANDARD'])
+      };
+    } else {
+      return {
+        candidateId: `CAND-${Math.floor(100000 + Math.random() * 900000)}`,
+        firstName: firstName,
+        lastName: lastName,
+        fullName: `${firstName} ${lastName}`,
+        email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@email.com`,
+        profile: pick(profiles),
+        seniority: pick(['Junior', 'Mid-level', 'Senior']),
+        yearsOfExperience: Math.floor(Math.random() * 15) + 1,
+        extractionNotes: 'Mock data generated for testing'
+      };
+    }
+  }
+
+  delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 }
 
-// Export a single instance (routes call methods directly)
 module.exports = new CVService();

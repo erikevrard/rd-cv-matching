@@ -1,0 +1,599 @@
+{
+  "first_name": "NOT_FOUND",
+  "last_name": "NOT_FOUND",
+  "last_update_date": "2024-01",
+  "email": "NOT_FOUND",
+  "date_of_birth": "1990-01-01",
+  "gender": "M",
+  "contract_type": "PERMANENT",
+  "management_company": "NOT_APPLICABLE",
+  "availability_date": "NOT_FOUND",
+  "highest_degree": "BACHELOR",
+  "years_post_secondary": 4,
+  "academic_credentials": [
+    {
+      "degree_name": "Bachelor's Degree in Informational Technologies",
+      "institution": "State University of Moldova",
+      "year_obtained": "2010",
+      "field_of_study": "Informational Technologies"
+    }
+  ],
+  "secondary_end_date": "2006",
+  "higher_education_start_date": "2006-09",
+  "higher_education_end_date": "2010-06",
+  "language_proficiency": [
+    {
+      "language_code": "ron",
+      "speaking": "NATIVE",
+      "writing": "NATIVE",
+      "reading": "NATIVE",
+      "listening": "NATIVE",
+      "original_level": "C2"
+    },
+    {
+      "language_code": "eng",
+      "speaking": "C1",
+      "writing": "C1",
+      "reading": "C1",
+      "listening": "C1",
+      "original_level": "C1"
+    }
+  ],
+  "professional_experience": [
+    {
+      "start_date": "2024-01",
+      "end_date": "PRESENT",
+      "job_title": "Drupal Developer",
+      "company": "Randstad Digital Portugal",
+      "client": "NOT_APPLICABLE",
+      "keywords": ["Drupal 7", "Drupal 8", "Drupal 9", "PHP", "Symfony", "Laravel", "React", "MySQL", "PostgreSQL", "Agile", "CI/CD", "APIs", "Legacy code optimization"],
+      "project_size": "MEDIUM",
+      "project_description": "Development and maintenance of internal applications using Drupal CMS across multiple versions. Focus on building APIs, optimizing legacy code, and implementing both backend and frontend solutions while ensuring high-quality releases through automated testing.",
+      "roles_responsibilities": "Develop, maintain, and enhance internal applications using Drupal (7, 8, 9). Build and integrate APIs to support internal systems and third-party services. Optimize and refactor legacy code to improve performance and security. Develop back-end solutions with PHP, Symfony, and Laravel. Implement front-end features using React, ensuring a seamless user experience. Work with databases such as MySQL and PostgreSQL for efficient data management. Collaborate with cross-functional teams in an Agile environment. Maintain CI/CD pipelines and ensure high-quality releases through automated testing.",
+      "full_experience_text": "01/2024 - Ongoing; Portugal\nDrupal Developer – Randstad Digital Portugal\n● Develop, maintain, and enhance internal applications using Drupal (7, 8, 9).\n● Build and integrate APIs to support internal systems and third-party services.\n● Optimize and refactor legacy code to improve performance and security.\n● Develop back-end solutions with PHP, Symfony, and Laravel.\n● Implement front-end features using React, ensuring a seamless user experience.\n● Work with databases such as MySQL and PostgreSQL for efficient data management.\n● Collaborate with cross-functional teams in an Agile environment.\n● Maintain CI/CD pipelines and ensure high-quality releases through automated testing.",
+      "enhanced_context": {
+        "business_impact": "Improved performance and security through legacy code optimization and refactoring",
+        "team_context": {
+          "team_size": "NOT_FOUND",
+          "team_structure": "Cross-functional teams",
+          "reporting_structure": "NOT_FOUND"
+        },
+        "leadership_scope": "NOT_FOUND",
+        "technical_leadership_activities": [],
+        "innovation_contributions": ["API integration for internal systems", "Legacy code optimization"],
+        "cross_functional_activities": ["Collaborate with cross-functional teams in an Agile environment"]
+      },
+      "project_details_enriched": [],
+      "responsibility_themes": {
+        "technical_depth": ["Develop, maintain, and enhance internal applications using Drupal", "Build and integrate APIs", "Optimize and refactor legacy code", "Develop back-end solutions with PHP, Symfony, and Laravel", "Implement front-end features using React", "Work with databases such as MySQL and PostgreSQL", "Maintain CI/CD pipelines"],
+        "people_management": [],
+        "process_ownership": ["Ensure high-quality releases through automated testing", "Agile environment collaboration"],
+        "strategic_contributions": []
+      }
+    },
+    {
+      "start_date": "2023-07",
+      "end_date": "2024-01",
+      "job_title": "Drupal Developer",
+      "company": "Freelance",
+      "client": "NOT_FOUND",
+      "keywords": ["Drupal", "Data migration", "Custom modules", "Module integration"],
+      "project_size": "SMALL",
+      "project_description": "Freelance Drupal development work focusing on data migration, website maintenance, feature development, and custom module creation.",
+      "roles_responsibilities": "Data migration, Website maintenance, development of new features, module integration, Custom modules, new tools integration",
+      "full_experience_text": "07/2023 – 01/2024; Moldova\nDrupal Developer - Freelance\n● Data migration,\n● Website maintenance, development of new features, module integration,\n● Custom modules, new tools integration",
+      "enhanced_context": {
+        "business_impact": "NOT_FOUND",
+        "team_context": {
+          "team_size": "Independent contractor",
+          "team_structure": "NOT_FOUND",
+          "reporting_structure": "NOT_FOUND"
+        },
+        "leadership_scope": "NOT_FOUND",
+        "technical_leadership_activities": [],
+        "innovation_contributions": ["Custom modules development", "New tools integration"],
+        "cross_functional_activities": []
+      },
+      "project_details_enriched": [],
+      "responsibility_themes": {
+        "technical_depth": ["Data migration", "Website maintenance", "Development of new features", "Module integration", "Custom modules", "New tools integration"],
+        "people_management": [],
+        "process_ownership": [],
+        "strategic_contributions": []
+      }
+    },
+    {
+      "start_date": "2021-07",
+      "end_date": "2023-06",
+      "job_title": "Drupal Developer",
+      "company": "Dropsolid",
+      "client": "NOT_APPLICABLE",
+      "keywords": ["Drupal", "Drupal 9", "APIs", "Data migration", "Search implementation", "Mautic"],
+      "project_size": "MEDIUM",
+      "project_description": "Website development with focus on third-party service integrations, data migrations, advanced search implementations, and Drupal version upgrades.",
+      "roles_responsibilities": "Websites development; Integrations with third party services (APIs); Data migrations; Advanced search implementations; Drupal 9 upgrade (from 7 and 8); Mautic integrations",
+      "full_experience_text": "07/2021 – 06/2023; Belgium\nDrupal Developer - Dropsolid\n● Websites development;\n● Integrations with third party services (APIs);\n● Data migrations;\n● Advanced search implementations;\n● Drupal 9 upgrade (from 7 and 8);\n● Mautic integrations",
+      "enhanced_context": {
+        "business_impact": "Enabled Drupal 9 adoption through version upgrade migrations",
+        "team_context": {
+          "team_size": "NOT_FOUND",
+          "team_structure": "NOT_FOUND",
+          "reporting_structure": "NOT_FOUND"
+        },
+        "leadership_scope": "NOT_FOUND",
+        "technical_leadership_activities": [],
+        "innovation_contributions": ["Advanced search implementations", "Drupal version upgrades"],
+        "cross_functional_activities": []
+      },
+      "project_details_enriched": [],
+      "responsibility_themes": {
+        "technical_depth": ["Websites development", "Integrations with third party services", "Data migrations", "Advanced search implementations", "Drupal 9 upgrade", "Mautic integrations"],
+        "people_management": [],
+        "process_ownership": [],
+        "strategic_contributions": []
+      }
+    },
+    {
+      "start_date": "2011-09",
+      "end_date": "2021-06",
+      "job_title": "Senior Drupal Developer",
+      "company": "FFW Agency",
+      "client": "NOT_APPLICABLE",
+      "keywords": ["Drupal 6", "Drupal 7", "Drupal 8", "PHP", "Symfony", "ReactJS", "MySQL", "Acquia Cloud", "CI/CD", "Agile", "Data migration", "E-Commerce", "Multilingual"],
+      "project_size": "LARGE",
+      "project_description": "Senior developer role working on multiple large-scale enterprise Drupal projects across various industries including finance, technology, education, and e-commerce. Projects included complex migrations, high-traffic websites, conference management systems, and e-learning platforms.",
+      "roles_responsibilities": "Worked on numerous large-scale Drupal projects including: Security Benefit (large-scale Drupal 8 project with Acquia), inVia Robotics (Atomic Design implementation), Tektronix (500K+ user migration with multilingual support), LUSH (Drupal Commerce migration with international team collaboration), Linux Foundation (high-traffic website), DocuSign projects (conference management and migrations), Worldview Stanford (e-learning platform), Springfield Public Schools (27K students website), Audubon Projects (petitions and climate reports), Stanford University Projects (multidomain sites with e-commerce), and FinBoard/ZedBoard (community-driven hardware development sites).",
+      "full_experience_text": "09/2011 – 06/2021; Moldova\nSenior Drupal Developer – FFW Agency\n\nSecurity Benefit\n● Large-scale Drupal project in collaboration with Acquia under Agile methodology.\n● Tech stack: Drupal 8, PHP, Symfony, Acquia Cloud, ReactJS.\n\ninVia Robotics\n● Drupal 8 website using Atomic Design principles with D8 paragraphs & PatternLab components.\n● Tech stack: Drupal 8, PHP, JavaScript, SaaS, CSS.\n\nTektronix\n● Drupal 6 to Drupal 8 migration of a complex system with 500K+ users and multiple internal integrations.\n● Tech stack: Drupal 8, PHP, Symfony, MySQL, Custom Data Migration.\n● Challenges: Multilingual support, custom translation management tool.\n\nLUSH\n● Drupal Commerce migration from an older system to Drupal.\n● Tech stack: Drupal Commerce, PHP, Symfony, MySQL, JavaScript.\n● Collaboration: Worked with teams from the UK, Bulgaria, and Moldova.\n\nLinux Foundation\n● Development and maintenance of a high-traffic Drupal website supporting open-source initiatives.\n● Tech stack: Drupal 8, PHP, Symfony, Acquia Cloud, CI/CD.\n\nDocuSign Momentum\n● Built a conference management system for events in San Francisco & London.\n● Tech stack: Drupal 8, PHP, Symfony, ReactJS.\n\nDocusign\n● Drupal 6 to Drupal 7 migration for the marketing website.\n● Tech stack: Drupal 7, PHP, MySQL, Acquia Cloud.\n\nWorldview Stanford (Public Site & Course Learning Section)\n● Public site redesign & e-learning platform for professionals.\n● Tech stack: Drupal 8, PHP, ReactJS, MySQL.\n\nSpringfield Public Schools\n● Brand-new responsive website for 27K students, 4K employees, and 60 schools.\n● Tech stack: Drupal 8, PHP, SaaS, JavaScript, MySQL.\n\nAudubon Projects\n● Petitions Section: Standalone feature for creating, voting, and listing petitions.\n● Birds & Climate Report: Predicts climate change impact on birds.\n● Tech stack: Drupal 8, PHP, Symfony, JavaScript, Acquia Cloud.\n\nStanford University Projects\n● DLCL & FSI: Multidomain (~20) Drupal sites with E-Commerce & content migration.\n● Army High-Performance Computing: Web platform for research & reports.\n● Tech stack: Drupal 8, PHP, Symfony, MySQL, Git, Docker.\n\nFinBoard & ZedBoard\n● Community-driven sites supporting hardware development.\n● Tech stack: Drupal 8, PHP, Symfony, MySQL, Git, SVN.",
+      "enhanced_context": {
+        "business_impact": "Delivered multiple enterprise-scale Drupal solutions serving hundreds of thousands of users across diverse industries",
+        "team_context": {
+          "team_size": "International teams",
+          "team_structure": "Worked with teams from the UK, Bulgaria, and Moldova",
+          "reporting_structure": "NOT_FOUND"
+        },
+        "leadership_scope": "Senior developer role",
+        "technical_leadership_activities": [],
+        "innovation_contributions": ["Custom translation management tool", "Atomic Design implementation", "Complex data migration solutions"],
+        "cross_functional_activities": ["Collaboration with international teams", "Worked with teams from the UK, Bulgaria, and Moldova"]
+      },
+      "project_details_enriched": [
+        {
+          "project_name": "Security Benefit",
+          "project_description": "Large-scale Drupal project in collaboration with Acquia under Agile methodology.",
+          "business_purpose": "Enterprise Drupal solution for financial services",
+          "technical_challenges": ["Large-scale implementation", "Agile methodology"],
+          "architecture_decisions": [],
+          "technologies_with_context": [
+            {
+              "technology": "Drupal 8",
+              "purpose": "CMS platform",
+              "integration_with": ["PHP", "Symfony", "Acquia Cloud", "ReactJS"]
+            }
+          ],
+          "scale_indicators": {
+            "users": "NOT_FOUND",
+            "data_volume": "NOT_FOUND",
+            "transaction_volume": "NOT_FOUND",
+            "geographic_scope": "NOT_FOUND"
+          }
+        },
+        {
+          "project_name": "Tektronix",
+          "project_description": "Drupal 6 to Drupal 8 migration of a complex system with 500K+ users and multiple internal integrations.",
+          "business_purpose": "Modernize CMS platform for large electronics company",
+          "technical_challenges": ["Multilingual support", "Custom translation management", "Large user base migration"],
+          "architecture_decisions": ["Custom Data Migration"],
+          "technologies_with_context": [
+            {
+              "technology": "Drupal 8",
+              "purpose": "Target CMS platform",
+              "integration_with": ["PHP", "Symfony", "MySQL"]
+            }
+          ],
+          "scale_indicators": {
+            "users": "500K+",
+            "data_volume": "NOT_FOUND",
+            "transaction_volume": "NOT_FOUND",
+            "geographic_scope": "Multiple internal integrations"
+          }
+        },
+        {
+          "project_name": "LUSH",
+          "project_description": "Drupal Commerce migration from an older system to Drupal.",
+          "business_purpose": "E-commerce platform migration",
+          "technical_challenges": ["E-commerce migration", "International team coordination"],
+          "architecture_decisions": [],
+          "technologies_with_context": [
+            {
+              "technology": "Drupal Commerce",
+              "purpose": "E-commerce functionality",
+              "integration_with": ["PHP", "Symfony", "MySQL", "JavaScript"]
+            }
+          ],
+          "scale_indicators": {
+            "users": "NOT_FOUND",
+            "data_volume": "NOT_FOUND",
+            "transaction_volume": "NOT_FOUND",
+            "geographic_scope": "UK, Bulgaria, and Moldova teams"
+          }
+        },
+        {
+          "project_name": "Springfield Public Schools",
+          "project_description": "Brand-new responsive website for 27K students, 4K employees, and 60 schools.",
+          "business_purpose": "Educational institution web presence",
+          "technical_challenges": [],
+          "architecture_decisions": ["Responsive design"],
+          "technologies_with_context": [
+            {
+              "technology": "Drupal 8",
+              "purpose": "CMS platform",
+              "integration_with": ["PHP", "SaaS", "JavaScript", "MySQL"]
+            }
+          ],
+          "scale_indicators": {
+            "users": "27K students, 4K employees",
+            "data_volume": "NOT_FOUND",
+            "transaction_volume": "NOT_FOUND",
+            "geographic_scope": "60 schools"
+          }
+        }
+      ],
+      "responsibility_themes": {
+        "technical_depth": ["Drupal development across versions 6, 7, 8", "Complex data migrations", "API integrations", "E-commerce implementation", "Responsive design", "Multilingual support"],
+        "people_management": [],
+        "process_ownership": ["Agile methodology", "CI/CD implementation"],
+        "strategic_contributions": []
+      }
+    },
+    {
+      "start_date": "2010-01",
+      "end_date": "2011-09",
+      "job_title": "Web Developer",
+      "company": "Freelance",
+      "client": "NOT_FOUND",
+      "keywords": ["Drupal", "PayPal", "Payment Gateway", "React.js", "CSS", "SASS"],
+      "project_size": "SMALL",
+      "project_description": "Freelance web development focused on payment terminal solutions and payment gateway integration using PayPal.",
+      "roles_responsibilities": "Development of various projects such as the development and construction of web solutions for payment terminals using Paypal. Payment Gateway integration. Technologies used: Drupal, React.Js, CSS, SAAS",
+      "full_experience_text": "01/2010 – 09/2011; Moldova\nWeb Developer - Freelance\n● Development of various projects such as the development and construction of web solutions for payment terminals using Paypal.\n● Payment Gateway integration\n● Technologies used: Drupal, React.Js, CSS, SAAS",
+      "enhanced_context": {
+        "business_impact": "NOT_FOUND",
+        "team_context": {
+          "team_size": "Independent contractor",
+          "team_structure": "NOT_FOUND",
+          "reporting_structure": "NOT_FOUND"
+        },
+        "leadership_scope": "NOT_FOUND",
+        "technical_leadership_activities": [],
+        "innovation_contributions": ["Payment terminal web solutions"],
+        "cross_functional_activities": []
+      },
+      "project_details_enriched": [],
+      "responsibility_themes": {
+        "technical_depth": ["Payment terminal development", "PayPal integration", "Payment Gateway integration"],
+        "people_management": [],
+        "process_ownership": [],
+        "strategic_contributions": []
+      }
+    }
+  ],
+  "training_certifications": [],
+  "professional_summary": {
+    "overview": "He has over 10 years of professional experience with Drupal, from Drupal 6, through Drupal 7 and 8, and currently working with Drupal 9. He started as a freelancer, developing some projects focused on payment gateway integration systems. Worked as Senior Full Stack Developer at FFW, focused on Backend development with Drupal CMS. He also has knowledge in other areas as a Frontend developer or DevOps engineer. He has had the opportunity to work on projects for major companies in industries such as Electronics, Health, eCommerce, Consumer Goods, Education, among others. He is also an active contributor to the Drupal community and an open-source promoter.",
+    "years_of_experience": 14,
+    "career_level": "SENIOR",
+    "key_sectors": ["Electronics", "Health", "eCommerce", "Consumer Goods", "Education", "Financial Services", "Technology"],
+    "professional_identity": "Backend-focused Drupal specialist with full-stack capabilities and open-source community involvement",
+    "core_expertise_narrative": "Specializes in Drupal backend development across multiple versions (6, 7, 8, 9) with strong experience in complex migrations, API integrations, and e-commerce implementations. Demonstrates full-stack capabilities with frontend development using React and DevOps knowledge, combined with active open-source community contribution."
+  },
+  "soft_skills": {
+    "communication_skills": [
+      {
+        "skill_name": "Cross-functional Collaboration",
+        "description": "Ability to work effectively with teams across different disciplines and geographic locations",
+        "evidence": [
+          "Collaborate with cross-functional teams in an Agile environment",
+          "Worked with teams from the UK, Bulgaria, and Moldova on the LUSH project"
+        ],
+        "frequency": "CONSISTENT"
+      },
+      {
+        "skill_name": "Technical Documentation & Reporting",
+        "description": "Clear communication of technical processes, progress, and solutions",
+        "evidence": [
+          "Complex migrations and integrations necessitate clear communication of technical processes"
+        ],
+        "frequency": "CONSISTENT"
+      },
+      {
+        "skill_name": "Community Engagement",
+        "description": "Active participation in technical communities and knowledge sharing",
+        "evidence": [
+          "Active contributor to the Drupal community",
+          "Open-source promoter"
+        ],
+        "frequency": "CONSISTENT"
+      }
+    ],
+    "organizational_skills": [
+      {
+        "skill_name": "Project Management",
+        "description": "Ability to organize complex tasks, resources, and timelines effectively",
+        "evidence": [
+          "Managed and contributed to numerous large-scale Drupal projects",
+          "Security Benefit, Tektronix, LUSH projects"
+        ],
+        "frequency": "CONSISTENT"
+      },
+      {
+        "skill_name": "Problem-solving",
+        "description": "Systematic approach to identifying and resolving technical challenges",
+        "evidence": [
+          "Multilingual support challenges and custom translation management tool development for Tektronix",
+          "Optimizing and refactoring legacy code at Randstad Digital"
+        ],
+        "frequency": "CONSISTENT"
+      },
+      {
+        "skill_name": "Prioritization",
+        "description": "Managing multiple demands and deadlines across diverse projects",
+        "evidence": [
+          "Worked on a variety of projects for diverse industries and companies",
+          "Migrations and upgrades across different Drupal versions"
+        ],
+        "frequency": "CONSISTENT"
+      }
+    ],
+    "leadership_skills": [],
+    "interpersonal_skills": [
+      {
+        "skill_name": "International Collaboration",
+        "description": "Working effectively with geographically distributed teams",
+        "evidence": [
+          "Worked with teams from the UK, Bulgaria, and Moldova"
+        ],
+        "frequency": "OCCASIONAL"
+      }
+    ]
+  },
+  "career_analysis": {
+    "career_trajectory": "Progression from freelance web developer to senior Drupal specialist. Started with payment gateway integration projects, evolved into enterprise-scale Drupal development at FFW Agency working on major projects, and currently works at Randstad Digital maintaining full-stack development capabilities.",
+    "specialization_areas": ["Drupal Backend Development", "Data Migration", "API Integration", "E-commerce Development"],
+    "recurring_responsibilities": [
+      {
+        "responsibility": "Data migration",
+        "frequency_across_roles": 4,
+        "evolution": "Evolved from simple migrations to complex enterprise-scale migrations handling 500K+ users with multilingual support"
+      },
+      {
+        "responsibility": "API integration",
+        "frequency_across_roles": 3,
+        "evolution": "Progression from payment gateway integration to complex third-party service integrations"
+      },
+      {
+        "responsibility": "Drupal development",
+        "frequency_across_roles": 5,
+        "evolution": "Continuous evolution across Drupal versions from 6 through 9, expanding from basic development to senior-level architecture"
+      }
+    ],
+    "technical_evolution": "Started with basic Drupal and payment gateway integration, progressively adopted new Drupal versions (6→7→8→9) while expanding technology stack to include modern frameworks like React, Symfony, and DevOps tools. Evolved from simple website development to complex enterprise migrations and e-commerce implementations.",
+    "leadership_progression": "Progressed from independent freelancer to senior developer role at FFW Agency, demonstrating growth in project complexity and scope rather than formal team leadership positions.",
+    "domain_expertise": ["E-commerce", "Education", "Financial Services", "Healthcare", "Technology", "Consumer Goods"]
+  },
+  "technical_skills_enriched": {
+    "by_category": {
+      "frontend_frameworks": [
+        {
+          "technology": "React",
+          "proficiency_indicators": ["Used in multiple projects", "Frontend implementation"],
+          "years_of_use": "5+ years",
+          "contexts_used": ["Randstad Digital internal applications", "Security Benefit", "DocuSign Momentum", "Worldview Stanford"],
+          "depth_indicators": []
+        },
+        {
+          "technology": "JavaScript",
+          "proficiency_indicators": ["Used across multiple projects"],
+          "years_of_use": "10+ years",
+          "contexts_used": ["Various Drupal projects", "inVia Robotics", "LUSH", "Springfield Public Schools"],
+          "depth_indicators": []
+        }
+      ],
+      "backend_technologies": [
+        {
+          "technology": "Drupal",
+          "proficiency_indicators": ["10+ years experience", "Multiple versions", "Senior role", "Community contributor"],
+          "years_of_use": "10+ years",
+          "contexts_used": ["All professional roles", "Versions 6, 7, 8, 9"],
+          "depth_indicators": ["Complex migrations", "Multilingual implementations", "Custom modules", "E-commerce", "Enterprise-scale projects"]
+        },
+        {
+          "technology": "PHP",
+          "proficiency_indicators": ["Used across all Drupal projects", "Core backend language"],
+          "years_of_use": "10+ years",
+          "contexts_used": ["All Drupal development projects"],
+          "depth_indicators": ["Backend solutions development", "Custom module development"]
+        },
+        {
+          "technology": "Symfony",
+          "proficiency_indicators": ["Used in multiple enterprise projects"],
+          "years_of_use": "5+ years",
+          "contexts_used": ["Randstad Digital", "FFW Agency projects", "Tektronix", "LUSH", "Linux Foundation"],
+          "depth_indicators": ["Enterprise application development"]
+        },
+        {
+          "technology": "Laravel",
+          "proficiency_indicators": ["Current role"],
+          "years_of_use": "1+ years",
+          "contexts_used": ["Randstad Digital"],
+          "depth_indicators": []
+        }
+      ],
+      "databases": [
+        {
+          "technology": "MySQL",
+          "proficiency_indicators": ["Used across multiple projects"],
+          "years_of_use": "10+ years",
+          "contexts_used": ["Tektronix", "LUSH", "Docusign", "Worldview Stanford", "Springfield Public Schools", "Stanford University"],
+          "depth_indicators": ["Efficient data management"]
+        },
+        {
+          "technology": "PostgreSQL",
+          "proficiency_indicators": ["Current role"],
+          "years_of_use": "1+ years",
+          "contexts_used": ["Randstad Digital"],
+          "depth_indicators": []
+        }
+      ],
+      "cloud_platforms": [
+        {
+          "technology": "Acquia Cloud",
+          "proficiency_indicators": ["Used in multiple enterprise projects"],
+          "years_of_use": "5+ years",
+          "contexts_used": ["Security Benefit", "Linux Foundation", "Docusign", "Audubon Projects"],
+          "depth_indicators": ["Enterprise hosting and deployment"]
+        }
+      ],
+      "testing_tools": [
+        {
+          "technology": "TDD",
+          "proficiency_indicators": ["Listed in skills"],
+          "years_of_use": "NOT_DETERMINED",
+          "contexts_used": ["General development practice"],
+          "depth_indicators": []
+        },
+        {
+          "technology": "Junit",
+          "proficiency_indicators": ["Listed in skills"],
+          "years_of_use": "NOT_DETERMINED",
+          "contexts_used": [],
+          "depth_indicators": []
+        }
+      ],
+      "devops_cicd": [
+        {
+          "technology": "CI/CD",
+          "proficiency_indicators": ["Current role", "Enterprise projects"],
+          "years_of_use": "3+ years",
+          "contexts_used": ["Randstad Digital", "Linux Foundation"],
+          "depth_indicators": ["Automated testing", "Pipeline maintenance"]
+        },
+        {
+          "technology": "Docker",
+          "proficiency_indicators": ["Used in projects"],
+          "years_of_use": "3+ years",
+          "contexts_used": ["Stanford University Projects"],
+          "depth_indicators": []
+        },
+        {
+          "technology": "Git",
+          "proficiency_indicators": ["Version control"],
+          "years_of_use": "10+ years",
+          "contexts_used": ["Stanford University Projects", "FinBoard & ZedBoard"],
+          "depth_indicators": []
+        },
+        {
+          "technology": "Jenkins",
+          "proficiency_indicators": ["Listed in skills"],
+          "years_of_use": "NOT_DETERMINED",
+          "contexts_used": [],
+          "depth_indicators": []
+        }
+      ],
+      "design_tools": [],
+      "methodologies": [
+        {
+          "technology": "Agile",
+          "proficiency_indicators": ["Current role", "Enterprise projects"],
+          "years_of_use": "5+ years",
+          "contexts_used": ["Randstad Digital", "Security Benefit"],
+          "depth_indicators": ["Cross-functional team collaboration"]
+        }
+      ]
+    },
+    "technology_stack_patterns": [
+      {
+        "stack_name": "Enterprise Drupal Stack",
+        "technologies": ["Drupal 8", "PHP", "Symfony", "MySQL", "Acquia Cloud"],
+        "frequency": "CONSISTENT"
+      },
+      {
+        "stack_name": "Modern Full-Stack",
+        "technologies": ["Drupal", "PHP", "React", "MySQL"],
+        "frequency": "OCCASIONAL"
+      }
+    ],
+    "technical_breadth_vs_depth": {
+      "breadth_score": "MODERATE",
+      "depth_areas": ["Drupal ecosystem", "Backend development", "Data migration"],
+      "full_stack_capability": "FULL_STACK"
+    }
+  },
+  "professional_development": {
+    "continuous_learning_evidence": [
+      "Progression through Drupal versions (6→7→8→9)",
+      "Adoption of modern frameworks like React",
+      "Expanded from backend to full-stack capabilities",
+      "DevOps knowledge acquisition"
+    ],
+    "technology_adoption_pattern": "PRAGMATIC",
+    "workshop_and_teaching": [],
+    "community_involvement": [
+      "Active contributor to the Drupal community",
+      "Open-source promoter"
+    ],
+    "thought_leadership_indicators": [
+      "Active contributor to the Drupal community",
+      "Open-source promoter"
+    ]
+  },
+  "work_style_analysis": {
+    "collaboration_style": "Collaborative approach with emphasis on cross-functional teamwork and international collaboration, demonstrated through work with geographically distributed teams.",
+    "technical_approach": "Focus on backend development with attention to performance, security, and code quality through refactoring and optimization efforts.",
+    "problem_solving_approach": "Systematic approach to complex technical challenges, particularly in data migration and multilingual support scenarios.",
+    "quality_focus_areas": ["Legacy code optimization", "Performance improvement", "Security enhancement", "Automated testing"],
+    "preferred_role_types": ["Backend development", "Data migration", "API integration", "Full-stack development"]
+  },
+  "document_metadata": {
+    "cv_format": "Europass",
+    "document_quality": "HIGH",
+    "key_sections_present": ["Professional Summary", "Work Experience", "Education", "Language Skills", "Digital Skills", "Communication and Organisational Skills"],
+    "visual_elements": ["Europass logo", "Structured layout", "Section headers"],
+    "professional_polish_level": "HIGH"
+  },
+  "narrative_elements": {
+    "opening_statement": "He has over 10 years of professional experience with Drupal, from Drupal 6, through Drupal 7 and 8, and currently working with Drupal 9. He started as a freelancer, developing some projects focused on payment gateway integration systems. Worked as Senior Full Stack Developer at FFW, focused on Backend development with Drupal CMS. He also has knowledge in other areas as a Frontend developer or DevOps engineer. He has had the opportunity to work on projects for major companies in industries such as Electronics, Health, eCommerce, Consumer Goods, Education, among others. He is also an active contributor to the Drupal community and an open-source promoter.",
+    "career_highlights": [
+      "10+ years of Drupal experience across versions 6, 7, 8, 9",
+      "Senior Full Stack Developer at FFW Agency",
+      "Worked on projects for major companies across diverse industries",
+      "Active contributor to Drupal community and open-source promoter",
+      "Complex migration handling 500K+ users (Tektronix project)",
+      "International team collaboration (UK, Bulgaria, Moldova)"
+    ],
+    "value_propositions": [
+      "Deep Drupal expertise across multiple versions",
+      "Full-stack development capabilities",
+      "Backend development focus with frontend and DevOps knowledge",
+      "Experience with complex enterprise-scale migrations",
+      "Cross-functional and international team collaboration",
+      "Open-source community involvement"
+    ],
+    "descriptive_phrases": [
+      "over 10 years of professional experience",
+      "focused on Backend development",
+      "has knowledge in other areas",
+      "opportunity to work on projects for major companies",
+      "active contributor",
+      "open-source promoter"
+    ],
+    "emphasis_patterns": [
+      "Drupal version progression and expertise",
+      "Backend development specialization",
+      "Full-stack capabilities",
+      "Industry diversity and major company experience",
+      "Community engagement and open-source contribution",
+      "Complex migrations and integrations",
+      "Cross-functional collaboration"
+    ]
+  }
+}

@@ -12,6 +12,11 @@ window.CVManager.config = {
         sessionTimeout: 24 * 60 * 60 * 1000 // 24 hours
     },
 
+    // API Configuration - NEW
+    api: {
+        baseUrl: 'http://localhost:3001'
+    },
+
     // File paths
     files: {
         users: 'data/users.json',

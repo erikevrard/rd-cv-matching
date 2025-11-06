@@ -138,6 +138,37 @@ class LLMService {
     return record;
   }
 
+  async updateConfig(userId, mnemonic, updates) {
+    if (!userId) throw new Error("userId required");
+    if (!mnemonic) throw new Error("mnemonic required");
+
+    const list = await this.loadAll(userId);
+    const idx = list.findIndex(r => r.mnemonic === mnemonic);
+
+    if (idx === -1) return null;
+
+    const existing = list[idx];
+    const now = new Date().toISOString();
+
+    const updated = {
+      ...existing,
+      updatedAt: now,
+      ...(updates.name !== undefined && { name: this.normalize(updates.name) || null }),
+      ...(updates.model !== undefined && { model: this.normalize(updates.model) }),
+      ...(updates.version !== undefined && { version: this.normalize(updates.version) }),
+      ...(updates.apiUrl !== undefined && { apiUrl: this.normalize(updates.apiUrl) }),
+      ...(updates.apiKey && { apiKey: updates.apiKey }),
+      ...(updates.headers !== undefined && { headers: updates.headers || {} }),
+      ...(updates.temperature !== undefined && { temperature: Number(updates.temperature) || 0 }),
+      ...(updates.maxTokens !== undefined && { maxTokens: Number(updates.maxTokens) || 1024 }),
+      ...(updates.timeoutMs !== undefined && { timeoutMs: Number(updates.timeoutMs) || 30000 })
+    };
+
+    list[idx] = updated;
+    await this.saveAll(userId, list);
+    return updated;
+  }
+
   async list(userId) {
     return await this.loadAll(userId);
   }
